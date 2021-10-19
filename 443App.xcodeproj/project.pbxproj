@@ -51,6 +51,7 @@
 		E5AA647D271F4F0500D3C4A8 /* 443AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 443AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5AA6481271F4F0500D3C4A8 /* _43AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _43AppUITests.swift; sourceTree = "<group>"; };
 		E5AA6483271F4F0500D3C4A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5AA6492271F4FBC00D3C4A8 /* StructPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = StructPlayground.playground; path = "../../../Library/Autosave Information/StructPlayground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +102,7 @@
 		E5AA645B271F4EFC00D3C4A8 /* 443App */ = {
 			isa = PBXGroup;
 			children = (
+				E5AA6492271F4FBC00D3C4A8 /* StructPlayground.playground */,
 				E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */,
 				E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */,
 				E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */,
