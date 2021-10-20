@@ -51,7 +51,7 @@
 		E5AA647D271F4F0500D3C4A8 /* 443AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 443AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5AA6481271F4F0500D3C4A8 /* _43AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _43AppUITests.swift; sourceTree = "<group>"; };
 		E5AA6483271F4F0500D3C4A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5AA649F27204F2600D3C4A8 /* Struct.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Struct.playground; path = "../../Library/Autosave Information/Struct.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E5AA649F27204F2600D3C4A8 /* Struct.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Struct.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
