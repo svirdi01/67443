@@ -16,8 +16,8 @@ class Location: NSObject {
   var locationManager = CLLocationManager()
   
   override init() {
-    self.latitude = 0.00
-    self.longitude = 0.00
+    self.latitude = 40.442609
+    self.longitude = -79.944401
     super.init()
   }
   
