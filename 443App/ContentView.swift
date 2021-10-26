@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-  let viewController = ViewController()
   
+  @ObservedObject var viewModel = ViewModel()
+
+  
+  let viewController = ViewController()
   @State private var showingAlert = false
     var body: some View {
       NavigationView {
          VStack {
           Text("Welcome to APPNAME!")
           Spacer()
-           NavigationLink(destination: MapView(viewController: viewController).navigationBarTitle("All yo memories")) {
+          NavigationLink(destination: MapView(viewController: viewController, viewModel: viewModel).navigationBarTitle("All yo memories")) {
              Text("Lets Begin!")
            }
            Spacer()
@@ -25,6 +28,7 @@ struct ContentView: View {
            Alert(title: Text(viewController.generateTitle()), message: Text(viewController.generateMessage()))
          }
        }
+      BottomBar(viewModel: viewModel)
     }
 }
 
