@@ -13,10 +13,12 @@
 //
 import MapKit
 import SwiftUI
+import Combine
 
 struct MapView: UIViewRepresentable {
   let viewController: ViewController
-  
+  let viewModel: ViewModel
+//  @ObservedObject var viewModel: ViewModel
  
   
   func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
@@ -58,8 +60,3 @@ struct MapView: UIViewRepresentable {
    
 }
 
-struct MapView_Previews : PreviewProvider {
-    static var previews: some View {
-      MapView(viewController: ViewController())
-    }
-}

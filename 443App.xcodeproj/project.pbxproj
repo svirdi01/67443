@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A4512AE272B252E0092899D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4512AD272B252E0092899D /* BottomBar.swift */; };
+		4A6384C327288D2A00D8EBDF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6384C227288D2A00D8EBDF /* ViewModel.swift */; };
 		E5AA645D271F4EFC00D3C4A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */; };
 		E5AA645F271F4EFC00D3C4A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */; };
 		E5AA6461271F4EFC00D3C4A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A4512AD272B252E0092899D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		4A6384C227288D2A00D8EBDF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		E5AA6459271F4EFC00D3C4A8 /* 443App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 443App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 				E5AA646D271F4F0500D3C4A8 /* Info.plist */,
 				E5AA6462271F4EFC00D3C4A8 /* _43App.xcdatamodeld */,
 				E5AA6467271F4F0500D3C4A8 /* Preview Content */,
+				4A6384C227288D2A00D8EBDF /* ViewModel.swift */,
+				4A4512AD272B252E0092899D /* BottomBar.swift */,
 			);
 			path = 443App;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5AA645D271F4EFC00D3C4A8 /* AppDelegate.swift in Sources */,
+				4A6384C327288D2A00D8EBDF /* ViewModel.swift in Sources */,
+				4A4512AE272B252E0092899D /* BottomBar.swift in Sources */,
 				E5AA64B62720E0AB00D3C4A8 /* MapView.swift in Sources */,
 				E5AA645F271F4EFC00D3C4A8 /* SceneDelegate.swift in Sources */,
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
