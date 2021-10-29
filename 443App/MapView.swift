@@ -40,7 +40,9 @@ struct MapView: UIViewRepresentable {
     let mapView = MKMapView(frame: .zero)
     let user = viewController.currLocation
     user.loadLocation()
-    
+    let floatingButton = UIButton()
+    floatingButton.setTitle("Add", for: .normal)
+    floatingButton.backgroundColor = .black
     
     
     let loc = Location()
