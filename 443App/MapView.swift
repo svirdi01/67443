@@ -51,10 +51,14 @@ struct MapView: UIViewRepresentable {
     let date1 = NSDate()
     let pin1 = MemoryPin(title:"some memory", description:"description of some memory", address:"address of some memory", location:loc,tag:[], date: date1 as Date)
     
+    
+    
+    
     let pinArr: [MemoryPin] = [pin1]
     
   
     for memory in pinArr{
+
       let droppedPin = MKPointAnnotation()
       droppedPin.coordinate = CLLocationCoordinate2D(
         latitude: memory.location.latitude ,
@@ -62,6 +66,7 @@ struct MapView: UIViewRepresentable {
       )
       droppedPin.title = memory.title
       mapView.addAnnotation(droppedPin)
+      
       
     }
     
