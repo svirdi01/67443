@@ -28,11 +28,12 @@ struct BottomBar: View {
               Text("Second Tab")
             }
       
-      Text("User View")
+      ProfileHeader()
            .tabItem {
               Image(systemName: "tv.fill")
               Text("Second Tab")
             }
+
       
       
       
