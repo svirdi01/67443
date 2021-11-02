@@ -106,7 +106,7 @@ struct Profile: View {
     let maxTagPercent = (maxTagCount as! Int/(user.allPins.count)) * 100
     let firstDate = stringFromDate(date: user.allPins[0].date)
     let lastDate = stringFromDate(date: user.allPins[user.allPins.count-1].date)
-    let mostPinsDate = mostPinsDate(allPins: user.allPins)
+    let mostPinsD = mostPinsDate(allPins: user.allPins)
     let mostPinsLoc = mostPinsLocation(allPins: user.allPins)
     
     VStack {
@@ -144,7 +144,7 @@ struct Profile: View {
               .background(Rectangle().fill(skyBlue).shadow(radius: 2))
         }
         HStack {
-          Text("Dropped\n Most Pins\n On \(mostPinsDate)")
+          Text("Dropped\n Most Pins\n On \(mostPinsD)")
               .fixedSize(horizontal: false, vertical: true)
               .multilineTextAlignment(.center)
               .padding()
