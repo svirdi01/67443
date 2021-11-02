@@ -9,32 +9,16 @@ import Foundation
 import SwiftUI
  
 struct Profile: View {
+  var viewModel = ViewModel()
   
-  // This is from here lol https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring idk if this is allowed  
+  // This is from here lol https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring idk if this is allowed
   func stringFromDate(date: Date) -> String {
       let formatter = DateFormatter()
       formatter.dateFormat = "MM/dd/yyyy"
       return formatter.string(from: date)
   }
   
-  func createDemoUser() -> User{
-    // Make pin by hand
-    let loc = Location()
-    loc.longitude = -79.946401
-    loc.latitude = 40.442609
-    let date1 = NSDate()
-    let happyTag = Tag(name: "Happy", color: "Yellow")
-    let pin1 = MemoryPin(title:"first memory", description: "description of the memory", addressStreet: "5000 Forbes Ave", addressCity: "Pittsburgh", addressState: "PA", addressZip: "15213",location: loc, tag:[happyTag], date: date1 as Date)
-    let pinArr: [MemoryPin] = [pin1]
-    let tagArr: [Tag] = [happyTag]
-    
-    // Make user by hand
-    let claudiaUser = User(name: "Claudia Osorio", email: "cosorio@andrew.cmu.edu", allPins: pinArr, allTags: tagArr)
-    
-    return claudiaUser
-  }
-  
-  func mostUsedTag(allTags: [Tag]) -> [Any]{
+  func mostUsedTag(allTags: [Tag]) -> [String]{
     var counts = [String: Int]()
     for tag in allTags {
       if (counts.keys.contains(tag.name)){
@@ -52,7 +36,7 @@ struct Profile: View {
         maxTag = tagName
       }
     }
-    return [maxTag, maxCount]
+    return [maxTag, String(maxCount)]
   }
   
   func mostPinsDate(allPins: [MemoryPin]) -> String {
@@ -99,16 +83,28 @@ struct Profile: View {
   
   var body: some View {
     let skyBlue = Color(red: 0.4627, green: 0.8392, blue: 1.0)
-    let user = createDemoUser()
-    let maxTagLst = mostUsedTag(allTags: user.allTags)
-    let maxTagName = maxTagLst[0]
-    let maxTagCount = maxTagLst[1]
-    let maxTagPercent = (maxTagCount as! Int/(user.allPins.count)) * 100
-    let firstDate = stringFromDate(date: user.allPins[0].date)
-    let lastDate = stringFromDate(date: user.allPins[user.allPins.count-1].date)
-    let mostPinsDate = mostPinsDate(allPins: user.allPins)
-    let mostPinsLoc = mostPinsLocation(allPins: user.allPins)
+    let maxTagLst = mostUsedTag(allTags: viewModel.demoUser.allTags)
+    let maxTagName = ""
+    let maxTagCount = 0
+    let maxTagPercent = 0
+
     
+    let firstDate = "N/A"
+    let lastDate = "N/A"
+    let mostPinsDate = "N/A"
+    let mostPinsLoc = "N/A"
+    if (maxTagLst.count == 2){
+      let maxTagName = "\(maxTagLst[0])"
+      let maxTagCount = maxTagLst[1]
+      let maxTagPercent = (maxTagCount as! Int/(viewModel.demoUser.count)) * 100
+    }
+    if (viewModel.demoUser.allPins.count > 0){
+      let firstDate = stringFromDate(date: viewModel.demoUser.allPins[0].date)
+      let lastDate = stringFromDate(date: viewModel.demoUser.allPins[viewModel.demoUser.allPins.count-1].date)
+      let mostPinsDate = mostPinsDate(allPins: viewModel.demoUser.allPins)
+      let mostPinsLoc = mostPinsLocation(allPins: viewModel.demoUser.allPins)
+    }
+
     VStack {
       
       VStack {
@@ -116,7 +112,7 @@ struct Profile: View {
           .resizable()
           .frame(width: 130, height: 130)
           .clipShape(Circle())
-        Text(user.name).bold()
+        Text(viewModel.demoUser.name).bold()
         Spacer().frame(maxHeight: 10)
         HStack {
           VStack{
@@ -130,18 +126,39 @@ struct Profile: View {
           }
         }.font(.system(size: 12))
         HStack {
-          Text("\(user.allPins.count) Pin(s)" as String)
+          if (viewModel.demoUser.allPins.count == 0){
+            Text("No Pins Yet")
               .fixedSize(horizontal: false, vertical: true)
               .multilineTextAlignment(.center)
               .padding()
               .frame(width: 115, height: 100)
               .background(Rectangle().fill(skyBlue).shadow(radius: 2))
-          Text("\(maxTagPercent)% \(maxTagName) Pins" as String)
+            
+          }else{
+          Text("\(viewModel.demoUser.allPins.count) Pin(s)" as String)
               .fixedSize(horizontal: false, vertical: true)
               .multilineTextAlignment(.center)
               .padding()
               .frame(width: 115, height: 100)
               .background(Rectangle().fill(skyBlue).shadow(radius: 2))
+          }
+          
+          if (maxTagName == ""){
+            Text("No Tags Used Yet" as String)
+              .fixedSize(horizontal: false, vertical: true)
+              .multilineTextAlignment(.center)
+              .padding()
+              .frame(width: 115, height: 100)
+              .background(Rectangle().fill(skyBlue).shadow(radius: 2))
+
+          } else{
+            Text("\(maxTagPercent)% \(maxTagName) Pins" as String)
+                .fixedSize(horizontal: false, vertical: true)
+                .multilineTextAlignment(.center)
+                .padding()
+                .frame(width: 115, height: 100)
+                .background(Rectangle().fill(skyBlue).shadow(radius: 2))
+          }
         }
         HStack {
           Text("Dropped\n Most Pins\n On \(mostPinsDate)")
