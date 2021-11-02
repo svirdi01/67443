@@ -10,11 +10,12 @@ import SwiftUI
 
 
 struct BottomBar: View {
- 
+  @State var isNavigationBarHidden: Bool = true
   @ObservedObject var viewModel = ViewModel()
   let viewController = ViewController()
   
   var body: some View{
+   
     TabView {
        Text("Journal View")
          .tabItem {
@@ -31,7 +32,14 @@ struct BottomBar: View {
           .offset(y: 275)
 
           }
+        .navigationBarTitle("Hidden Title")
+        .navigationBarHidden(self.isNavigationBarHidden)
+        .onAppear {
+            self.isNavigationBarHidden = true
         }
+        }
+      
+      
            .tabItem {
               Image(systemName: "tv.fill")
               Text("Second Tab")
