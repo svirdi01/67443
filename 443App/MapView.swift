@@ -37,6 +37,7 @@ struct MapView: UIViewRepresentable {
   }
 
   func makeUIView(context: Context) -> MKMapView {
+    
     let mapView = MKMapView(frame: .zero)
     let user = viewController.currLocation
     user.loadLocation()
@@ -71,11 +72,6 @@ struct MapView: UIViewRepresentable {
       mapView.addAnnotation(droppedPin)
       
     }
-    
-    
-    
-    
- 
     
     
     return mapView
