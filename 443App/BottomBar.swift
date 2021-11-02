@@ -32,7 +32,7 @@ struct BottomBar: View {
           .offset(y: 275)
 
           }
-        .navigationBarTitle("Hidden Title")
+        .navigationBarTitle("Back")
         .navigationBarHidden(self.isNavigationBarHidden)
         .onAppear {
             self.isNavigationBarHidden = true

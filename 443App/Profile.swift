@@ -17,7 +17,8 @@ struct Profile: View {
       return formatter.string(from: date)
   }
   
-  func createDemoUser() -> User{
+  func createDemoUser() -> User
+  {
     // Make pin by hand
     let loc = Location()
     loc.longitude = -79.946401
