@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
  
 struct Profile: View {
+  let viewModel: ViewModel
   
   // This is from here lol https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring idk if this is allowed  
   func stringFromDate(date: Date) -> String {
