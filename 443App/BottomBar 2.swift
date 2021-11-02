@@ -22,22 +22,21 @@ struct BottomBar: View {
             Text("First Tab")
           }
       
-      NavigationView {
-        ZStack {
-          MapView(viewController: viewController, viewModel: viewModel)
-          NavigationLink(destination: AddPin(viewModel: viewModel)) {
-              Text("Create")
-          }
-          .offset(y: 275)
-
-          }
+      ZStack {
+        MapView(viewController: viewController, viewModel: viewModel)
+        Button(action:
+                {
+          
+        }) {
+          Text("Create")
         }
-           .tabItem {
+
+      }.tabItem {
               Image(systemName: "tv.fill")
               Text("Second Tab")
             }
       
-      Profile()
+      Text("User View")
            .tabItem {
               Image(systemName: "tv.fill")
               Text("Second Tab")
@@ -49,6 +48,9 @@ struct BottomBar: View {
     
     
     
+  }
+  func buttonText() -> String {
+    return "Create"
   }
 }
 

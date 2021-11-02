@@ -25,6 +25,7 @@
 		E5AA64BB2720E0D500D3C4A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA64BA2720E0D500D3C4A8 /* ViewController.swift */; };
 		E5CB3CBA272C563C001936AE /* MemoryPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CB9272C563C001936AE /* MemoryPin.swift */; };
 		E5CB3CBF272C568B001936AE /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CBE272C568B001936AE /* Tag.swift */; };
+		E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CD92730D6EF001936AE /* AddPin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		E5AA64BA2720E0D500D3C4A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E5CB3CB9272C563C001936AE /* MemoryPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPin.swift; sourceTree = "<group>"; };
 		E5CB3CBE272C568B001936AE /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		E5CB3CD92730D6EF001936AE /* AddPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				E5AA6467271F4F0500D3C4A8 /* Preview Content */,
 				4A6384C227288D2A00D8EBDF /* ViewModel.swift */,
 				4A4512AD272B252E0092899D /* BottomBar.swift */,
+				E5CB3CD92730D6EF001936AE /* AddPin.swift */,
 				A9688071272C767300F0C51A /* User.swift */,
 				4A79D7202730D4F900C673CE /* Profile.swift */,
 			);
@@ -307,6 +310,7 @@
 				E5AA645F271F4EFC00D3C4A8 /* SceneDelegate.swift in Sources */,
 				E5CB3CBF272C568B001936AE /* Tag.swift in Sources */,
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
+				E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */,
 				A9688072272C767300F0C51A /* User.swift in Sources */,
 				E5AA64BB2720E0D500D3C4A8 /* ViewController.swift in Sources */,
 				E5AA6464271F4EFC00D3C4A8 /* _43App.xcdatamodeld in Sources */,
