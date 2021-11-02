@@ -31,12 +31,11 @@ class ViewModel: ObservableObject{
     
     let newPin = MemoryPin(title: title, description: description, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, location: location, tag: tag, date: date)
        
-    
-       
-       
       
        
     self.sampleUser.allPins.append(newPin)
+    print(sampleUser.allPins.count)
+
        }
     
   }
