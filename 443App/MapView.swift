@@ -37,19 +37,38 @@ struct MapView: UIViewRepresentable {
   }
 
   func makeUIView(context: Context) -> MKMapView {
+    
     let mapView = MKMapView(frame: .zero)
     let user = viewController.currLocation
     user.loadLocation()
-    let pinArr: [[CLLocationDegrees]] = [[40.442609,-79.946401], [40.445609,-79.945401], [40.441609,-79.945401]]
-    let labelArr: [String] = ["Met first significant other", "Almost lost my life to a SPIN scooter","pulled first all nighter"]
-  
-    for n in 0...2{
+    
+    
+    
+    //MAKING PIN BY HAND
+    let loc = Location()
+    loc.longitude = -79.946401
+    loc.latitude=40.442609
+    let date1 = NSDate()
+    let pin1 = MemoryPin(title:"some memory", description:"description of some memory", address:"address of some memory", location:loc,tag:[], date: date1 as Date)
+    let pinArr: [MemoryPin] = [pin1]
+    let happyTag = Tag(name:"Happy", color:"Yellow")
+    let tagArr: [Tag] = [happyTag]
+    
+    //hello bah blah ablh
+    //MAKING USER BY HAND
+    
+    
+    let nehaUser = User(name: "NEHA JOSHI" , email: "nehajosh@andrew.cmu.edu", allPins: pinArr, allTags: tagArr)
+    
+    
+    
+    for memory in nehaUser.allPins{
       let droppedPin = MKPointAnnotation()
       droppedPin.coordinate = CLLocationCoordinate2D(
-        latitude: pinArr[n][0] ,
-        longitude: pinArr[n][1]
+        latitude: memory.location.latitude ,
+        longitude: memory.location.longitude
       )
-      droppedPin.title = labelArr[n]
+      droppedPin.title = memory.title
       mapView.addAnnotation(droppedPin)
       
     }
