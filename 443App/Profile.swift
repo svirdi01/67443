@@ -10,7 +10,7 @@ import SwiftUI
  
 struct Profile: View {
   
-  // This is from here lol https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring idk if this is allowed
+  // This is from here lol https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring idk if this is allowed  
   func stringFromDate(date: Date) -> String {
       let formatter = DateFormatter()
       formatter.dateFormat = "MM/dd/yyyy"
