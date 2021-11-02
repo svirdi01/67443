@@ -10,7 +10,7 @@ class MemoryPin: Identifiable
 
   var title: String
   var description: String
-  var address: String
+  //var address: String
   var addressStreet: String
   var addressCity: String
   var addressState: String
