@@ -47,22 +47,26 @@ struct MapView: UIViewRepresentable {
     //MAKING PIN BY HAND
     let loc = Location()
     loc.longitude = -79.946401
-    loc.latitude=40.442609
+    loc.latitude = 40.442609
     let date1 = NSDate()
-    let pin1 = MemoryPin(title:"some memory", description:"description of some memory", address:"address of some memory", location:loc,tag:[], date: date1 as Date)
+    let happyTag = Tag(name: "Happy", color: "Yellow")
+    let pin1 = MemoryPin(title:"first memory", description: "description of the memory", addressStreet: "5000 Forbes Ave", addressCity: "Pittsburgh", addressState: "PA", addressZip: "15213",location: loc, tag:[happyTag], date: date1 as Date)
     let pinArr: [MemoryPin] = [pin1]
-    let happyTag = Tag(name:"Happy", color:"Yellow")
     let tagArr: [Tag] = [happyTag]
     
+    // Make user by hand
+    let claudiaUser = User(name: "Claudia Osorio", email: "cosorio@andrew.cmu.edu", allPins: pinArr, allTags: tagArr)
+    
+  
     //hello bah blah ablh
     //MAKING USER BY HAND
     
     
-    let nehaUser = User(name: "NEHA JOSHI" , email: "nehajosh@andrew.cmu.edu", allPins: pinArr, allTags: tagArr)
     
     
     
-    for memory in nehaUser.allPins{
+    
+    for memory in claudiaUser.allPins{
       let droppedPin = MKPointAnnotation()
       droppedPin.coordinate = CLLocationCoordinate2D(
         latitude: memory.location.latitude ,
