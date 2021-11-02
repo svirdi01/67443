@@ -37,6 +37,7 @@ struct MapView: UIViewRepresentable {
   }
 
   func makeUIView(context: Context) -> MKMapView {
+    print(viewModel.sampleUser.allPins.count)
     
     let mapView = MKMapView(frame: .zero)
     let user = viewController.currLocation
