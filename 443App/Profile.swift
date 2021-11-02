@@ -24,7 +24,7 @@ struct Profile: View {
     loc.latitude = 40.442609
     let date1 = NSDate()
     let happyTag = Tag(name: "Happy", color: "Yellow")
-    let pin1 = MemoryPin(title:"first memory", description: "description of the memory", address: "address of the memory", location: loc, tag:[happyTag], date: date1 as Date)
+    let pin1 = MemoryPin(title:"first memory", description: "description of the memory", addressStreet: "5000 Forbes Ave", addressCity: "Pittsburgh", addressState: "PA", addressZip: "15213",location: loc, tag:[happyTag], date: date1 as Date)
     let pinArr: [MemoryPin] = [pin1]
     let tagArr: [Tag] = [happyTag]
     
@@ -76,26 +76,26 @@ struct Profile: View {
     return maxDate
   }
   
-//  func mostPinsLocation(allPins: [MemoryPin]) -> [Any] {
-//    var counts = [String: Int]()
-//    for pin in allPins {
-//      var city = pin.address[pin.address.count-2] as String
-//      if (counts.keys.contains(city)){
-//        counts[city]! += 1
-//      }else{
-//        counts[city] = 1
-//      }
-//    }
-//    var maxCount = 0;
-//    var maxCity = "";
-//    for city in counts.keys {
-//      if (counts[city]! > maxCount){
-//        maxCount = counts[city]!
-//        maxCity = city
-//      }
-//    }
-//    return [maxCity, maxCount]
-//  }
+  func mostPinsLocation(allPins: [MemoryPin]) -> String {
+    var counts = [String: Int]()
+    for pin in allPins {
+      let city = pin.addressCity
+      if (counts.keys.contains(city)){
+        counts[city]! += 1
+      }else{
+        counts[city] = 1
+      }
+    }
+    var maxCount = 0;
+    var maxCity = "";
+    for city in counts.keys {
+      if (counts[city]! > maxCount){
+        maxCount = counts[city]!
+        maxCity = city
+      }
+    }
+    return maxCity
+  }
   
   var body: some View {
     let skyBlue = Color(red: 0.4627, green: 0.8392, blue: 1.0)
@@ -107,6 +107,7 @@ struct Profile: View {
     let firstDate = stringFromDate(date: user.allPins[0].date)
     let lastDate = stringFromDate(date: user.allPins[user.allPins.count-1].date)
     let mostPinsDate = mostPinsDate(allPins: user.allPins)
+    let mostPinsLoc = mostPinsLocation(allPins: user.allPins)
     
     VStack {
       
@@ -149,7 +150,7 @@ struct Profile: View {
               .padding()
               .frame(width: 115, height: 100)
               .background(Rectangle().fill(skyBlue).shadow(radius: 2))
-          Text("Pittsburgh PA\n10")
+          Text("Dropped\n Most Pins\n In \(mostPinsLoc)" as String)
               .fixedSize(horizontal: false, vertical: true)
               .multilineTextAlignment(.center)
               .padding()
