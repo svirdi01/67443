@@ -17,9 +17,9 @@ import Combine
 
 struct MapView: UIViewRepresentable {
   @ObservedObject var viewController: ViewController
-  var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
-//  @ObservedObject var viewModel: ViewModel
+
  
   
   func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {

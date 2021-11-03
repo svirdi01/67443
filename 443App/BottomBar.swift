@@ -11,7 +11,7 @@ import SwiftUI
 
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
-  var viewModel: ViewModel
+  @StateObject var viewModel: ViewModel
   @ObservedObject var viewController: ViewController
   
   var body: some View
@@ -41,7 +41,7 @@ struct BottomBar: View {
       
       NavigationView {
         ZStack {
-          MapView(viewController: viewController, viewModel: viewModel)
+          MapView(viewController: viewController).environmentObject(viewModel)
           NavigationLink(destination: AddPin(viewModel: viewModel)) {
               Text("Create")
           }
@@ -61,7 +61,7 @@ struct BottomBar: View {
               Text("Second Tab")
             }
       
-      Profile(viewModel: viewModel)
+      Profile().environmentObject(viewModel)
            .tabItem {
               Image(systemName: "tv.fill")
               Text("Second Tab")

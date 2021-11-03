@@ -16,7 +16,7 @@ struct Profile: View {
   //look imto context - primary way a uiview representable object gets update that something has changed - pass reference to contexts object from map view to form viewmodel - probably function in context to be updated
   //review swift repo/contact and maybe simple browser labs
   
-  var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
   // ContentView initialize ProfileViewMOdel()
   // ProfileViewModel pass down

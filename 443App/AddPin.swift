@@ -10,8 +10,17 @@ import SwiftUI
 import UIKit
 
 struct AddPin: View {
+  //intead of observedPbject try environment object - instead of observed object one that can be shared between views, and state object
+  //where you save the state you call state object
+  
+  //at some point we have to start thinking about how do we save this data - spmeway of preserving this outside the app
+  
+  //need to think about saving this to firebase - what you have to save to firebase is very minimal - hugh advantage is saving to firebase is you can access it from different things
+  //nature of this project is that we should use firebase
 
-  var viewModel: ViewModel
+  @StateObject var viewModel: ViewModel
+  //use state object for whern you are CHANGING the view MODEL
+  //when you are just READING it it is an environment object
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
   @State var title: String = "F"
