@@ -11,7 +11,7 @@ import UIKit
 
 struct AddPin: View {
 
-  @ObservedObject var viewModel: ViewModel
+  var viewModel: ViewModel
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
   @State var title: String = "F"

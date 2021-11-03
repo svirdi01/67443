@@ -37,6 +37,9 @@ class ViewModel: ObservableObject{
     
 
        }
+  func getPins()-> [MemoryPin]{
+    return sampleUser.allPins
+  }
     
   }
   
