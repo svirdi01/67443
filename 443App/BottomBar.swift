@@ -14,11 +14,27 @@ struct BottomBar: View {
   @ObservedObject var viewModel: ViewModel
   @ObservedObject var viewController: ViewController
   
-  var body: some View{
+  var body: some View
+  {
    
     TabView {
-       Text("Journal View")
-         .tabItem {
+      NavigationView {
+        List {
+          ForEach(viewModel.sampleUser.allPins)
+          { pin in
+            NavigationLink(destination: PinDetail(pin: pin))
+            {
+              PinRow(pin: pin)
+            }
+          }
+        }
+        .navigationBarTitle("Pins")
+        .navigationBarItems(trailing:
+          NavigationLink(destination: AddPin(viewModel: viewModel)) {
+              Image(systemName: "plus")
+          }
+        )
+      }.tabItem {
             Image(systemName: "phone.fill")
             Text("First Tab")
           }
