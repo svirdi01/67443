@@ -34,7 +34,7 @@ class ViewModel: ObservableObject{
       
        
     self.sampleUser.allPins.append(newPin)
-    print(sampleUser.allPins.count)
+    
 
        }
     

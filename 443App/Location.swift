@@ -6,6 +6,13 @@
 //
 
 
+//
+//  Location.swift
+//  FindMyCar
+//
+//  Created by Neha Joshi on 9/28/21.
+//
+
 import Foundation
 import CoreLocation
 
@@ -17,7 +24,7 @@ class Location: NSObject {
   
   override init() {
     self.latitude = 40.442609
-    self.longitude = -79.944401
+    self.longitude = -79.946401
     super.init()
   }
   
@@ -53,7 +60,6 @@ class Location: NSObject {
     archiver.finishEncoding()
     data.write(toFile: dataFilePath(), atomically: true)
   }
-  
   func loadLocation() {
     let path = dataFilePath()
     if FileManager.default.fileExists(atPath: path) {
@@ -92,4 +98,3 @@ extension String {
   }
   
 }
-
