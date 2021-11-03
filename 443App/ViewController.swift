@@ -14,7 +14,7 @@
 
 import Foundation
 import UIKit
-class ViewController
+class ViewController: ObservableObject
 {
   let currLocation = Location()
   

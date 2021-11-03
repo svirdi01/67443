@@ -16,8 +16,8 @@ import SwiftUI
 import Combine
 
 struct MapView: UIViewRepresentable {
-  let viewController: ViewController
-  let viewModel: ViewModel
+  @ObservedObject var viewController: ViewController
+  @ObservedObject var viewModel: ViewModel
   
 //  @ObservedObject var viewModel: ViewModel
  
