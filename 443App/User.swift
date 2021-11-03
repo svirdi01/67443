@@ -8,7 +8,7 @@
 import Foundation
 
 
-class User: Identifiable {
+class User: ObservableObject, Identifiable {
   
   var name: String
   var email: String
@@ -16,7 +16,7 @@ class User: Identifiable {
   var locationPinNum: Int
   var pinPercentNum: Int
   var mostPinsDate: Date
-  var allPins = [MemoryPin]()
+  @Published var allPins = [MemoryPin]()
   var allTags = [Tag]()
   
   init(name: String , email: String, allPins : Array<MemoryPin>, allTags : Array<Tag>)

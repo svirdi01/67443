@@ -11,8 +11,8 @@ import SwiftUI
 
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
-  @ObservedObject var viewModel = ViewModel()
-  let viewController = ViewController()
+  @ObservedObject var viewModel: ViewModel
+  @ObservedObject var viewController: ViewController
   
   var body: some View{
    

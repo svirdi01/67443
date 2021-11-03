@@ -16,16 +16,18 @@ import SwiftUI
 import Combine
 
 struct MapView: UIViewRepresentable {
-  let viewController: ViewController
-  let viewModel: ViewModel
+  @ObservedObject var viewController: ViewController
+  @ObservedObject var viewModel: ViewModel
+  
 //  @ObservedObject var viewModel: ViewModel
  
   
   func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+    print("UPDATING UI VIEW")
     let user = viewController.currLocation
     user.loadLocation()
     
-    uiView.showsUserLocation = true
+    //uiView.showsUserLocation = true
     
     
     let coordinate = CLLocationCoordinate2D(latitude: viewController.currLocation.latitude, longitude: viewController.currLocation.longitude)
@@ -34,10 +36,25 @@ struct MapView: UIViewRepresentable {
     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     let region = MKCoordinateRegion(center: coordinate, span: span)
     uiView.setRegion(region, animated: true)
+    
+    //need to flush all annotations at start of update UI view
+    for memory in viewModel.sampleUser.allPins{
+      print("MAKING PINS NOW")
+      let droppedPin = MKPointAnnotation()
+      droppedPin.coordinate = CLLocationCoordinate2D(
+        latitude: memory.location.latitude ,
+        longitude: memory.location.longitude
+      )
+      droppedPin.title = memory.title
+      uiView.addAnnotation(droppedPin)
+      
+    }
+    
   }
 
   func makeUIView(context: Context) -> MKMapView {
-    print(viewModel.sampleUser.allPins.count)
+    print("MAKING VIEW")
+    
     
     let mapView = MKMapView(frame: .zero)
     let user = viewController.currLocation
@@ -61,10 +78,6 @@ struct MapView: UIViewRepresentable {
   
     //hello bah blah ablh
     //MAKING USER BY HAND
-    
-    
-    
-    
     
     
     for memory in viewModel.sampleUser.allPins{

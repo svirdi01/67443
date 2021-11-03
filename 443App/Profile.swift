@@ -9,7 +9,20 @@ import Foundation
 import SwiftUI
  
 struct Profile: View {
-  var viewModel = ViewModel()
+  //move calculations to a view model
+  //observed object
+  //shift formatinng and logic to viewmodel so we can bind more directly
+  //use getters and setters in viewmodel to update text
+  //look imto context - primary way a uiview representable object gets update that something has changed - pass reference to contexts object from map view to form viewmodel - probably function in context to be updated
+  //review swift repo/contact and maybe simple browser labs
+  
+  @ObservedObject var viewModel: ViewModel
+  
+  // ContentView initialize ProfileViewMOdel()
+  // ProfileViewModel pass down
+    // MapView --> CreatePinView --> viewModel.AddPin(...)
+    // --> bind --> ProfileView viewModel.user.pins
+    //
   
   // This is from here lol https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring idk if this is allowed
   func stringFromDate(date: Date) -> String {
@@ -82,8 +95,10 @@ struct Profile: View {
   }
   
   var body: some View {
+    
     let skyBlue = Color(red: 0.4627, green: 0.8392, blue: 1.0)
     let maxTagLst = mostUsedTag(allTags: viewModel.sampleUser.allTags)
+    
     let maxTagName = ""
     let maxTagCount = 0
     let maxTagPercent = 0

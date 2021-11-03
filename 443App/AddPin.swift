@@ -11,19 +11,19 @@ import UIKit
 
 struct AddPin: View {
 
-  var viewModel: ViewModel
+  @ObservedObject var viewModel: ViewModel
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
-  @State var title: String = ""
-  @State var description: String = ""
-  @State var street: String = ""
-  @State var city: String = ""
-  @State var state: String = ""
-  @State var zip: String = ""
+  @State var title: String = "F"
+  @State var description: String = "F"
+  @State var street: String = "F"
+  @State var city: String = "F"
+  @State var state: String = "F"
+  @State var zip: String = "F"
   @State var location = Location()
-  @State var longitude: String = "" ;
-  @State var latitude: String = "" ;
-  @State var t = "";
+  @State var longitude: String = "-79.946401" ;
+  @State var latitude: String = "40.442609" ;
+  @State var t = "Happy";
   @State var d = Date()
 
   var body: some View {
@@ -105,7 +105,12 @@ struct AddPin: View {
         loc.longitude = Double(longitude) ?? 0.0
         let tag = Tag(name: t, color: "Yellow")
         let tagArr: [Tag] = [tag]
+        print("BEFORE SAVE COUNT:")
+        print(viewModel.sampleUser.allPins.count)
         self.viewModel.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tag: tagArr, date: d)
+        print("AFTER SAVE COUNT:")
+        print(viewModel.sampleUser.allPins.count)
+        
         self.mode.wrappedValue.dismiss()
         
       })
