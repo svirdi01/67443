@@ -26,6 +26,8 @@
 		E5CB3CBA272C563C001936AE /* MemoryPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CB9272C563C001936AE /* MemoryPin.swift */; };
 		E5CB3CBF272C568B001936AE /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CBE272C568B001936AE /* Tag.swift */; };
 		E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CD92730D6EF001936AE /* AddPin.swift */; };
+		E5FDC64C2732C1BC00460D27 /* PinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDC64B2732C1BC00460D27 /* PinRow.swift */; };
+		E5FDC6512732C1E800460D27 /* PinDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDC6502732C1E800460D27 /* PinDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		E5CB3CB9272C563C001936AE /* MemoryPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPin.swift; sourceTree = "<group>"; };
 		E5CB3CBE272C568B001936AE /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E5CB3CD92730D6EF001936AE /* AddPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPin.swift; sourceTree = "<group>"; };
+		E5FDC64B2732C1BC00460D27 /* PinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRow.swift; sourceTree = "<group>"; };
+		E5FDC6502732C1E800460D27 /* PinDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				E5CB3CBE272C568B001936AE /* Tag.swift */,
 				E5AA64B02720E08200D3C4A8 /* Location.swift */,
 				E5AA64B52720E0AB00D3C4A8 /* MapView.swift */,
+				E5FDC64B2732C1BC00460D27 /* PinRow.swift */,
+				E5FDC6502732C1E800460D27 /* PinDetail.swift */,
 				E5AA64BA2720E0D500D3C4A8 /* ViewController.swift */,
 				E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */,
 				E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */,
@@ -305,11 +311,13 @@
 				E5AA645D271F4EFC00D3C4A8 /* AppDelegate.swift in Sources */,
 				4A6384C327288D2A00D8EBDF /* ViewModel.swift in Sources */,
 				4A79D7212730D4F900C673CE /* Profile.swift in Sources */,
+				E5FDC6512732C1E800460D27 /* PinDetail.swift in Sources */,
 				4A4512AE272B252E0092899D /* BottomBar.swift in Sources */,
 				E5AA64B62720E0AB00D3C4A8 /* MapView.swift in Sources */,
 				E5AA645F271F4EFC00D3C4A8 /* SceneDelegate.swift in Sources */,
 				E5CB3CBF272C568B001936AE /* Tag.swift in Sources */,
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
+				E5FDC64C2732C1BC00460D27 /* PinRow.swift in Sources */,
 				E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */,
 				A9688072272C767300F0C51A /* User.swift in Sources */,
 				E5AA64BB2720E0D500D3C4A8 /* ViewController.swift in Sources */,
