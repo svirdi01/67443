@@ -19,7 +19,7 @@ struct ContentView: View {
   @State private var showingAlert = false
     var body: some View {
   
-      BottomBar(viewController: viewController, viewModel:viewModel)
+      BottomBar(viewModel:viewModel,viewController: viewController )
     }
 }
 
