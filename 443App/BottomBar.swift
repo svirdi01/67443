@@ -39,7 +39,7 @@ struct BottomBar: View {
         )
       }.tabItem {
             Image(systemName: "phone.fill")
-            Text("Journal Tab")
+            Text("Journal")
           }
       
       NavigationView {
@@ -59,13 +59,13 @@ struct BottomBar: View {
         }
            .tabItem {
               Image(systemName: "tv.fill")
-              Text("Map Tab")
+              Text("Map")
             }
       
       Profile(viewModel: viewModel)
            .tabItem {
               Image(systemName: "tv.fill")
-              Text("Profile Tab")
+              Text("Profile")
             }
       
       

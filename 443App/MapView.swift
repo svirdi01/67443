@@ -32,7 +32,7 @@ struct MapView: UIViewRepresentable {
     let user = viewController.currLocation
     user.loadLocation()
     
-    //uiView.showsUserLocation = true
+    uiView.showsUserLocation = true
     
     
     let coordinate = CLLocationCoordinate2D(latitude: viewController.currLocation.latitude, longitude: viewController.currLocation.longitude)
@@ -68,25 +68,6 @@ struct MapView: UIViewRepresentable {
     let mapView = MKMapView(frame: .zero)
     let user = viewController.currLocation
     user.loadLocation()
-    
-    
-    
-    //MAKING PIN BY HAND
-//    let loc = Location()
-//    loc.longitude = -79.946401
-//    loc.latitude = 40.442609
-//    let date1 = NSDate()
-//    let happyTag = Tag(name: "Happy", color: "Yellow")
-//    let pin1 = MemoryPin(title:"first memory", description: "description of the memory", addressStreet: "5000 Forbes Ave", addressCity: "Pittsburgh", addressState: "PA", addressZip: "15213",location: loc, tag:[happyTag], date: date1 as Date)
-//    let pinArr: [MemoryPin] = [pin1]
-//    let tagArr: [Tag] = [happyTag]
-//
-//    // Make user by hand
-//    let claudiaUser = User(name: "Claudia Osorio", email: "cosorio@andrew.cmu.edu", allPins: pinArr, allTags: tagArr)
-    
-  
-    //hello bah blah ablh
-    //MAKING USER BY HAND
     
     
     for memory in viewModel.sampleUser.allPins{
