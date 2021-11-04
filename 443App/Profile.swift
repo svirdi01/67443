@@ -123,12 +123,13 @@ struct Profile: View {
     VStack {
       
       VStack {
-        Image("profile-image")
+        Image("lheimann")
           .resizable()
-          .frame(width: 130, height: 130)
+          .frame(width: 150, height: 150)
           .clipShape(Circle())
+          .overlay(Circle().stroke(skyBlue, lineWidth: 5))
         Text(viewModel.sampleUser.name).bold()
-        Spacer().frame(maxHeight: 10)
+        Spacer().frame(maxHeight: 20)
         HStack {
           VStack{
             Text("First Pin Dropped")
@@ -140,6 +141,7 @@ struct Profile: View {
             Text(lastDate as String)
           }
         }.font(.system(size: 12))
+        Spacer().frame(maxHeight: 20)
         HStack {
           if (viewModel.sampleUser.allPins.count == 0){
             Text("No Pins Yet")

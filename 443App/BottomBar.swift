@@ -35,8 +35,8 @@ struct BottomBar: View {
           }
         )
       }.tabItem {
-            Image(systemName: "phone.fill")
-            Text("First Tab")
+            Image(systemName: "book.circle")
+            Text("Journal")
           }
       
       NavigationView {
@@ -44,6 +44,12 @@ struct BottomBar: View {
           MapView(viewController: viewController, viewModel: viewModel)
           NavigationLink(destination: AddPin(viewModel: viewModel)) {
               Text("Create")
+                .padding()
+                .background(Color.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.green, lineWidth: 4)
+                )
           }
           .offset(y: 275)
 
@@ -57,14 +63,14 @@ struct BottomBar: View {
       
       
            .tabItem {
-              Image(systemName: "tv.fill")
-              Text("Second Tab")
+              Image(systemName: "mappin.and.ellipse")
+              Text("Map")
             }
       
       Profile(viewModel: viewModel)
            .tabItem {
-              Image(systemName: "tv.fill")
-              Text("Second Tab")
+              Image(systemName: "person.circle")
+              Text("My Profile")
             }
       
       
