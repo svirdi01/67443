@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @StateObject var viewModel = ViewModel()
   @ObservedObject var viewController = ViewController()
   
   @State private var showingAlert = false

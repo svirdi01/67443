@@ -11,32 +11,35 @@ import SwiftUI
 
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
-  var viewModel: ViewModel
+  @StateObject var viewModel: ViewModel
   @ObservedObject var viewController: ViewController
   
   var body: some View
   {
-   
+  
     TabView {
       NavigationView {
+        var pins =  viewModel.getPins()
         List {
-          ForEach(viewModel.sampleUser.allPins)
+          ForEach(pins)
           { pin in
             NavigationLink(destination: PinDetail(pin: pin))
             {
               PinRow(pin: pin)
             }
           }
-        }
+        }.onAppear(perform: {
+          pins = viewModel.getPins()
+          })
         .navigationBarTitle("Pins")
         .navigationBarItems(trailing:
-          NavigationLink(destination: AddPin(viewModel: viewModel)) {
+                              NavigationLink(destination: AddPin(viewModel: viewModel)) {
               Image(systemName: "plus")
           }
         )
       }.tabItem {
             Image(systemName: "phone.fill")
-            Text("First Tab")
+            Text("Journal Tab")
           }
       
       NavigationView {
@@ -54,17 +57,15 @@ struct BottomBar: View {
             self.isNavigationBarHidden = true
         }
         }
-      
-      
            .tabItem {
               Image(systemName: "tv.fill")
-              Text("Second Tab")
+              Text("Map Tab")
             }
       
       Profile(viewModel: viewModel)
            .tabItem {
               Image(systemName: "tv.fill")
-              Text("Second Tab")
+              Text("Profile Tab")
             }
       
       
@@ -74,5 +75,6 @@ struct BottomBar: View {
     
     
   }
+
 }
 
