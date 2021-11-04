@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct PinDetail: View {
+  @Environment(\.editMode) var editMode
 
   var pin: MemoryPin
   let width = UIScreen.main.bounds.width * 0.75
@@ -19,7 +20,6 @@ struct PinDetail: View {
         Text("description:")
           .fontWeight(.bold)
           .padding(.leading)
-        Spacer()
         Text(pin.description)
           .padding(.trailing)
       }.padding()
@@ -27,7 +27,6 @@ struct PinDetail: View {
         Text("street:")
           .fontWeight(.bold)
           .padding(.leading)
-        Spacer()
         Text(pin.addressStreet)
           .padding(.trailing)
       }.padding()
@@ -36,7 +35,6 @@ struct PinDetail: View {
         Text("city:")
           .fontWeight(.bold)
           .padding(.leading)
-        Spacer()
         Text(pin.addressCity)
           .padding(.trailing)
       }.padding()
@@ -45,7 +43,6 @@ struct PinDetail: View {
         Text("state:")
           .fontWeight(.bold)
           .padding(.leading)
-        Spacer()
         Text(pin.addressState)
           .padding(.trailing)
       }.padding()
@@ -54,7 +51,6 @@ struct PinDetail: View {
         Text("zip:")
           .fontWeight(.bold)
           .padding(.leading)
-        Spacer()
         Text(pin.addressZip)
           .padding(.trailing)
       }.padding()
@@ -63,10 +59,13 @@ struct PinDetail: View {
         Text("tag:")
           .fontWeight(.bold)
           .padding(.leading)
-        Spacer()
         Text(String(pin.tags[0].name))
           .padding(.trailing)
       }.padding()
     }.navigationBarTitle(pin.title)
+    .navigationBarItems(trailing:
+      EditButton()
+    )
+    
   }
 }

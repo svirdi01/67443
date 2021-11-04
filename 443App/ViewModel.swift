@@ -15,11 +15,29 @@ import CoreData
 //WORKING ON MAKING FUNCTIONS TO SAVE PINS AND SHIT
 
 class ViewModel: ObservableObject{
+  lazy var sampleUser = getdemoPin()
+  
+  func getdemoPin() -> User
+  {
+    let tag = Tag(name: "Happy", color: "Yellow")
+    let tagArr: [Tag] = [tag]
+    
+    let newPin = MemoryPin(title: "First Class", description: "went to class", addressStreet: "F", addressCity: "F", addressState: "F", addressZip: "F", location : Location(), tag: tagArr, date : NSDate() as Date)
+    
+  
+    sampleUser = User(name: "Larry Heimann", email: "larry@gmail.com", allPins: [newPin], allTags: tagArr)
+    return  sampleUser
+  
+  }
+  
+  func getPins() -> [MemoryPin]
+  {
+    return sampleUser.allPins
+  }
   
   
   
-  @Published var sampleUser = User(name: "Larry Heimann", email: "larry@gmail.com", allPins: [], allTags:[])
-  
+
   
   
   //@Published var sampleUser:User = createDemoUser()
@@ -36,11 +54,9 @@ class ViewModel: ObservableObject{
     self.sampleUser.allPins.append(newPin)
     
 
-       }
-  func getPins()-> [MemoryPin]{
-    return sampleUser.allPins
   }
-    
+  
+
   }
   
   

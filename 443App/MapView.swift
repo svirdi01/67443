@@ -17,12 +17,17 @@ import Combine
 
 struct MapView: UIViewRepresentable {
   @ObservedObject var viewController: ViewController
-  var viewModel: ViewModel
+  @StateObject var viewModel: ViewModel
   
-//  @ObservedObject var viewModel: ViewModel
+  
+  func makeCoordinator() -> Coordinator {
+      Coordinator()
+  }
+
  
   
   func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+    
     print("UPDATING UI VIEW")
     let user = viewController.currLocation
     user.loadLocation()
@@ -40,15 +45,19 @@ struct MapView: UIViewRepresentable {
     //need to flush all annotations at start of update UI view
     for memory in viewModel.sampleUser.allPins{
       print("MAKING PINS NOW")
-      let droppedPin = MKPointAnnotation()
+      let droppedPin = MyCustomPointAnnotation(pin:memory)
       droppedPin.coordinate = CLLocationCoordinate2D(
         latitude: memory.location.latitude ,
         longitude: memory.location.longitude
       )
       droppedPin.title = memory.title
+      
       uiView.addAnnotation(droppedPin)
+     // let button = UIButton(type: UIButton.ButtonType.detailDisclosure) as UIButton
+
       
     }
+
     
   }
 

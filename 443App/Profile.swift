@@ -16,7 +16,7 @@ struct Profile: View {
   //look imto context - primary way a uiview representable object gets update that something has changed - pass reference to contexts object from map view to form viewmodel - probably function in context to be updated
   //review swift repo/contact and maybe simple browser labs
   
-  var viewModel: ViewModel
+  @StateObject var viewModel: ViewModel
   
   // ContentView initialize ProfileViewMOdel()
   // ProfileViewModel pass down
@@ -24,7 +24,7 @@ struct Profile: View {
     // --> bind --> ProfileView viewModel.user.pins
     //
   
-  // This is from here lol https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring idk if this is allowed
+  // This is from here  https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring 
   func stringFromDate(date: Date) -> String {
       let formatter = DateFormatter()
       formatter.dateFormat = "MM/dd/yyyy"
