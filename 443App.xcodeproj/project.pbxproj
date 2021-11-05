@@ -10,6 +10,7 @@
 		4A4512AE272B252E0092899D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4512AD272B252E0092899D /* BottomBar.swift */; };
 		4A6384C327288D2A00D8EBDF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6384C227288D2A00D8EBDF /* ViewModel.swift */; };
 		4A79D7212730D4F900C673CE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A79D7202730D4F900C673CE /* Profile.swift */; };
+		4ADCF6D127357CF3001F7F5D /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */; };
 		A9688072272C767300F0C51A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9688071272C767300F0C51A /* User.swift */; };
 		A994B61F2734CD3B00F293FD /* ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A994B61E2734CD3B00F293FD /* ViewTests.swift */; };
 		E5AA645D271F4EFC00D3C4A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		4A4512AD272B252E0092899D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		4A6384C227288D2A00D8EBDF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4A79D7202730D4F900C673CE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		A9688071272C767300F0C51A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A994B61E2734CD3B00F293FD /* ViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTests.swift; sourceTree = "<group>"; };
 		E5AA6459271F4EFC00D3C4A8 /* 443App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 443App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 				E5AA6476271F4F0500D3C4A8 /* _43AppTests.swift */,
 				E5AA6478271F4F0500D3C4A8 /* Info.plist */,
 				A994B61E2734CD3B00F293FD /* ViewTests.swift */,
+				4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */,
 			);
 			path = 443AppTests;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ADCF6D127357CF3001F7F5D /* ProfileTests.swift in Sources */,
 				A994B61F2734CD3B00F293FD /* ViewTests.swift in Sources */,
 				E5AA6477271F4F0500D3C4A8 /* _43AppTests.swift in Sources */,
 			);
