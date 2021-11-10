@@ -120,78 +120,110 @@ struct Profile: View {
       let mostPinsLoc = mostPinsLocation(allPins: viewModel.sampleUser.allPins)
     }
 
+    let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
+    let greenIsh = Color(red: 164/255.0, green: 191/255.0, blue: 190/255.0)
+    let boxColor = Color(red: 192/255.0, green: 191/255.0, blue: 110/255.0)
+    let gradient = Gradient(colors: [greenIsh, darkBlue])
+    
+    
     VStack {
-      
-      VStack {
-        Image("lheimann")
-          .resizable()
-          .frame(width: 150, height: 150)
-          .clipShape(Circle())
-          .overlay(Circle().stroke(skyBlue, lineWidth: 5))
-        Text(viewModel.sampleUser.name).bold()
-        Spacer().frame(maxHeight: 20)
-        HStack {
-          VStack{
-            Text("First Pin Dropped")
-            Text(firstDate as String)
-          }
-          Text("")
-          VStack{
-            Text("Latest Pin Dropped")
-            Text(lastDate as String)
-          }
-        }.font(.system(size: 12))
-        Spacer().frame(maxHeight: 20)
-        HStack {
-          if (viewModel.sampleUser.allPins.count == 0){
-            Text("No Pins Yet")
-              .fixedSize(horizontal: false, vertical: true)
-              .multilineTextAlignment(.center)
-              .padding()
-              .frame(width: 115, height: 100)
-              .background(Rectangle().fill(skyBlue).shadow(radius: 2))
-            
-          }else{
-          Text("\(viewModel.sampleUser.allPins.count) Pin(s)" as String)
-              .fixedSize(horizontal: false, vertical: true)
-              .multilineTextAlignment(.center)
-              .padding()
-              .frame(width: 115, height: 100)
-              .background(Rectangle().fill(skyBlue).shadow(radius: 2))
-          }
+      HStack{
+        Spacer()
+        
+        VStack{
+          Image("lheimann")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 200, height: 200)
+            .clipShape(Circle())
+            .clipped()
+            .padding(.top, 60)
           
-          if (maxTagName == ""){
-            Text("No Tags Used Yet" as String)
-              .fixedSize(horizontal: false, vertical: true)
-              .multilineTextAlignment(.center)
-              .padding()
-              .frame(width: 115, height: 100)
-              .background(Rectangle().fill(skyBlue).shadow(radius: 2))
-
-          } else{
-            Text("\(maxTagPercent)% \(maxTagName) Pins" as String)
-                .fixedSize(horizontal: false, vertical: true)
-                .multilineTextAlignment(.center)
-                .padding()
-                .frame(width: 115, height: 100)
-                .background(Rectangle().fill(skyBlue).shadow(radius: 2))
-          }
+          Text(viewModel.sampleUser.name).bold()
         }
-        HStack {
-          Text("Dropped\n Most Pins\n On \(mostPinDate)")
-              .fixedSize(horizontal: false, vertical: true)
-              .multilineTextAlignment(.center)
-              .padding()
-              .frame(width: 115, height: 100)
-              .background(Rectangle().fill(skyBlue).shadow(radius: 2))
-          Text("Dropped\n Most Pins\n In \(mostPinsLoc)" as String)
-              .fixedSize(horizontal: false, vertical: true)
-              .multilineTextAlignment(.center)
-              .padding()
-              .frame(width: 115, height: 100)
-              .background(Rectangle().fill(skyBlue).shadow(radius: 2))
+        Spacer()
+      }
+
+    
+    ZStack{
+      VStack{
+            HStack {
+              VStack{
+                Text("First Pin Dropped")
+                Text(firstDate as String)
+              }
+              Text("")
+              VStack{
+                Text("Latest Pin Dropped")
+                Text(lastDate as String)
+              }
+            }.font(.system(size: 12))
+            Spacer().frame(maxHeight: 20)
+          
+          
+            HStack {
+              
+              Spacer()
+              
+              if (viewModel.sampleUser.allPins.count == 0){
+                Text("No Pins Yet")
+                  .fixedSize(horizontal: false, vertical: true)
+                  .multilineTextAlignment(.center)
+                  .padding()
+                  .frame(width: 150, height: 150)
+                  .background(Rectangle().fill(boxColor).shadow(radius: 2))
+
+              }else{
+              Text("\(viewModel.sampleUser.allPins.count) Pin(s)" as String)
+                  .fixedSize(horizontal: false, vertical: true)
+                  .multilineTextAlignment(.center)
+                  .padding()
+                  .frame(width: 150, height: 150)
+                  .background(Rectangle().fill(boxColor).shadow(radius: 2))
+              }
+              Spacer()
+
+              if (maxTagName == ""){
+                Text("No Tags Used Yet" as String)
+                  .fixedSize(horizontal: false, vertical: true)
+                  .multilineTextAlignment(.center)
+                  .padding()
+                  .frame(width: 150, height: 150)
+                  .background(Rectangle().fill(boxColor).shadow(radius: 2))
+
+              } else{
+                Text("\(maxTagPercent)% \(maxTagName) Pins" as String)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .frame(width: 150, height: 150)
+                    .background(Rectangle().fill(boxColor).shadow(radius: 2))
+              }
+              Spacer()
+            }
+        Spacer().frame(maxHeight: 20)
+            HStack {
+              Spacer()
+              Text("Dropped\n Most Pins\n On \(mostPinDate)")
+                  .fixedSize(horizontal: false, vertical: true)
+                  .multilineTextAlignment(.center)
+                  .padding()
+                  .frame(width: 150, height: 150)
+                .background(Rectangle().fill(boxColor).shadow(radius: 2))
+              Spacer()
+              Text("Dropped\n Most Pins\n In \(mostPinsLoc)" as String)
+                  .fixedSize(horizontal: false, vertical: true)
+                  .multilineTextAlignment(.center)
+                  .padding()
+                  .frame(width: 150, height: 150)
+                  .background(Rectangle().fill(boxColor).shadow(radius: 2))
+              Spacer()
         }
       }
     }
+      
+    }.background(LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom))
+    .edgesIgnoringSafeArea(.top)
+      
   }
 }
