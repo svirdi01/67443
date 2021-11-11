@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
   
-  @ObservedObject var viewModel = ViewModel()
-  @ObservedObject var viewController = ViewController()
+//  @StateObject var viewModel = ViewModel()
+  
   
   @State private var showingAlert = false
-    var body: some View {
   
-      BottomBar(viewModel: viewModel, viewController: viewController)
-    }
+  var body: some View {
+
+//    BottomBar(viewModel: viewModel, viewController: viewController)
+    BottomBar()
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {

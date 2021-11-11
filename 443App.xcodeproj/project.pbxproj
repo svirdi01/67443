@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4A4512AE272B252E0092899D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4512AD272B252E0092899D /* BottomBar.swift */; };
-		4A6384C327288D2A00D8EBDF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6384C227288D2A00D8EBDF /* ViewModel.swift */; };
 		4A79D7212730D4F900C673CE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A79D7202730D4F900C673CE /* Profile.swift */; };
 		4ADCF6D127357CF3001F7F5D /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */; };
 		80290E763D3C4B170D8A3648 /* Pods_443App_443AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8714FE310AF5834F4E8D329C /* Pods_443App_443AppUITests.framework */; };
@@ -17,6 +16,24 @@
 		E5191CE2273B61410097D246 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5191CE1273B61410097D246 /* GoogleService-Info.plist */; };
 		E5191CE3273B61410097D246 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5191CE1273B61410097D246 /* GoogleService-Info.plist */; };
 		E5191CE4273B61410097D246 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5191CE1273B61410097D246 /* GoogleService-Info.plist */; };
+		E5191D33273DA38D0097D246 /* UserPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D32273DA38D0097D246 /* UserPins.swift */; };
+		E5191D34273DA38D0097D246 /* UserPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D32273DA38D0097D246 /* UserPins.swift */; };
+		E5191D35273DA38D0097D246 /* UserPins.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D32273DA38D0097D246 /* UserPins.swift */; };
+		E5191D3D273DA3930097D246 /* UserTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D3C273DA3920097D246 /* UserTags.swift */; };
+		E5191D3E273DA3930097D246 /* UserTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D3C273DA3920097D246 /* UserTags.swift */; };
+		E5191D3F273DA3930097D246 /* UserTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D3C273DA3920097D246 /* UserTags.swift */; };
+		E5191D46273DA4C10097D246 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D45273DA4C10097D246 /* PinView.swift */; };
+		E5191D47273DA4C10097D246 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D45273DA4C10097D246 /* PinView.swift */; };
+		E5191D48273DA4C10097D246 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D45273DA4C10097D246 /* PinView.swift */; };
+		E5191D50273DA4CD0097D246 /* MapPinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D4F273DA4CD0097D246 /* MapPinsView.swift */; };
+		E5191D51273DA4CD0097D246 /* MapPinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D4F273DA4CD0097D246 /* MapPinsView.swift */; };
+		E5191D52273DA4CD0097D246 /* MapPinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D4F273DA4CD0097D246 /* MapPinsView.swift */; };
+		E5191D57273DA4D30097D246 /* PinCountWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D56273DA4D30097D246 /* PinCountWidget.swift */; };
+		E5191D58273DA4D30097D246 /* PinCountWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D56273DA4D30097D246 /* PinCountWidget.swift */; };
+		E5191D59273DA4D30097D246 /* PinCountWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D56273DA4D30097D246 /* PinCountWidget.swift */; };
+		E5191D65273DA53C0097D246 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D64273DA53C0097D246 /* LocationDelegate.swift */; };
+		E5191D66273DA53C0097D246 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D64273DA53C0097D246 /* LocationDelegate.swift */; };
+		E5191D67273DA53C0097D246 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191D64273DA53C0097D246 /* LocationDelegate.swift */; };
 		E5AA645D271F4EFC00D3C4A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */; };
 		E5AA645F271F4EFC00D3C4A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */; };
 		E5AA6461271F4EFC00D3C4A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */; };
@@ -28,7 +45,6 @@
 		E5AA6482271F4F0500D3C4A8 /* _43AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA6481271F4F0500D3C4A8 /* _43AppUITests.swift */; };
 		E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA64B02720E08200D3C4A8 /* Location.swift */; };
 		E5AA64B62720E0AB00D3C4A8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA64B52720E0AB00D3C4A8 /* MapView.swift */; };
-		E5AA64BB2720E0D500D3C4A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AA64BA2720E0D500D3C4A8 /* ViewController.swift */; };
 		E5CB3CBA272C563C001936AE /* MemoryPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CB9272C563C001936AE /* MemoryPin.swift */; };
 		E5CB3CBF272C568B001936AE /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CBE272C568B001936AE /* Tag.swift */; };
 		E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB3CD92730D6EF001936AE /* AddPin.swift */; };
@@ -60,7 +76,6 @@
 		1514CA784F2DDBD3DDA2165E /* Pods-443AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443AppTests.debug.xcconfig"; path = "Target Support Files/Pods-443AppTests/Pods-443AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CED6E601F69D339630BB7DA /* Pods-443App-443AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App-443AppUITests.debug.xcconfig"; path = "Target Support Files/Pods-443App-443AppUITests/Pods-443App-443AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A4512AD272B252E0092899D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
-		4A6384C227288D2A00D8EBDF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4A79D7202730D4F900C673CE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		843EAE000E15DC405B799A3A /* Pods-443App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App.debug.xcconfig"; path = "Target Support Files/Pods-443App/Pods-443App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +87,12 @@
 		BB4B8381C5A70A48B45B9772 /* Pods_443App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_443App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3355DD6346528E405A955EA /* Pods-443AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443AppTests.release.xcconfig"; path = "Target Support Files/Pods-443AppTests/Pods-443AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E5191CE1273B61410097D246 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5191D32273DA38D0097D246 /* UserPins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPins.swift; sourceTree = "<group>"; };
+		E5191D3C273DA3920097D246 /* UserTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTags.swift; sourceTree = "<group>"; };
+		E5191D45273DA4C10097D246 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		E5191D4F273DA4CD0097D246 /* MapPinsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPinsView.swift; sourceTree = "<group>"; };
+		E5191D56273DA4D30097D246 /* PinCountWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinCountWidget.swift; sourceTree = "<group>"; };
+		E5191D64273DA53C0097D246 /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		E5AA6459271F4EFC00D3C4A8 /* 443App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 443App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +111,6 @@
 		E5AA649F27204F2600D3C4A8 /* Struct.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Struct.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E5AA64B02720E08200D3C4A8 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E5AA64B52720E0AB00D3C4A8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		E5AA64BA2720E0D500D3C4A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E5CB3CB9272C563C001936AE /* MemoryPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryPin.swift; sourceTree = "<group>"; };
 		E5CB3CBE272C568B001936AE /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E5CB3CD92730D6EF001936AE /* AddPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPin.swift; sourceTree = "<group>"; };
@@ -136,7 +156,6 @@
 				1514CA784F2DDBD3DDA2165E /* Pods-443AppTests.debug.xcconfig */,
 				E3355DD6346528E405A955EA /* Pods-443AppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -148,6 +167,44 @@
 				B2CB9AE43BE5164F3353939D /* Pods_443AppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5191D21273DA2EE0097D246 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E5191D3C273DA3920097D246 /* UserTags.swift */,
+				E5191D32273DA38D0097D246 /* UserPins.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E5191D44273DA3B90097D246 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5CB3CD92730D6EF001936AE /* AddPin.swift */,
+				4A4512AD272B252E0092899D /* BottomBar.swift */,
+				E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */,
+				E5AA64B52720E0AB00D3C4A8 /* MapView.swift */,
+				E5FDC6502732C1E800460D27 /* PinDetail.swift */,
+				E5FDC64B2732C1BC00460D27 /* PinRow.swift */,
+				4A79D7202730D4F900C673CE /* Profile.swift */,
+				E5191D45273DA4C10097D246 /* PinView.swift */,
+				E5191D4F273DA4CD0097D246 /* MapPinsView.swift */,
+				E5191D56273DA4D30097D246 /* PinCountWidget.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5191D63273DA4F50097D246 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5AA64B02720E08200D3C4A8 /* Location.swift */,
+				E5CB3CB9272C563C001936AE /* MemoryPin.swift */,
+				A9688071272C767300F0C51A /* User.swift */,
+				E5CB3CBE272C568B001936AE /* Tag.swift */,
+				E5191D64273DA53C0097D246 /* LocationDelegate.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E5AA6450271F4EFC00D3C4A8 = {
@@ -176,27 +233,17 @@
 		E5AA645B271F4EFC00D3C4A8 /* 443App */ = {
 			isa = PBXGroup;
 			children = (
+				E5191D63273DA4F50097D246 /* Models */,
+				E5191D44273DA3B90097D246 /* Views */,
+				E5191D21273DA2EE0097D246 /* ViewModels */,
 				E5191CE1273B61410097D246 /* GoogleService-Info.plist */,
 				E5AA645C271F4EFC00D3C4A8 /* AppDelegate.swift */,
-				E5CB3CB9272C563C001936AE /* MemoryPin.swift */,
-				E5CB3CBE272C568B001936AE /* Tag.swift */,
-				E5AA64B02720E08200D3C4A8 /* Location.swift */,
-				E5AA64B52720E0AB00D3C4A8 /* MapView.swift */,
-				E5FDC64B2732C1BC00460D27 /* PinRow.swift */,
-				E5FDC6502732C1E800460D27 /* PinDetail.swift */,
-				E5AA64BA2720E0D500D3C4A8 /* ViewController.swift */,
 				E5AA645E271F4EFC00D3C4A8 /* SceneDelegate.swift */,
-				E5AA6460271F4EFC00D3C4A8 /* ContentView.swift */,
 				E5AA6465271F4F0500D3C4A8 /* Assets.xcassets */,
 				E5AA646A271F4F0500D3C4A8 /* LaunchScreen.storyboard */,
 				E5AA646D271F4F0500D3C4A8 /* Info.plist */,
 				E5AA6462271F4EFC00D3C4A8 /* _43App.xcdatamodeld */,
 				E5AA6467271F4F0500D3C4A8 /* Preview Content */,
-				4A6384C227288D2A00D8EBDF /* ViewModel.swift */,
-				4A4512AD272B252E0092899D /* BottomBar.swift */,
-				E5CB3CD92730D6EF001936AE /* AddPin.swift */,
-				A9688071272C767300F0C51A /* User.swift */,
-				4A79D7202730D4F900C673CE /* Profile.swift */,
 			);
 			path = 443App;
 			sourceTree = "<group>";
@@ -472,19 +519,23 @@
 			files = (
 				E5CB3CBA272C563C001936AE /* MemoryPin.swift in Sources */,
 				E5AA645D271F4EFC00D3C4A8 /* AppDelegate.swift in Sources */,
-				4A6384C327288D2A00D8EBDF /* ViewModel.swift in Sources */,
+				E5191D50273DA4CD0097D246 /* MapPinsView.swift in Sources */,
 				4A79D7212730D4F900C673CE /* Profile.swift in Sources */,
 				E5FDC6512732C1E800460D27 /* PinDetail.swift in Sources */,
+				E5191D57273DA4D30097D246 /* PinCountWidget.swift in Sources */,
 				4A4512AE272B252E0092899D /* BottomBar.swift in Sources */,
+				E5191D65273DA53C0097D246 /* LocationDelegate.swift in Sources */,
 				E5AA64B62720E0AB00D3C4A8 /* MapView.swift in Sources */,
+				E5191D46273DA4C10097D246 /* PinView.swift in Sources */,
 				E5AA645F271F4EFC00D3C4A8 /* SceneDelegate.swift in Sources */,
 				E5CB3CBF272C568B001936AE /* Tag.swift in Sources */,
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
 				E5FDC64C2732C1BC00460D27 /* PinRow.swift in Sources */,
 				E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */,
 				A9688072272C767300F0C51A /* User.swift in Sources */,
-				E5AA64BB2720E0D500D3C4A8 /* ViewController.swift in Sources */,
+				E5191D3D273DA3930097D246 /* UserTags.swift in Sources */,
 				E5AA6464271F4EFC00D3C4A8 /* _43App.xcdatamodeld in Sources */,
+				E5191D33273DA38D0097D246 /* UserPins.swift in Sources */,
 				E5AA6461271F4EFC00D3C4A8 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +546,12 @@
 			files = (
 				4ADCF6D127357CF3001F7F5D /* ProfileTests.swift in Sources */,
 				A994B61F2734CD3B00F293FD /* ViewTests.swift in Sources */,
+				E5191D47273DA4C10097D246 /* PinView.swift in Sources */,
+				E5191D58273DA4D30097D246 /* PinCountWidget.swift in Sources */,
+				E5191D66273DA53C0097D246 /* LocationDelegate.swift in Sources */,
+				E5191D51273DA4CD0097D246 /* MapPinsView.swift in Sources */,
+				E5191D34273DA38D0097D246 /* UserPins.swift in Sources */,
+				E5191D3E273DA3930097D246 /* UserTags.swift in Sources */,
 				E5AA6477271F4F0500D3C4A8 /* _43AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +560,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5191D67273DA53C0097D246 /* LocationDelegate.swift in Sources */,
+				E5191D35273DA38D0097D246 /* UserPins.swift in Sources */,
+				E5191D3F273DA3930097D246 /* UserTags.swift in Sources */,
+				E5191D48273DA4C10097D246 /* PinView.swift in Sources */,
+				E5191D59273DA4D30097D246 /* PinCountWidget.swift in Sources */,
+				E5191D52273DA4CD0097D246 /* MapPinsView.swift in Sources */,
 				E5AA6482271F4F0500D3C4A8 /* _43AppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,8 +11,8 @@ import UIKit
 
 struct AddPin: View {
 
-  var viewModel: ViewModel
-  @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+  @EnvironmentObject var userPins: UserPins
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
   @State var title: String = "F"
   @State var description: String = "F"
@@ -20,7 +20,7 @@ struct AddPin: View {
   @State var city: String = "F"
   @State var state: String = "F"
   @State var zip: String = "F"
-  @State var location = Location()
+  @State var location = Location(latitude: 40.442609, longitude: -79.945651)
   @State var longitude: String = "-79.946401" ;
   @State var latitude: String = "40.442609" ;
   @State var t = "Happy";
@@ -28,6 +28,8 @@ struct AddPin: View {
 
   var body: some View {
     VStack {
+      Text("VM Pin Count: \(userPins.allPins.count)")
+      Text("VM User Name: \(userPins.forUser.name)")
       HStack {
         Text("title:")
           .fontWeight(.bold)
@@ -100,18 +102,12 @@ struct AddPin: View {
     }.navigationBarTitle("New Pin")
     .navigationBarItems(trailing:
       Button(action:{
-        let loc = Location()
-        loc.latitude = Double(latitude) ?? 0.0
-        loc.longitude = Double(longitude) ?? 0.0
+        let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
         let tag = Tag(name: t, color: "Yellow")
         let tagArr: [Tag] = [tag]
-        print("BEFORE SAVE COUNT:")
-        print(viewModel.sampleUser.allPins.count)
-        self.viewModel.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tag: tagArr, date: d)
-        print("AFTER SAVE COUNT:")
-        print(viewModel.sampleUser.allPins.count)
-        
-        self.mode.wrappedValue.dismiss()
+        self.userPins.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
+      
+        self.presentationMode.wrappedValue.dismiss()
         
       })
       {

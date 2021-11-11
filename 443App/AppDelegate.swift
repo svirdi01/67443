@@ -10,22 +10,20 @@ import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  let location = Location()
   
   var window: UIWindow?
 
   
   func didDiscardSceneSessions(){
-    location.loadLocation()
-    location.saveLocation()
+    
   }
   
   func didFinishLaunchingWithOptions(){
-    location.loadLocation()
+   
   }
   
   func configurationForConnecting(){
-    location.loadLocation()
+
   }
 
 

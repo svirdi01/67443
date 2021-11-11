@@ -5,22 +5,21 @@
 //  Created by Simran Virdi on 10/29/21.
 //
 import SwiftUI
-class MemoryPin: Identifiable
-{
+class MemoryPin: Identifiable {
 
   var title: String
   var description: String
-  //var address: String
   var addressStreet: String
   var addressCity: String
   var addressState: String
   var addressZip: String
   var location: Location
   var tags = [Tag]()
-  var memoryImage : Image?
-  var date : Date
+  var memoryImage: Image?
+  var date: Date
+  var id: UUID
 
-  init(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tag: Array<Tag>, imagePath: String? = nil, date: Date)
+  init(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date)
   {
     self.title = title
     self.description = description
@@ -29,11 +28,12 @@ class MemoryPin: Identifiable
     self.addressState = addressState
     self.addressZip = addressZip
     self.location = location
-    self.tags = tag
+    self.tags = tags
     self.date = date
     if let image = imagePath {   // Pass the name of an xcasset image here (use this for your previews!)
       self.memoryImage = Image(image)
     }
+    self.id = UUID()
   }
   
 }
