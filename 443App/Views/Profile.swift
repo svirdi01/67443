@@ -94,7 +94,7 @@ struct Profile: View {
     let maxTagLst = mostUsedTag(allTags: [Tag]())
     
     let maxTagName = ""
-    let maxTagCount = 0
+    let maxTagCount = 1
     let maxTagPercent = 0
     
     VStack {
