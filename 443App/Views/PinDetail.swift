@@ -64,7 +64,11 @@ struct PinDetail: View {
           .fontWeight(.bold)
           .padding(.leading)
         Spacer()
-        Text(String(pin.tags[0].name))
+        if(pin.tags.count > 0){
+          Text(String(pin.tags[0].name))
+            .padding(.trailing)
+        }
+        Text("N/A")
           .padding(.trailing)
       }.padding()
     }.navigationBarTitle(pin.title)

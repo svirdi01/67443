@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A4512AE272B252E0092899D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4512AD272B252E0092899D /* BottomBar.swift */; };
 		4A79D7212730D4F900C673CE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A79D7202730D4F900C673CE /* Profile.swift */; };
+		4A9218E0273E1637007BB343 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9218DF273E1637007BB343 /* Journal.swift */; };
 		4ADCF6D127357CF3001F7F5D /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */; };
 		80290E763D3C4B170D8A3648 /* Pods_443App_443AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8714FE310AF5834F4E8D329C /* Pods_443App_443AppUITests.framework */; };
 		A9688072272C767300F0C51A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9688071272C767300F0C51A /* User.swift */; };
@@ -77,6 +78,7 @@
 		3CED6E601F69D339630BB7DA /* Pods-443App-443AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App-443AppUITests.debug.xcconfig"; path = "Target Support Files/Pods-443App-443AppUITests/Pods-443App-443AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A4512AD272B252E0092899D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		4A79D7202730D4F900C673CE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		4A9218DF273E1637007BB343 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		843EAE000E15DC405B799A3A /* Pods-443App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App.debug.xcconfig"; path = "Target Support Files/Pods-443App/Pods-443App.debug.xcconfig"; sourceTree = "<group>"; };
 		8714FE310AF5834F4E8D329C /* Pods_443App_443AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_443App_443AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +193,7 @@
 				E5191D45273DA4C10097D246 /* PinView.swift */,
 				E5191D4F273DA4CD0097D246 /* MapPinsView.swift */,
 				E5191D56273DA4D30097D246 /* PinCountWidget.swift */,
+				4A9218DF273E1637007BB343 /* Journal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				E5191D50273DA4CD0097D246 /* MapPinsView.swift in Sources */,
 				4A79D7212730D4F900C673CE /* Profile.swift in Sources */,
 				E5FDC6512732C1E800460D27 /* PinDetail.swift in Sources */,
+				4A9218E0273E1637007BB343 /* Journal.swift in Sources */,
 				E5191D57273DA4D30097D246 /* PinCountWidget.swift in Sources */,
 				4A4512AE272B252E0092899D /* BottomBar.swift in Sources */,
 				E5191D65273DA53C0097D246 /* LocationDelegate.swift in Sources */,

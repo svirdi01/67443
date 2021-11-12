@@ -4,26 +4,23 @@
 //
 //  Created by Claudia Osorio on 10/28/21.
 //
-
 import Foundation
 import SwiftUI
 
 
-struct BottomBar: View {
+struct BottomBar2: View {
+ 
   @State var isNavigationBarHidden: Bool = true
   
   var userPins = UserPins(forUser: User(name: "Prof. H", email: "profh@cmu.edu"))
   
-  var body: some View
-  {
-   
+  var body: some View{
     TabView {
-      
-      Journal()
+      PinView()
       .tabItem {
-            Image(systemName: "book.circle")
-            Text("Journal")
-          }
+        Image(systemName: "pin.fill")
+        Text("Pins")
+      }
       
       MapPinsView()
       .tabItem {
@@ -38,6 +35,12 @@ struct BottomBar: View {
       }
     }
     .environmentObject(userPins)
+      
     
+    
+    
+  }
+  func buttonText() -> String {
+    return "Create"
   }
 }
