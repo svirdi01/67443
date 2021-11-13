@@ -10,6 +10,9 @@
 		4A4512AE272B252E0092899D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4512AD272B252E0092899D /* BottomBar.swift */; };
 		4A79D7212730D4F900C673CE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A79D7202730D4F900C673CE /* Profile.swift */; };
 		4A9218E0273E1637007BB343 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9218DF273E1637007BB343 /* Journal.swift */; };
+		4A9218E32740647E007BB343 /* AlteHaasGroteskRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A9218E227406426007BB343 /* AlteHaasGroteskRegular.ttf */; };
+		4A9218E42740647F007BB343 /* AlteHaasGroteskRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A9218E227406426007BB343 /* AlteHaasGroteskRegular.ttf */; };
+		4A9218E52740647F007BB343 /* AlteHaasGroteskRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A9218E227406426007BB343 /* AlteHaasGroteskRegular.ttf */; };
 		4ADCF6D127357CF3001F7F5D /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */; };
 		80290E763D3C4B170D8A3648 /* Pods_443App_443AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8714FE310AF5834F4E8D329C /* Pods_443App_443AppUITests.framework */; };
 		A9688072272C767300F0C51A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9688071272C767300F0C51A /* User.swift */; };
@@ -79,6 +82,7 @@
 		4A4512AD272B252E0092899D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		4A79D7202730D4F900C673CE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4A9218DF273E1637007BB343 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		4A9218E227406426007BB343 /* AlteHaasGroteskRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AlteHaasGroteskRegular.ttf; path = ../../../../Downloads/alte_haas_grotesk/AlteHaasGroteskRegular.ttf; sourceTree = "<group>"; };
 		4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		843EAE000E15DC405B799A3A /* Pods-443App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App.debug.xcconfig"; path = "Target Support Files/Pods-443App/Pods-443App.debug.xcconfig"; sourceTree = "<group>"; };
 		8714FE310AF5834F4E8D329C /* Pods_443App_443AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_443App_443AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +152,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A9218E127406402007BB343 /* app_font */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = app_font;
+			sourceTree = "<group>";
+		};
 		8109BA781429EF7FEE4463E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +247,8 @@
 		E5AA645B271F4EFC00D3C4A8 /* 443App */ = {
 			isa = PBXGroup;
 			children = (
+				4A9218E127406402007BB343 /* app_font */,
+				4A9218E227406426007BB343 /* AlteHaasGroteskRegular.ttf */,
 				E5191D63273DA4F50097D246 /* Models */,
 				E5191D44273DA3B90097D246 /* Views */,
 				E5191D21273DA2EE0097D246 /* ViewModels */,
@@ -388,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5AA646C271F4F0500D3C4A8 /* LaunchScreen.storyboard in Resources */,
+				4A9218E32740647E007BB343 /* AlteHaasGroteskRegular.ttf in Resources */,
 				E5191CE2273B61410097D246 /* GoogleService-Info.plist in Resources */,
 				E5AA6469271F4F0500D3C4A8 /* Preview Assets.xcassets in Resources */,
 				E5AA6466271F4F0500D3C4A8 /* Assets.xcassets in Resources */,
@@ -398,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9218E42740647F007BB343 /* AlteHaasGroteskRegular.ttf in Resources */,
 				E5191CE3273B61410097D246 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9218E52740647F007BB343 /* AlteHaasGroteskRegular.ttf in Resources */,
 				E5191CE4273B61410097D246 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
