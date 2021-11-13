@@ -10,6 +10,11 @@ target '443App' do
 # add the Firebase pod for Google Analytics
 pod 'Firebase/Analytics'
 # or pod ‘Firebase/AnalyticsWithoutAdIdSupport’
+
+pod 'Firebase/Firestore'
+
+# Optionally, include the Swift extensions if you're using Swift.
+pod 'FirebaseFirestoreSwift'
 # for Analytics without IDFA collection capability
 
 # add pods for any other desired Firebase products
