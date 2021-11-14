@@ -11,14 +11,19 @@ import SwiftUI
 
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
+  var userPins: UserPins
+
   
-  var userPins = UserPins(forUser: User(name: "Prof. H", email: "profh@cmu.edu"))
+  
+  init(user: User)
+  {
+    self.userPins = UserPins(forUser: user)
+  }
   
   var body: some View
   {
-   
     TabView {
-      
+
       Journal()
       .tabItem {
             Image(systemName: "book.circle")
