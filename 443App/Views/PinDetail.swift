@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PinDetail: View {
 
+  @EnvironmentObject var userPins: UserPins
   var pin: MemoryPin
   let width = UIScreen.main.bounds.width * 0.75
 
@@ -67,15 +68,15 @@ struct PinDetail: View {
         if(pin.tags.count > 0){
           Text(String(pin.tags[0].name))
             .padding(.trailing)
-        }
+        }else{
         Text("N/A")
-          .padding(.trailing)
+          .padding(.trailing)}
       }.padding()
     }.navigationBarTitle(pin.title)
     .navigationBarItems(trailing:
                           NavigationLink(destination: EditPin(pin: pin)) {
           Image(systemName: "square.and.pencil")
-      })
+      })    .environmentObject(userPins)
 
   }
 }

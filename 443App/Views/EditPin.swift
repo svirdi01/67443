@@ -10,21 +10,22 @@ import SwiftUI
 
 struct EditPin: View {
   
+  @EnvironmentObject var userPins: UserPins
   var pin: MemoryPin
 
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
-  @State var title: String = "F"
-  @State var description: String = "F"
-  @State var street: String = "F"
-  @State var city: String = "F"
+  @State var title: String = ""
+  @State var description: String = ""
+  @State var street: String = ""
+  @State var city: String = ""
   @State var state: String = "F"
   @State var zip: String = "F"
   @State var location = Location(latitude: 40.442609, longitude: -79.945651)
-  @State var longitude: String = "-79.946401" ;
-  @State var latitude: String = "40.442609" ;
-  @State var t = "Happy";
-  @State var d = Date()
+  @State var longitude: String = "" ;
+  @State var latitude: String = "" ;
+  @State var t = "";
+  @State var d = Date();
 
 
     var body: some View {
@@ -33,60 +34,68 @@ struct EditPin: View {
           Text("title:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("title of pin", text: $title)
-            .padding(.trailing)
+//          TextField("title of pin", text: $title)
+//            .padding(.trailing)
+          TextField("title of pin", text: $title).onAppear() {
+            self.title = self.pin.title}.padding(.trailing)
         }.padding()
         HStack {
           Text("description:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("description", text: $description)
-            .padding(.trailing)
+          TextField("description", text: $description).onAppear() {
+            self.description = self.pin.description}.padding(.trailing)
         }.padding()
         HStack {
           Text("street:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("street", text: $street)
-            .padding(.trailing)
+          TextField("street", text: $street).onAppear() {
+            self.street = self.pin.addressStreet}.padding(.trailing)
           Text("city:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("city", text: $city)
-            .padding(.trailing)
+          TextField("city", text: $city).onAppear() {
+            self.city = self.pin.addressCity}.padding(.trailing)
         }.padding()
         HStack {
           Text("state:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("state", text: $state)
-            .padding(.trailing)
+          TextField("state", text: $state).onAppear() {
+            self.state = self.pin.addressState}.padding(.trailing)
           Text("zip:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("zip", text: $zip)
-            .padding(.trailing)
+          TextField("zip", text: $zip).onAppear() {
+            self.zip = self.pin.addressZip}.padding(.trailing)
         }.padding()
         HStack {
           Text("longitude:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("longitude", text: $longitude)
-            .padding(.trailing)
+          TextField("longitude", text: $longitude).onAppear() {
+            let longVal = String(self.pin.location.longitude)
+            self.longitude = longVal}.padding(.trailing)
         }.padding()
         HStack {
           Text("latitude:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("latitude", text: $latitude)
-            .padding(.trailing)
+          TextField("latitude", text: $latitude).onAppear() {
+            let latVal = String(self.pin.location.latitude)
+            self.latitude = latVal}.padding(.trailing)
         }.padding()
         HStack {
           Text("tag:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("tag", text: $t)
-            .padding(.trailing)
+          TextField("tag", text: $t).onAppear() {
+            let tagVal = ""
+            if (self.pin.tags.count > 0){
+              let tagVal = self.pin.tags[0]
+            }
+            self.t = tagVal}.padding(.trailing)
         }.padding()
         HStack {
           Text("date:")
@@ -97,6 +106,8 @@ struct EditPin: View {
                   selection: $d,
                   displayedComponents: [.date]
               )
+          .onAppear() {
+            self.d = self.pin.date}.padding(.trailing)
         }.padding()
       }.navigationBarTitle("Editing Pin")
       .navigationBarItems(trailing:
