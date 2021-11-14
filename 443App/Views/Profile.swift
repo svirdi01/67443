@@ -98,8 +98,10 @@ struct Profile: View {
     
     let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
     let greenIsh = Color(red: 77/255.0, green: 106/255.0, blue: 83/255.0)
-    let boxColor = Color(red: 160/255.0, green: 186/255.0, blue: 166/255.0)
-    let gradient = Gradient(colors: [greenIsh, darkBlue])
+    let boxColor = Color(red: 220/255.0, green: 249/255.0, blue: 243/255.0)
+    let newBlue = Color(red: 203/255.0, green: 247/255.0, blue: 237/255.0)
+    let border = Color(red: 39/255.0, green: 44/255.0, blue: 63/255.0)
+    let gradient = Gradient(colors: [newBlue, darkBlue])
     
       
     
@@ -115,10 +117,11 @@ struct Profile: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
-                .clipped()
+                .overlay(Circle().stroke(border, lineWidth: 5))
                 .padding(.top, 60)
               
               Text(userPins.forUser.name).bold()
+//              font(Font.custom("AlteHaasGroteskRegular", size: 18))
             }
             Spacer()
           }
@@ -166,6 +169,7 @@ struct Profile: View {
                       .padding()
                       .frame(width: 115, height: 100)
                       .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                      .border(border, width: 2)
                     
                   }else{
                   Text("\(userPins.allPins.count) Pin(s)" as String)
@@ -174,6 +178,7 @@ struct Profile: View {
                       .padding()
                       .frame(width: 115, height: 100)
                       .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                    .border(border, width: 2)
                   }
                   
                   Spacer()
@@ -185,6 +190,7 @@ struct Profile: View {
                       .padding()
                       .frame(width: 115, height: 100)
                       .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                      .border(border, width: 2)
 
                   } else{
                     Text("\(maxTagPercent)% \(maxTagName) Pins" as String)
@@ -193,6 +199,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 115, height: 100)
                         .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   
                   Spacer()
@@ -207,6 +214,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 115, height: 100)
                         .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                     
                   }
                   else
@@ -218,6 +226,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 115, height: 100)
                         .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   
                   Spacer()
@@ -229,6 +238,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 115, height: 100)
                         .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   else
                   {
@@ -239,6 +249,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 115, height: 100)
                         .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   
                   Spacer()
@@ -254,6 +265,4 @@ struct Profile: View {
         }
   }
   }
-
-
 
