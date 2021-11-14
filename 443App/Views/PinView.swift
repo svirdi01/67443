@@ -18,7 +18,7 @@ struct PinView: View {
 
         }) {
             Image(systemName: "plus")
-            Text("Add")
+            Text("Add2")
         })
     }
   }

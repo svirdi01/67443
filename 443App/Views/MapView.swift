@@ -51,24 +51,37 @@ struct MapView: View {
           NavigationLink(destination: PinDetail(pin: place)){
           HStack {
             
-            Circle()
-              .strokeBorder(Color.orange, lineWidth: 4)
-              .frame(width: 30, height: 30)
+            VStack(spacing: 0) {
+              
+              Image(systemName: "mappin.circle.fill")
+                .font(.title)
+                .foregroundColor(.red)
+
+              Image(systemName: "arrowtriangle.down.fill")
+                .font(.caption)
+                .foregroundColor(.red)
+                .offset(x: 0, y: -5)
+              Text(place.title).font(.caption)
+            }
+            
           }}.onTapGesture {
                               print("Test tapping")
                             
                           }
          }
 
-      }.onTapGesture {
-        print("AHHHH")
       }
       .onAppear {
         manager.delegate = managerDelegate
       }
       .edgesIgnoringSafeArea(.all)
       .navigationBarItems(trailing: Button(action: {
+        //to just set random pin
         userPins.setRandomPin()
+        
+        //to try and use set pin view
+       
+        
       }) {
           Image(systemName: "plus")
           Text("Add")
