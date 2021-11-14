@@ -29,6 +29,7 @@ struct Journal: View {
         NavigationLink(destination: AddPin()) {
             Image(systemName: "plus")
         }
+
       )
     }
   }

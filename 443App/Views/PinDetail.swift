@@ -72,5 +72,10 @@ struct PinDetail: View {
           .padding(.trailing)
       }.padding()
     }.navigationBarTitle(pin.title)
+    .navigationBarItems(trailing:
+                          NavigationLink(destination: EditPin(pin: pin)) {
+          Image(systemName: "square.and.pencil")
+      })
+
   }
 }

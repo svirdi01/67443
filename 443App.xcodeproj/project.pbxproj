@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A3EF4092740D4B50034E3DD /* EditPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3EF4082740D4B50034E3DD /* EditPin.swift */; };
 		4A4512AE272B252E0092899D /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4512AD272B252E0092899D /* BottomBar.swift */; };
 		4A79D7212730D4F900C673CE /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A79D7202730D4F900C673CE /* Profile.swift */; };
 		4A9218E0273E1637007BB343 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9218DF273E1637007BB343 /* Journal.swift */; };
@@ -76,6 +77,7 @@
 		0CB64B05FA01B4A96951EA4E /* Pods-443App-443AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App-443AppUITests.release.xcconfig"; path = "Target Support Files/Pods-443App-443AppUITests/Pods-443App-443AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1514CA784F2DDBD3DDA2165E /* Pods-443AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443AppTests.debug.xcconfig"; path = "Target Support Files/Pods-443AppTests/Pods-443AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CED6E601F69D339630BB7DA /* Pods-443App-443AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App-443AppUITests.debug.xcconfig"; path = "Target Support Files/Pods-443App-443AppUITests/Pods-443App-443AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4A3EF4082740D4B50034E3DD /* EditPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPin.swift; sourceTree = "<group>"; };
 		4A4512AD272B252E0092899D /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		4A79D7202730D4F900C673CE /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4A9218DF273E1637007BB343 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				E5191D4F273DA4CD0097D246 /* MapPinsView.swift */,
 				E5191D56273DA4D30097D246 /* PinCountWidget.swift */,
 				4A9218DF273E1637007BB343 /* Journal.swift */,
+				4A3EF4082740D4B50034E3DD /* EditPin.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				E5CB3CBF272C568B001936AE /* Tag.swift in Sources */,
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
 				E5FDC64C2732C1BC00460D27 /* PinRow.swift in Sources */,
+				4A3EF4092740D4B50034E3DD /* EditPin.swift in Sources */,
 				E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */,
 				A9688072272C767300F0C51A /* User.swift in Sources */,
 				E5191D3D273DA3930097D246 /* UserTags.swift in Sources */,
