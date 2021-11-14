@@ -39,17 +39,36 @@ struct MapView: View {
           annotationItems: userPins.allPins) { place in
         
         // • If you want larger ballons:
-        MapMarker(coordinate: place.location.coordinates, tint: .blue)
+        //MapMarker(coordinate: place.location.coordinates, tint: .blue)
         
         // • If you want the traditional pin:
-        // MapPin(coordinate: place.location.coordinates)
+        //MapPin(coordinate: place.location.coordinates)
         
         // • If you want a circle to focus on the location:
-        // MapAnnotation(coordinate: place.location.coordinates) {
-        //   Circle()
-        //     .strokeBorder(Color.orange, lineWidth: 4)
-        //     .frame(width: 30, height: 30)
-        // }
+         MapAnnotation(coordinate: place.location.coordinates) {
+           
+          
+          NavigationLink(destination: PinDetail(pin: place)){
+          HStack {
+            
+            VStack(spacing: 0) {
+              
+              Image(systemName: "mappin.circle.fill")
+                .font(.title)
+                .foregroundColor(.red)
+
+              Image(systemName: "arrowtriangle.down.fill")
+                .font(.caption)
+                .foregroundColor(.red)
+                .offset(x: 0, y: -5)
+              Text(place.title).font(.caption)
+            }
+            
+          }}.onTapGesture {
+                              print("Test tapping")
+                            
+                          }
+         }
 
       }
       .onAppear {
@@ -57,7 +76,12 @@ struct MapView: View {
       }
       .edgesIgnoringSafeArea(.all)
       .navigationBarItems(trailing: Button(action: {
+        //to just set random pin
         userPins.setRandomPin()
+        
+        //to try and use set pin view
+       
+        
       }) {
           Image(systemName: "plus")
           Text("Add")

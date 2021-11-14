@@ -42,6 +42,7 @@ class UserPins: ObservableObject {
     print(location.longitude)
     let tag = Tag(name: "Fred", color: "Green")
     let tagArr: [Tag] = [tag]
-    self.savePin(title: "Fredness", description: "description", addressStreet: "street", addressCity: "city", addressState: "PA", addressZip: "15213", location: location, tags: tagArr, date: Date())
+    let PinTitle = "Mem#"+"\(self.allPins.count)"
+    self.savePin(title: PinTitle, description: "description", addressStreet: "street", addressCity: "city", addressState: "PA", addressZip: "15213", location: location, tags: tagArr, date: Date())
   }
 }
