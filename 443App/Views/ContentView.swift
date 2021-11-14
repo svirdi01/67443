@@ -13,11 +13,17 @@ struct ContentView: View {
   
   
   @State private var showingAlert = false
-  
-  var body: some View {
+  @ObservedObject var userviewmodel = UserViewModel()
 
-//    BottomBar(viewModel: viewModel, viewController: viewController)
-    BottomBar()
+  init()
+  {
+    userviewmodel.fetchUser()
+  }
+  
+  var body: some View
+  {
+    // BottomBar(viewModel: viewModel, viewController: viewController)
+    BottomBar(user: userviewmodel.user)
   }
 }
 
