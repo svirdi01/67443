@@ -39,18 +39,29 @@ struct MapView: View {
           annotationItems: userPins.allPins) { place in
         
         // • If you want larger ballons:
-        MapMarker(coordinate: place.location.coordinates, tint: .blue)
+        //MapMarker(coordinate: place.location.coordinates, tint: .blue)
         
         // • If you want the traditional pin:
-        // MapPin(coordinate: place.location.coordinates)
+        //MapPin(coordinate: place.location.coordinates)
         
         // • If you want a circle to focus on the location:
-        // MapAnnotation(coordinate: place.location.coordinates) {
-        //   Circle()
-        //     .strokeBorder(Color.orange, lineWidth: 4)
-        //     .frame(width: 30, height: 30)
-        // }
+         MapAnnotation(coordinate: place.location.coordinates) {
+           
+          
+          NavigationLink(destination: PinDetail(pin: place)){
+          HStack {
+            
+            Circle()
+              .strokeBorder(Color.orange, lineWidth: 4)
+              .frame(width: 30, height: 30)
+          }}.onTapGesture {
+                              print("Test tapping")
+                            
+                          }
+         }
 
+      }.onTapGesture {
+        print("AHHHH")
       }
       .onAppear {
         manager.delegate = managerDelegate
