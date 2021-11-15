@@ -12,6 +12,7 @@ struct Profile: View {
   
   @EnvironmentObject var userPins: UserPins
   
+  // This is from here https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring
   func stringFromDate(date: Date) -> String {
       let formatter = DateFormatter()
       formatter.dateFormat = "MM/dd/yyyy"
