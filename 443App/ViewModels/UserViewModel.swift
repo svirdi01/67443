@@ -30,8 +30,11 @@ class UserViewModel: ObservableObject
       else {
         if let document = document {
           do {
-          
-            self.user = try document.data(as: User.self)!
+            
+     
+            self.user.name = document.get("name") as! String
+            self.user.email = document.get("email") as! String
+            
             print(self.user.name)
             print(self.user.email)
           }
