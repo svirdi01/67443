@@ -29,6 +29,14 @@ class UserPins: ObservableObject {
     return allPins
   }
   
+  func deletePin(deletedPin: MemoryPin){
+    let deleteIndex = allPins.firstIndex(where: { $0 === deletedPin })
+    if (deleteIndex != nil){
+      let index = deleteIndex!
+      allPins.remove(at: Int(index))
+    }
+  }
+  
   // This method is just for demo purposes; has no use in production
   func setRandomPin() {
     let vlat = Double(Int.random(in: 1..<100))/1500.0
