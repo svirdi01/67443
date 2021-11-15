@@ -115,6 +115,7 @@ struct EditPin: View {
           let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
           let tag = Tag(name: t, color: "Yellow")
           let tagArr: [Tag] = [tag]
+          self.userPins.deletePin(deletedPin: pin)
           self.userPins.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
         
           self.presentationMode.wrappedValue.dismiss()
