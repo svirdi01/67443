@@ -36,4 +36,8 @@ class MemoryPin: Identifiable {
     self.id = UUID()
   }
   
+  func setTags(tags: [Tag])
+  {
+    self.tags = tags
+  }
 }

@@ -12,7 +12,7 @@ class UserPins: ObservableObject {
   var forUser: User
   @Published var allPins = [MemoryPin]()
   
-  init(forUser: User, allPins: Array<MemoryPin> = []) {
+  init(forUser: User, allPins: [MemoryPin]) {
     self.forUser = forUser
     self.allPins = allPins
   }

@@ -18,12 +18,20 @@ struct ContentView: View {
   init()
   {
     userviewmodel.fetchUser()
+  
   }
   
   var body: some View
   {
     // BottomBar(viewModel: viewModel, viewController: viewController)
-    BottomBar(user: userviewmodel.user)
+ 
+    if(userviewmodel.bool == true)
+    {
+      BottomBar(userviewmodel : userviewmodel)
+    }
+      
+    
+   
   }
 }
 

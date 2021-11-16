@@ -19,7 +19,6 @@ struct MapView: View {
 
   // Data for user pins
   @EnvironmentObject var userPins: UserPins
-
   // Used for tracking current location
   @State var trackingMode: MapUserTrackingMode = .follow
   @State var manager = CLLocationManager()

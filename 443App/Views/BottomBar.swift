@@ -12,37 +12,46 @@ import SwiftUI
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
   var userPins: UserPins
-
+  var userTags: UserTags
   
   
-  init(user: User)
+  init(userviewmodel: UserViewModel)
   {
-    self.userPins = UserPins(forUser: user)
+    print("IN  BOTTOM BARR")
+    print(userviewmodel.user.name) 
+    print(userviewmodel.memoryPins)
+    self.userPins = UserPins(forUser: userviewmodel.user, allPins: userviewmodel.memoryPins)
+    self.userTags = UserTags( forUser:userviewmodel.user, allTags: userviewmodel.allTags )
+    
   }
   
   var body: some View
   {
-    TabView {
+    
+      
+    
+      TabView {
 
-      Journal()
-      .tabItem {
-            Image(systemName: "book.circle")
-            Text("Journal")
+        Journal()
+          .tabItem {
+              Image(systemName: "book.circle")
+              Text("Journal")
+            }
+      
+        MapPinsView()
+          .tabItem {
+            Image(systemName: "map.fill")
+            Text("Map")
           }
       
-      MapPinsView()
-      .tabItem {
-        Image(systemName: "map.fill")
-        Text("Map")
+        Profile()
+          .tabItem {
+            Image(systemName: "person.fill")
+            Text("Profile")
+          }
       }
-      
-      Profile()
-      .tabItem {
-        Image(systemName: "person.fill")
-        Text("Profile")
-      }
-    }
     .environmentObject(userPins)
+    .environmentObject(userTags)
     
   }
 }

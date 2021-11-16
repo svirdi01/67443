@@ -10,7 +10,6 @@ import SwiftUI
  
 struct Journal: View {
   @EnvironmentObject var userPins: UserPins
-
   
   var body: some View {
     NavigationView {
