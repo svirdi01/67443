@@ -18,6 +18,7 @@ class UserViewModel: ObservableObject
   @Published var user: User = User(name: "", email: "")
   @Published var memoryPins = [MemoryPin]()
   @Published var allTags = [Tag]()
+  @Published var bool = false
   
   var errorMessage = ""
   
@@ -47,10 +48,8 @@ class UserViewModel: ObservableObject
             print(t.name)
             tagForMem.append(t)
             print(tagForMem)
-            if !self.allTags.contains(t)
-            {
-              self.allTags.append(t)
-            }
+            self.allTags.append(t)
+            
       
     }
       m.setTags(tags: tagForMem)
@@ -60,8 +59,12 @@ class UserViewModel: ObservableObject
       print("ALL THE PINS")
       print(self.memoryPins.count)
       print(self.memoryPins[0])
+      self.bool = true;
+      print("YOOOOOOO")
+      print(self.bool)
+  }
     }
-}
+   
     
     
 

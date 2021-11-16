@@ -11,6 +11,7 @@ import SwiftUI
 struct Profile: View {
   
   @EnvironmentObject var userPins: UserPins
+  @EnvironmentObject var userTags: UserTags
   
   // This is from here https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring
   func stringFromDate(date: Date) -> String {
@@ -37,7 +38,11 @@ struct Profile: View {
         maxTag = tagName
       }
     }
-    return [maxTag, String(maxCount)]
+    print(maxCount)
+    print(userTags.allTags.count)
+    let percent = (Double(maxCount)/Double(userTags.allTags.count)) * 100
+    print(percent)
+    return [maxTag, String(percent)]
   }
   
   func mostPinsDate(allPins: [MemoryPin]) -> String
@@ -91,11 +96,8 @@ struct Profile: View {
   var body: some View {
     
     
-    let maxTagLst = mostUsedTag(allTags: [Tag]())
-    
-    let maxTagName = ""
-    let maxTagCount = 1
-    let maxTagPercent = 0
+    let maxTagLst = mostUsedTag(allTags: userTags.allTags)
+
     
     let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
     let greenIsh = Color(red: 77/255.0, green: 106/255.0, blue: 83/255.0)
@@ -184,7 +186,8 @@ struct Profile: View {
                   
                   Spacer()
                   
-                  if (maxTagName == ""){
+                  if (userPins.allPins.count == 0)
+                  {
                     Text("No Tags Used Yet" as String)
                       .fixedSize(horizontal: false, vertical: true)
                       .multilineTextAlignment(.center)
@@ -194,7 +197,7 @@ struct Profile: View {
                       .border(border, width: 2)
 
                   } else{
-                    Text("\(maxTagPercent)% \(maxTagName) Pins" as String)
+                    Text("\(mostUsedTag(allTags: userTags.allTags)[1])% \(mostUsedTag(allTags: userTags.allTags)[0]) Pins" as String)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()

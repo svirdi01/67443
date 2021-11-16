@@ -12,7 +12,7 @@ class UserTags: ObservableObject {
   var forUser: User
   @Published var allTags = [Tag]()
   
-  init(forUser: User, allTags: Array<Tag> = []) {
+  init(forUser: User, allTags: [Tag]) {
     self.forUser = forUser
     self.allTags = allTags
   }
