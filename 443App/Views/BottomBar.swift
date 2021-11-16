@@ -12,12 +12,14 @@ import SwiftUI
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
   var userPins: UserPins
-
   
   
-  init(user: User)
+  init(userviewmodel: UserViewModel)
   {
-    self.userPins = UserPins(forUser: user)
+    print("IN  BOTTOM BARR")
+    print(userviewmodel.user.name) 
+    print(userviewmodel.memoryPins)
+    self.userPins = UserPins(forUser: userviewmodel.user, allPins: userviewmodel.memoryPins)
   }
   
   var body: some View

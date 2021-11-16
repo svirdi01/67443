@@ -69,8 +69,12 @@ struct PinDetail: View {
           Text(String(pin.tags[0].name))
             .padding(.trailing)
         }
-        Text("N/A")
-          .padding(.trailing)
+        else
+        {
+          Text("N/A").padding(.trailing)
+        }
+       
+          
       }.padding()
     }.navigationBarTitle(pin.title)
     .navigationBarItems(trailing:

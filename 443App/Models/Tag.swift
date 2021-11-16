@@ -7,7 +7,17 @@
 
 import Foundation
 
-class Tag: Identifiable {
+class Tag: Identifiable, Equatable
+{
+  static func == (lhs: Tag, rhs: Tag) -> Bool
+  {
+    if(lhs.name == rhs.name && lhs.color == rhs.color)
+    {
+      return true
+    }
+    return false
+  }
+  
   
   var name: String
   var color: String
