@@ -25,7 +25,7 @@ struct MapPinsView: View {
         MapView(uvm: uvm)
          PinCountWidget()
          .offset(y: -275)
-        NavigationLink(destination: AddPin(uvm: uvm)) {
+        NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
           Text("Create")
         }
         .offset(y: 275)

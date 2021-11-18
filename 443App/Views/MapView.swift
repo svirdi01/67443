@@ -71,10 +71,7 @@ struct MapView: View {
               Text(place.title).font(.caption)
             }
             
-          }}.onTapGesture {
-                              print("Test tapping")
-                            
-                          }
+          }}
          }
 
       }

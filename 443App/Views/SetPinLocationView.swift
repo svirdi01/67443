@@ -11,14 +11,23 @@ import SwiftUI
 import Combine
 
 struct SetPinLocationView: View {
-
   // Data for user pins
   @EnvironmentObject var userPins: UserPins
-
   // Used for tracking current location
   @State var trackingMode: MapUserTrackingMode = .follow
   @State var manager = CLLocationManager()
   @StateObject var managerDelegate = LocationDelegate()
+  @ObservedObject var uvm: UserViewModel
+  
+  init(uvm: UserViewModel)
+  {
+    self.uvm = uvm
+    
+    
+  }
+
+
+ 
 
 
   @State var coordinateRegion = MKCoordinateRegion(
@@ -34,6 +43,8 @@ struct SetPinLocationView: View {
 
       .edgesIgnoringSafeArea(.all)
 
+    }.onTapGesture {
+      print("TAPPING ON PIN DROP MAP")
     }
   }
 
