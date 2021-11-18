@@ -9,13 +9,19 @@ import Foundation
 import SwiftUI
  
 struct Journal: View {
-  @EnvironmentObject var userPins: UserPins
+  //@EnvironmentObject var userPins: UserPins
+  @ObservedObject var uvm: UserViewModel
+  
+  init(uvm: UserViewModel)
+  {
+    self.uvm = uvm
+  }
   
   var body: some View {
     NavigationView {
 
       List {
-        ForEach(userPins.allPins)
+        ForEach(uvm.memoryPins)
         { pin in
           NavigationLink(destination: PinDetail(pin: pin))
           {
@@ -25,7 +31,7 @@ struct Journal: View {
       }
       .navigationBarTitle("My Memories")
       .navigationBarItems(trailing:
-        NavigationLink(destination: AddPin()) {
+        NavigationLink(destination: AddPin(uvm: uvm)) {
             Image(systemName: "plus")
         }
       )

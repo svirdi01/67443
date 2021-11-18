@@ -13,10 +13,13 @@ struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
   var userPins: UserPins
   var userTags: UserTags
+  @ObservedObject var uvm: UserViewModel
   
   
   init(userviewmodel: UserViewModel)
   {
+    
+    uvm = userviewmodel
     print("IN  BOTTOM BARR")
     print(userviewmodel.user.name) 
     print(userviewmodel.memoryPins)
@@ -32,19 +35,19 @@ struct BottomBar: View {
     
       TabView {
 
-        Journal()
+        Journal(uvm: uvm)
           .tabItem {
               Image(systemName: "book.circle")
               Text("Journal")
             }
       
-        MapPinsView()
+        MapPinsView(uvm: uvm)
           .tabItem {
             Image(systemName: "map.fill")
             Text("Map")
           }
       
-        Profile()
+        Profile(uvm: uvm)
           .tabItem {
             Image(systemName: "person.fill")
             Text("Profile")

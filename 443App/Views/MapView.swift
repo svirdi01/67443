@@ -23,6 +23,14 @@ struct MapView: View {
   @State var trackingMode: MapUserTrackingMode = .follow
   @State var manager = CLLocationManager()
   @StateObject var managerDelegate = LocationDelegate()
+  @ObservedObject var uvm: UserViewModel
+  
+  init(uvm: UserViewModel)
+  {
+    self.uvm = uvm
+    
+    
+  }
   
   
   @State var coordinateRegion = MKCoordinateRegion(
@@ -35,7 +43,7 @@ struct MapView: View {
           interactionModes: MapInteractionModes.all,
           showsUserLocation: true,
           userTrackingMode: $trackingMode,
-          annotationItems: userPins.allPins) { place in
+          annotationItems: uvm.memoryPins) { place in
         
         // • If you want larger ballons:
         //MapMarker(coordinate: place.location.coordinates, tint: .blue)
@@ -74,17 +82,7 @@ struct MapView: View {
         manager.delegate = managerDelegate
       }
       .edgesIgnoringSafeArea(.all)
-      .navigationBarItems(trailing: Button(action: {
-        //to just set random pin
-        userPins.setRandomPin()
-        
-        //to try and use set pin view
-       
-        
-      }) {
-          Image(systemName: "plus")
-          Text("Add")
-      })
+     
     }
   }
   

@@ -13,7 +13,14 @@ struct AddPin: View {
 
   @EnvironmentObject var userPins: UserPins
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+  
+  @ObservedObject var uvm: UserViewModel
+  
+  init(uvm: UserViewModel)
+  {
+    self.uvm = uvm
+  }
+ 
   @State var title: String = "F"
   @State var description: String = "F"
   @State var street: String = "F"
@@ -103,9 +110,20 @@ struct AddPin: View {
     .navigationBarItems(trailing:
       Button(action:{
         let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
-        let tag = Tag(name: t, color: "Yellow")
-        let tagArr: [Tag] = [tag]
-        self.userPins.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
+        var tagArr: [Tag] = []
+        for ctag in uvm.allTags
+        {
+          if(ctag.name == t)
+          {
+            tagArr.append(ctag)
+            
+          }
+        }
+        
+        //CHANGE THIS 
+        self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
+        
+        tagArr = []
       
         self.presentationMode.wrappedValue.dismiss()
         
