@@ -9,14 +9,23 @@ import SwiftUI
 struct MapPinsView: View {
   
   @EnvironmentObject var userPins: UserPins
+  @ObservedObject var uvm: UserViewModel
+  
+  init(uvm: UserViewModel)
+  {
+    self.uvm = uvm
+    
+    
+  }
+  
   
   var body: some View {
     NavigationView {
       ZStack {
-        MapView()
+        MapView(uvm: uvm)
          PinCountWidget()
          .offset(y: -275)
-        NavigationLink(destination: AddPin()) {
+        NavigationLink(destination: AddPin(uvm: uvm)) {
           Text("Create")
         }
         .offset(y: 275)

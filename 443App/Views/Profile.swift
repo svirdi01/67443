@@ -10,8 +10,16 @@ import SwiftUI
  
 struct Profile: View {
   
-  @EnvironmentObject var userPins: UserPins
-  @EnvironmentObject var userTags: UserTags
+  //@EnvironmentObject var userPins: UserPins
+  //@EnvironmentObject var userTags: UserTags
+  @ObservedObject var uvm: UserViewModel
+  
+  init(uvm: UserViewModel)
+  {
+    self.uvm = uvm
+    
+    
+  }
   
   // This is from here https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring
   func stringFromDate(date: Date) -> String {
@@ -39,16 +47,16 @@ struct Profile: View {
       }
     }
     print(maxCount)
-    print(userTags.allTags.count)
-    let percent = (Double(maxCount)/Double(userTags.allTags.count)) * 100
-    print(percent)
-    return [maxTag, String(percent)]
+    print(uvm.allTags.count)
+    let percent = (Double(maxCount)/Double(uvm.allTags.count)) * 100
+    let p = Int(percent)
+    return [maxTag, String(p)]
   }
   
   func mostPinsDate(allPins: [MemoryPin]) -> String
   
   {
-    print(userPins.allPins[0].date)
+    print(uvm.memoryPins[0].date)
     var counts = [String: Int]()
     for pin in allPins {
       let dateString = stringFromDate(date: pin.date)
@@ -95,8 +103,6 @@ struct Profile: View {
 
   var body: some View {
     
-    
-    let maxTagLst = mostUsedTag(allTags: userTags.allTags)
 
     
     let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
@@ -123,7 +129,7 @@ struct Profile: View {
                 .overlay(Circle().stroke(border, lineWidth: 5))
                 .padding(.top, 60)
               
-              Text(userPins.forUser.name).bold()
+              Text(uvm.user.name).bold()
 //              font(Font.custom("AlteHaasGroteskRegular", size: 18))
             }
             Spacer()
@@ -134,27 +140,27 @@ struct Profile: View {
                 HStack {
                   VStack{
                     Text("First Pin Dropped")
-                    if (userPins.allPins.count == 0)
+                    if (uvm.memoryPins.count == 0)
                     {
                       Text("N/A")
                       
                     }
                     else
                     {
-                      Text(stringFromDate(date: userPins.allPins[0].date) as String)
+                      Text(stringFromDate(date: uvm.memoryPins[0].date) as String)
                     }
                   }
                   Text("")
                   VStack{
                     Text("Latest Pin Dropped")
-                    if (userPins.allPins.count == 0)
+                    if (uvm.memoryPins.count == 0)
                     {
                       Text("N/A")
                       
                     }
                     else
                     {
-                      Text(stringFromDate(date: userPins.allPins[userPins.allPins.count-1].date) as String)
+                      Text(stringFromDate(date: uvm.memoryPins[uvm.memoryPins.count-1].date) as String)
                     }
                   }
                 }.font(.system(size: 12))
@@ -165,7 +171,7 @@ struct Profile: View {
                   
                   Spacer()
                   
-                  if (userPins.allPins.count == 0){
+                  if (uvm.memoryPins.count == 0){
                     Text("No Pins Yet")
                       .fixedSize(horizontal: false, vertical: true)
                       .multilineTextAlignment(.center)
@@ -175,7 +181,7 @@ struct Profile: View {
                       .border(border, width: 2)
                     
                   }else{
-                  Text("\(userPins.allPins.count) Pin(s)" as String)
+                  Text("\(uvm.memoryPins.count) Pin(s)" as String)
                       .fixedSize(horizontal: false, vertical: true)
                       .multilineTextAlignment(.center)
                       .padding()
@@ -186,7 +192,7 @@ struct Profile: View {
                   
                   Spacer()
                   
-                  if (userPins.allPins.count == 0)
+                  if (uvm.memoryPins.count == 0)
                   {
                     Text("No Tags Used Yet" as String)
                       .fixedSize(horizontal: false, vertical: true)
@@ -197,7 +203,7 @@ struct Profile: View {
                       .border(border, width: 2)
 
                   } else{
-                    Text("\(mostUsedTag(allTags: userTags.allTags)[1])% \(mostUsedTag(allTags: userTags.allTags)[0]) Pins" as String)
+                    Text("\(mostUsedTag(allTags: uvm.allTags)[1])% \(mostUsedTag(allTags: uvm.allTags)[0]) Pins" as String)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
@@ -211,7 +217,7 @@ struct Profile: View {
             Spacer().frame(maxHeight: 20)
                 HStack {
                   Spacer()
-                  if (userPins.allPins.count == 0){
+                  if (uvm.memoryPins.count == 0){
                     Text("Dropped\n Most Pins\n On N/A")
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
@@ -224,7 +230,7 @@ struct Profile: View {
                   else
                   {
                     
-                    Text("Dropped\n Most Pins\n On \(mostPinsDate(allPins: userPins.allPins))")
+                    Text("Dropped\n Most Pins\n On \(mostPinsDate(allPins: uvm.memoryPins))")
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
@@ -235,7 +241,7 @@ struct Profile: View {
                   
                   Spacer()
 
-                  if (userPins.allPins.count == 0){
+                  if (uvm.memoryPins.count == 0){
                     Text("Dropped\n Most Pins\n In N/A" as String)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
@@ -247,7 +253,7 @@ struct Profile: View {
                   else
                   {
                     
-                    Text("Dropped\n Most Pins\n In \(mostPinsLocation(allPins: userPins.allPins))" as String)
+                    Text("Dropped\n Most Pins\n In \(mostPinsLocation(allPins: uvm.memoryPins))" as String)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()

@@ -106,10 +106,14 @@ class UserViewModel: ObservableObject
                            
                             
                             //getting date
-                            let stamp = document.get("date") as! Timestamp
-                            let d = stamp.dateValue
                             
-                            let m = MemoryPin(title: document.get("title") as! String, description: document.get("description") as! String, addressStreet: document.get("addressStreet") as! String, addressCity: document.get("addressCity") as! String, addressState: document.get("addressState") as! String, addressZip: document.get("addressZip") as! String, location: loc, tags: [Tag](), date: d())
+                            let stamp = document.get("date") as! String
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "yyyy-MM-dd"
+                            let d = formatter.date(from:stamp)!
+                            
+                            
+                            let m = MemoryPin(title: document.get("title") as! String, description: document.get("description") as! String, addressStreet: document.get("addressStreet") as! String, addressCity: document.get("addressCity") as! String, addressState: document.get("addressState") as! String, addressZip: document.get("addressZip") as! String, location: loc, tags: [Tag](), date: d)
                             
                             
                             self.fetchTagsForAMemory(documentID: document.documentID, m: m)
@@ -146,6 +150,65 @@ class UserViewModel: ObservableObject
   {
     self.memoryPins = m
   }
+  
+
+  func savePin(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date) {
+    
+    //let newPin = MemoryPin(title: title, description: description, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, location: location, tags: tags , date: date)
+    
+    let format = DateFormatter()
+    format.dateFormat = "yyyy-MM-dd"
+    let timestamp = format.string(from: date)
+    
+    
+    
+    var ref = self.db.collection("Users").document("1").collection("MemoryPins").addDocument( data: [
+      "title": title,
+      "description": description,
+      "addressStreet": addressStreet,
+      "addressCity": addressCity,
+      "addressState": addressState,
+      "addressZip" : addressZip,
+      "latitude" : String(location.latitude),
+      "longitude" : String(location.longitude),
+      "date": timestamp
+    
+    ])
+    
+    var tempArr : [Tag] = []
+    for tag in tags
+    {
+      
+      if(!tempArr.contains(tag))
+      {
+        tempArr.append(tag)
+        self.db.collection("Users").document("1").collection("MemoryPins").document(ref.documentID).collection("Tags").addDocument(data: [
+            "name": tag.name,
+            "color": tag.color
+          
+        ])
+        
+      }
+      
+    }
+    
+    
+    updatePins()
+     print("Pin count now \(self.memoryPins.count)")
+  }
+  
+  func updatePins()
+  
+  {
+    memoryPins = [MemoryPin]()
+    allTags = [Tag]()
+    fetchUser()
+    
+    
+  }
+
+  
+  
   
   
   
