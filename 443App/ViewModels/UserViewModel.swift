@@ -216,6 +216,8 @@ class UserViewModel: ObservableObject
         }
     }
     
+    updatePins()
+    
   }
 
   

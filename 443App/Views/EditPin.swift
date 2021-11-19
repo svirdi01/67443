@@ -125,6 +125,19 @@ struct EditPin: View {
           Text("Done")
         }
       )
+      
+      Button(action: {
+        self.uvm.deletePin(docId: pin.docId)
+        self.presentationMode.wrappedValue.dismiss()
+        
+                 }) {
+                     Text("Delete Pin")
+                     .foregroundColor(Color.white)
+                 }
+                 .padding()
+                 .background(Color.blue)
+      
+      
     
   }
 }
