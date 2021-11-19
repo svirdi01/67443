@@ -13,8 +13,9 @@ struct PinView: View {
     var body: some View {
       NavigationView {
         PinCountWidget()
-        .navigationBarItems(trailing: Button(action: {
-          userPins.setRandomPin()
+        .navigationBarItems(trailing: Button(action:
+                                              {
+          //userPins.setRandomPin()
 
         }) {
             Image(systemName: "plus")

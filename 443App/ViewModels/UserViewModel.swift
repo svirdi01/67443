@@ -113,7 +113,7 @@ class UserViewModel: ObservableObject
                             let d = formatter.date(from:stamp)!
                             
                             
-                            let m = MemoryPin(title: document.get("title") as! String, description: document.get("description") as! String, addressStreet: document.get("addressStreet") as! String, addressCity: document.get("addressCity") as! String, addressState: document.get("addressState") as! String, addressZip: document.get("addressZip") as! String, location: loc, tags: [Tag](), date: d)
+                            let m = MemoryPin(title: document.get("title") as! String, description: document.get("description") as! String, addressStreet: document.get("addressStreet") as! String, addressCity: document.get("addressCity") as! String, addressState: document.get("addressState") as! String, addressZip: document.get("addressZip") as! String, location: loc, tags: [Tag](), date: d, docId: document.documentID)
                             
                             
                             self.fetchTagsForAMemory(documentID: document.documentID, m: m)
@@ -198,12 +198,23 @@ class UserViewModel: ObservableObject
   }
   
   func updatePins()
-  
   {
     memoryPins = [MemoryPin]()
     allTags = [Tag]()
     fetchUser()
-    
+  }
+  
+  func deletePin(docId: String)
+  {
+
+    self.db.collection("Users").document("1").collection("MemoryPins").document(docId).delete()
+    { err in
+        if let err = err {
+            print("Error removing document: \(err)")
+        } else {
+            print("Document successfully removed!")
+        }
+    }
     
   }
 

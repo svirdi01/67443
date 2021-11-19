@@ -18,8 +18,9 @@ class MemoryPin: Identifiable {
   var memoryImage: Image?
   var date: Date
   var id: UUID
+  var docId: String
 
-  init(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date)
+  init(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, docId: String)
   {
     self.title = title
     self.description = description
@@ -34,6 +35,7 @@ class MemoryPin: Identifiable {
       self.memoryImage = Image(image)
     }
     self.id = UUID()
+    self.docId = docId;
   }
   
   func setTags(tags: [Tag])

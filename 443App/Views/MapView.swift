@@ -55,7 +55,7 @@ struct MapView: View {
          MapAnnotation(coordinate: place.location.coordinates) {
            
           
-          NavigationLink(destination: PinDetail(pin: place)){
+          NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
           HStack {
             
             VStack(spacing: 0) {

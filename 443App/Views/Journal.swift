@@ -23,7 +23,7 @@ struct Journal: View {
       List {
         ForEach(uvm.memoryPins)
         { pin in
-          NavigationLink(destination: PinDetail(pin: pin))
+          NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
           {
             PinRow(pin: pin)
           }
