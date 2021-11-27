@@ -151,6 +151,7 @@ class UserViewModel: ObservableObject
   
     func getPins() -> [MemoryPin]
     {
+//      self.filteredmemoryPins = self.memoryPins
       return self.memoryPins
     }
   
