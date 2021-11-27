@@ -128,7 +128,7 @@ struct EditPin: View {
       
       Button(action: {
         self.uvm.deletePin(docId: pin.docId)
-        self.presentationMode.wrappedValue.dismiss()
+        Journal(uvm: uvm)
         
                  }) {
                      Text("Delete Pin")
