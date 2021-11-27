@@ -19,6 +19,8 @@ class UserViewModel: ObservableObject
   @Published var memoryPins = [MemoryPin]()
   @Published var allTags = [Tag]()
   @Published var bool = false
+  @Published var searchText: String = ""
+  @Published var filteredmemoryPins = [MemoryPin]()
   
   var errorMessage = ""
   
@@ -27,6 +29,12 @@ class UserViewModel: ObservableObject
     //self.fetchUser()
     
  // }
+  
+  func search(searchText: String) {
+    self.filteredmemoryPins = self.memoryPins.filter { pin in
+      return (pin.title.lowercased().contains(searchText.lowercased())) || (pin.description.lowercased().contains(searchText.lowercased()))
+    }
+  }
   
   func fetchTagsForAMemory(documentID: String, m: MemoryPin)
   {
