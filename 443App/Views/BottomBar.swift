@@ -20,9 +20,10 @@ struct BottomBar: View {
   {
     
     uvm = userviewmodel
-    print("IN  BOTTOM BARR")
-    print(userviewmodel.user.name) 
-    print(userviewmodel.memoryPins)
+//    print("IN  BOTTOM BARR")
+//    print(userviewmodel.user.name)
+//    print(userviewmodel.memoryPins)
+    print(userviewmodel.filteredmemoryPins)
     self.userPins = UserPins(forUser: userviewmodel.user, allPins: userviewmodel.memoryPins)
     self.userTags = UserTags( forUser:userviewmodel.user, allTags: userviewmodel.allTags )
     

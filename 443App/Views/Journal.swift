@@ -13,11 +13,9 @@ struct Journal: View {
   @ObservedObject var uvm: UserViewModel
   @State var searchField: String = ""
   @State var displayedPins = [MemoryPin]()
-  
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
-    loadData()
   }
   
   var body: some View {
@@ -36,9 +34,10 @@ struct Journal: View {
       VStack{
         TextField("Search:", text: binding).offset(x: 20)
 
+        if(searchField != ""){
 
       List {
-        ForEach(uvm.memoryPins)
+        ForEach(self.displayedPins)
         { pin in
           NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
           {
@@ -52,6 +51,26 @@ struct Journal: View {
             Image(systemName: "plus")
         }
       )
+        }
+        else{
+          List {
+            ForEach(uvm.memoryPins)
+            { pin in
+              NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
+              {
+                PinRow(pin: pin)
+              }
+            }
+          }
+          .navigationBarTitle("My Memories")
+          .navigationBarItems(trailing:
+            NavigationLink(destination: AddPin(uvm: uvm)) {
+                Image(systemName: "plus")
+            }
+          )
+        }
+        
+        
       }
     }.onAppear(perform: loadData)
 
@@ -60,16 +79,15 @@ struct Journal: View {
   }
   
   func loadData() {
-    uvm.getPins()
+    displayedPins = uvm.memoryPins
   }
   
   
     func displayPins() {
-      loadData()
-      if searchField == "" {
-        displayedPins = uvm.memoryPins
-      } else {
+      if searchField != "" {
         displayedPins = uvm.filteredmemoryPins
+      } else {
+        displayedPins = uvm.memoryPins
       }
     }
     

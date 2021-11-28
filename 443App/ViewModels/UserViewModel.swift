@@ -151,7 +151,7 @@ class UserViewModel: ObservableObject
   
     func getPins() -> [MemoryPin]
     {
-//      self.filteredmemoryPins = self.memoryPins
+//      filteredmemoryPins = self.memoryPins
       return self.memoryPins
     }
   
@@ -201,8 +201,8 @@ class UserViewModel: ObservableObject
       
     }
     
-    
     updatePins()
+    filteredmemoryPins = self.memoryPins
      print("Pin count now \(self.memoryPins.count)")
   }
   
