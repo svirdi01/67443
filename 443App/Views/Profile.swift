@@ -48,14 +48,7 @@ struct Profile: View {
     }
     print(maxCount)
     print(uvm.allTags.count)
-    print(Double(maxCount)/Double(uvm.allTags.count))
-    let denom = uvm.allTags.count;
-    var percent = Double(0);
-    if (uvm.allTags.count == 0){
-      percent = Double(0);
-    }
-    else{
-       percent = (Double(maxCount)/Double(denom)) * 100 }
+    let percent = (Double(maxCount)/Double(uvm.allTags.count)) * 100
     let p = Int(percent)
     return [maxTag, String(p)]
   }
@@ -170,7 +163,7 @@ struct Profile: View {
                       Text(stringFromDate(date: uvm.memoryPins[uvm.memoryPins.count-1].date) as String)
                     }
                   }
-                }.font(.system(size: 14))
+                }.font(.system(size: 12))
                 Spacer().frame(maxHeight: 20)
               
               
@@ -183,52 +176,40 @@ struct Profile: View {
                       .fixedSize(horizontal: false, vertical: true)
                       .multilineTextAlignment(.center)
                       .padding()
-                      .frame(width: 130, height: 115)
-                      .background(boxColor)
-                      .cornerRadius(30)
-                      .overlay(
-                          RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                      )
+                      .frame(width: 115, height: 100)
+                      .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                      .border(border, width: 2)
                     
                   }else{
                   Text("\(uvm.memoryPins.count) Pin(s)" as String)
                       .fixedSize(horizontal: false, vertical: true)
                       .multilineTextAlignment(.center)
                       .padding()
-                      .frame(width: 130, height: 115)
-                    .background(boxColor)
-                    .cornerRadius(30)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                    )
+                      .frame(width: 115, height: 100)
+                      .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                    .border(border, width: 2)
                   }
                   
                   Spacer()
                   
-                  if (uvm.memoryPins.count == 0 || uvm.allTags.count == 0)
+                  if (uvm.memoryPins.count == 0)
                   {
                     Text("No Tags Used Yet" as String)
                       .fixedSize(horizontal: false, vertical: true)
                       .multilineTextAlignment(.center)
                       .padding()
-                      .frame(width: 130, height: 115)
-                      .background(boxColor)
-                      .cornerRadius(30)
-                      .overlay(
-                          RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                      )
+                      .frame(width: 115, height: 100)
+                      .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                      .border(border, width: 2)
 
                   } else{
                     Text("\(mostUsedTag(allTags: uvm.allTags)[1])% \(mostUsedTag(allTags: uvm.allTags)[0]) Pins" as String)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
-                        .frame(width: 130, height: 115)
-                      .background(boxColor)
-                      .cornerRadius(30)
-                      .overlay(
-                          RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                      )
+                        .frame(width: 115, height: 100)
+                        .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   
                   Spacer()
@@ -241,12 +222,9 @@ struct Profile: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
-                        .frame(width: 130, height: 115)
-                      .background(boxColor)
-                      .cornerRadius(30)
-                      .overlay(
-                          RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                      )
+                        .frame(width: 115, height: 100)
+                        .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                     
                   }
                   else
@@ -256,12 +234,9 @@ struct Profile: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
-                        .frame(width: 130, height: 115)
-                      .background(boxColor)
-                      .cornerRadius(30)
-                      .overlay(
-                          RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                      )
+                        .frame(width: 115, height: 100)
+                        .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   
                   Spacer()
@@ -271,12 +246,9 @@ struct Profile: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
-                        .frame(width: 130, height: 115)
-                      .background(boxColor)
-                      .cornerRadius(30)
-                      .overlay(
-                          RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                      )
+                        .frame(width: 115, height: 100)
+                        .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   else
                   {
@@ -285,12 +257,9 @@ struct Profile: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
-                        .frame(width: 130, height: 115)
-                      .background(boxColor)
-                      .cornerRadius(30)
-                      .overlay(
-                          RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
-                      )
+                        .frame(width: 115, height: 100)
+                        .background(Rectangle().fill(boxColor).shadow(radius: 2))
+                        .border(border, width: 2)
                   }
                   
                   Spacer()

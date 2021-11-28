@@ -117,8 +117,9 @@ struct EditPin: View {
           let tagArr: [Tag] = [tag]
           self.uvm.deletePin(docId: pin.docId)
           self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
-          
+        
           self.presentationMode.wrappedValue.dismiss()
+          
         })
         {
           Text("Done")
