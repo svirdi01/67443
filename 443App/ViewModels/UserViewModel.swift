@@ -199,8 +199,8 @@ class UserViewModel: ObservableObject
   
   func updatePins()
   {
-    memoryPins = [MemoryPin]()
-    allTags = [Tag]()
+    self.memoryPins = [MemoryPin]()
+    self.allTags = [Tag]()
     fetchUser()
   }
   
@@ -208,7 +208,8 @@ class UserViewModel: ObservableObject
   {
 
     self.db.collection("Users").document("1").collection("MemoryPins").document(docId).delete()
-    { err in
+    {
+      err in
         if let err = err {
             print("Error removing document: \(err)")
         } else {
@@ -220,6 +221,18 @@ class UserViewModel: ObservableObject
     
   }
 
+  func editPin(docId: String)
+  {
+    self.db.collection("Users").document("1").collection("MemoryPins").document(docId).delete()
+    {
+      err in
+        if let err = err {
+            print("Error removing document: \(err)")
+        } else {
+            print("Document successfully removed!")
+        }
+    }
+  }
   
   
   

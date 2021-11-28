@@ -112,10 +112,12 @@ struct EditPin: View {
       }.navigationBarTitle("Editing Pin")
       .navigationBarItems(trailing:
         Button(action:{
+        
           let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
-          let tag = Tag(name: t, color: "Yellow")
+          let tag = Tag(name: "happy", color: "Yellow")
           let tagArr: [Tag] = [tag]
-          self.uvm.deletePin(docId: pin.docId)
+          
+          self.uvm.editPin(docId: pin.docId)
           self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
         
           self.presentationMode.wrappedValue.dismiss()

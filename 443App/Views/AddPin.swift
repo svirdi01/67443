@@ -120,7 +120,7 @@ struct AddPin: View {
           }
         }
         
-        //CHANGE THIS 
+     
         self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
         
         tagArr = []
