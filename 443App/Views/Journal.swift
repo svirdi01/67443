@@ -37,7 +37,7 @@ struct Journal: View {
         if(searchField != ""){
 
       List {
-        ForEach(self.displayedPins)
+        ForEach(uvm.memoryPins)
         { pin in
           NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
           {
@@ -84,6 +84,7 @@ struct Journal: View {
   
   
     func displayPins() {
+//      loadData()
       if searchField != "" {
         displayedPins = uvm.filteredmemoryPins
       } else {

@@ -62,6 +62,7 @@ class UserViewModel: ObservableObject
     }
       m.setTags(tags: tagForMem)
       self.memoryPins.append(m)
+      self.filteredmemoryPins.append(m)
       //self.setPins(m: self.memoryPins)
       //Printing pins in here
       print("ALL THE PINS")
@@ -211,11 +212,12 @@ class UserViewModel: ObservableObject
     memoryPins = [MemoryPin]()
     allTags = [Tag]()
     fetchUser()
+    print("Pin count now \(self.memoryPins.count)")
+
   }
   
   func deletePin(docId: String)
   {
-
     self.db.collection("Users").document("1").collection("MemoryPins").document(docId).delete()
     { err in
         if let err = err {

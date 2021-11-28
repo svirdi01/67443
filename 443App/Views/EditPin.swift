@@ -117,7 +117,8 @@ struct EditPin: View {
           let tagArr: [Tag] = [tag]
           self.uvm.deletePin(docId: pin.docId)
           self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
-          
+          print("COUNT",self.uvm.memoryPins.count)
+//          Journal(uvm: uvm).displayPins()
           self.presentationMode.wrappedValue.dismiss()
         })
         {
@@ -127,6 +128,7 @@ struct EditPin: View {
       
       Button(action: {
         self.uvm.deletePin(docId: pin.docId)
+//        Journal(uvm: uvm).displayPins()
         self.presentationMode.wrappedValue.dismiss()
         
                  }) {
