@@ -119,8 +119,9 @@ struct EditPin: View {
           
           self.uvm.editPin(docId: pin.docId)
           self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
-        
+          
           self.presentationMode.wrappedValue.dismiss()
+          Journal(uvm:uvm).displayPins()
           
         })
         {
@@ -130,8 +131,10 @@ struct EditPin: View {
       
       Button(action: {
         self.uvm.deletePin(docId: pin.docId)
-        Journal(uvm: uvm)
-        
+        self.presentationMode.wrappedValue.dismiss()
+        Journal(uvm:uvm).displayPins()
+
+
                  }) {
                      Text("Delete Pin")
                      .foregroundColor(Color.white)

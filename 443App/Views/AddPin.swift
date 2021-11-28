@@ -125,6 +125,7 @@ struct AddPin: View {
         
         tagArr = []
       
+        Journal(uvm:uvm).displayPins()
         self.presentationMode.wrappedValue.dismiss()
         
       })
