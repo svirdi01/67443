@@ -59,25 +59,6 @@ struct SetPinLocationView: View {
       
       
       
-      //OVERLAYED PIN 2
-//      MapAnnotation(coordinate: coordinateRegion.center) {
-//       HStack {
-//         VStack(spacing: 0) {
-//           Image(systemName: "mappin.circle.fill")
-//             .font(.title)
-//             .foregroundColor(.red)
-//
-//           Image(systemName: "arrowtriangle.down.fill")
-//             .font(.caption)
-//             .foregroundColor(.red)
-//             .offset(x: 0, y: -5)
-//           Text("CENTER PIN").font(.caption)
-//         }
-//
-//       }
-//      }
-      // OVERLAYED PIN 2
-      
       /// DROP PIN BUTTON
       
       NavigationLink(destination: AddPin(uvm: uvm, long: coordinateRegion.center.longitude.description, lat: coordinateRegion.center.latitude.description)) {

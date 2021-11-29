@@ -43,6 +43,7 @@ struct MapView: View {
   var body: some View {
 
         NavigationView {
+          
           Map(coordinateRegion: $coordinateRegion,
               interactionModes: MapInteractionModes.all,
               showsUserLocation: true,

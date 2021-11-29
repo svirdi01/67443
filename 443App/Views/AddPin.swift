@@ -33,6 +33,8 @@ struct AddPin: View {
   @State var city: String = "F"
   @State var state: String = "F"
   @State var zip: String = "F"
+  
+  //@State var showNewView = false
   ///
 //  @State var location = Location(latitude: 40.442609, longitude: -79.945651)
 //  //@State var longitude: String = long ;
@@ -42,6 +44,12 @@ struct AddPin: View {
   @State var d = Date()
 
   var body: some View {
+//    NavigationLink(
+//      destination: MapPinsView(uvm:uvm),
+//                isActive: $showNewView
+//            ) {
+//                EmptyView()
+//            }.isDetailLink(false)
     VStack {
 //      Text("VM Pin Count: \(userPins.allPins.count)")
 //      Text("VM User Name: \(userPins.forUser.name)")
@@ -83,20 +91,23 @@ struct AddPin: View {
         TextField("zip", text: $zip)
           .padding(.trailing)
       }.padding()
-      HStack {
-        Text("longitude:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        Text(long)
-          .padding(.trailing)
-      }.padding()
-      HStack {
-        Text("latitude:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        Text(lat)
-          .padding(.trailing)
-      }.padding()
+      
+      //COMMENTED OUT LONG AND LAT THINGS
+//      HStack {
+//        Text("longitude:")
+//          .fontWeight(.bold)
+//          .padding(.leading)
+//        Text(long)
+//          .padding(.trailing)
+//      }.padding()
+//      HStack {
+//        Text("latitude:")
+//          .fontWeight(.bold)
+//          .padding(.leading)
+//        Text(lat)
+//          .padding(.trailing)
+//      }.padding()
+      // COMMENTED OUT LONG AND LAT THINGS
       HStack {
         Text("tag:")
           .fontWeight(.bold)
@@ -127,14 +138,12 @@ struct AddPin: View {
             
           }
         }
-        
-     
         self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
         
         tagArr = []
-      
         Journal(uvm:uvm).displayPins()
         self.presentationMode.wrappedValue.dismiss()
+        //self.showNewView = true
         
       })
       {
