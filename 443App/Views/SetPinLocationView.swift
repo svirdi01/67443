@@ -19,16 +19,14 @@ struct SetPinLocationView: View {
   @StateObject var managerDelegate = LocationDelegate()
   @ObservedObject var uvm: UserViewModel
   
+  
+  
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
     
     
   }
-
-
- 
-
 
   @State var coordinateRegion = MKCoordinateRegion(
     center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
@@ -44,11 +42,6 @@ struct SetPinLocationView: View {
 
         .edgesIgnoringSafeArea(.all)
 
-      }.onTapGesture {
-        print("LATITUDE")
-        print(coordinateRegion.center.latitude)
-        print("LONGITUDE")
-        print(coordinateRegion.center.longitude)
       }
       /// OVERLAYED PIN
       VStack(spacing: 0) {
@@ -61,8 +54,37 @@ struct SetPinLocationView: View {
           .foregroundColor(.red)
           .offset(x: 0, y: -5)
         Text("NEW PIN").font(.caption)
-      }
+      }.offset(y: 50)
         ///OVERLAYED PIN
+      
+      
+      
+      //OVERLAYED PIN 2
+//      MapAnnotation(coordinate: coordinateRegion.center) {
+//       HStack {
+//         VStack(spacing: 0) {
+//           Image(systemName: "mappin.circle.fill")
+//             .font(.title)
+//             .foregroundColor(.red)
+//
+//           Image(systemName: "arrowtriangle.down.fill")
+//             .font(.caption)
+//             .foregroundColor(.red)
+//             .offset(x: 0, y: -5)
+//           Text("CENTER PIN").font(.caption)
+//         }
+//
+//       }
+//      }
+      // OVERLAYED PIN 2
+      
+      /// DROP PIN BUTTON
+      
+      NavigationLink(destination: AddPin(uvm: uvm, long: coordinateRegion.center.longitude.description, lat: coordinateRegion.center.latitude.description)) {
+        Text("DROP PIN HERE")}.offset(y: 200)
+      
+      
+      ///DROP PIN BUTTON
     
   }
   }

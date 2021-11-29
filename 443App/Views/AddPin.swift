@@ -15,10 +15,16 @@ struct AddPin: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   @ObservedObject var uvm: UserViewModel
+  //NEHAS EDITS
+  var long: String
+  var lat: String
   
-  init(uvm: UserViewModel)
+  init(uvm: UserViewModel, long: String, lat: String)
   {
     self.uvm = uvm
+    //NEHAS EDITS
+    self.long=long
+    self.lat=lat
   }
  
   @State var title: String = "F"
@@ -27,16 +33,18 @@ struct AddPin: View {
   @State var city: String = "F"
   @State var state: String = "F"
   @State var zip: String = "F"
-  @State var location = Location(latitude: 40.442609, longitude: -79.945651)
-  @State var longitude: String = "-79.946401" ;
-  @State var latitude: String = "40.442609" ;
+  ///
+//  @State var location = Location(latitude: 40.442609, longitude: -79.945651)
+//  //@State var longitude: String = long ;
+//  //@State var latitude: String = lat ;
+  ///
   @State var t = "Happy";
   @State var d = Date()
 
   var body: some View {
     VStack {
-      Text("VM Pin Count: \(userPins.allPins.count)")
-      Text("VM User Name: \(userPins.forUser.name)")
+//      Text("VM Pin Count: \(userPins.allPins.count)")
+//      Text("VM User Name: \(userPins.forUser.name)")
       HStack {
         Text("title:")
           .fontWeight(.bold)
@@ -79,14 +87,14 @@ struct AddPin: View {
         Text("longitude:")
           .fontWeight(.bold)
           .padding(.leading)
-        TextField("longitude", text: $longitude)
+        Text(long)
           .padding(.trailing)
       }.padding()
       HStack {
         Text("latitude:")
           .fontWeight(.bold)
           .padding(.leading)
-        TextField("latitude", text: $latitude)
+        Text(lat)
           .padding(.trailing)
       }.padding()
       HStack {
@@ -109,7 +117,7 @@ struct AddPin: View {
     }.navigationBarTitle("New Pin")
     .navigationBarItems(trailing:
       Button(action:{
-        let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
+        let loc = Location(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.0)
         var tagArr: [Tag] = []
         for ctag in uvm.allTags
         {
