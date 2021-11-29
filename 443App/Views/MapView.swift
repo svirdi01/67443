@@ -25,6 +25,9 @@ struct MapView: View {
   @StateObject var managerDelegate = LocationDelegate()
   @ObservedObject var uvm: UserViewModel
   
+  //for search shit
+//  @State private var search: String=""
+  
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
@@ -38,49 +41,45 @@ struct MapView: View {
     span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
   
   var body: some View {
-    NavigationView {
-      Map(coordinateRegion: $coordinateRegion,
-          interactionModes: MapInteractionModes.all,
-          showsUserLocation: true,
-          userTrackingMode: $trackingMode,
-          annotationItems: uvm.memoryPins) { place in
-        
-        // • If you want larger ballons:
-        //MapMarker(coordinate: place.location.coordinates, tint: .blue)
-        
-        // • If you want the traditional pin:
-        //MapPin(coordinate: place.location.coordinates)
-        
-        // • If you want a circle to focus on the location:
-         MapAnnotation(coordinate: place.location.coordinates) {
-           
-          
-          NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
-          HStack {
-            
-            VStack(spacing: 0) {
-              
-              Image(systemName: "mappin.circle.fill")
-                .font(.title)
-                .foregroundColor(.red)
 
-              Image(systemName: "arrowtriangle.down.fill")
-                .font(.caption)
-                .foregroundColor(.red)
-                .offset(x: 0, y: -5)
-              Text(place.title).font(.caption)
-            }
-            
-          }}
-         }
+        NavigationView {
+          Map(coordinateRegion: $coordinateRegion,
+              interactionModes: MapInteractionModes.all,
+              showsUserLocation: true,
+              userTrackingMode: $trackingMode,
+              annotationItems: uvm.memoryPins) { place in
+            // • If you want larger ballons:
+            //MapMarker(coordinate: place.location.coordinates, tint: .blue)
+            // • If you want the traditional pin:
+            //MapPin(coordinate: place.location.coordinates)
+            // • If you want a circle to focus on the location:
+             MapAnnotation(coordinate: place.location.coordinates) {
+              NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
+              HStack {
+                VStack(spacing: 0) {
+                  Image(systemName: "mappin.circle.fill")
+                    .font(.title)
+                    .foregroundColor(.red)
 
-      }
-      .onAppear {
-        manager.delegate = managerDelegate
-      }
-      .edgesIgnoringSafeArea(.all)
-     
-    }
+                  Image(systemName: "arrowtriangle.down.fill")
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .offset(x: 0, y: -5)
+                  Text(place.title).font(.caption)
+                }
+                
+              }}
+             }
+
+          }
+          .onAppear {
+            manager.delegate = managerDelegate
+          }
+          .edgesIgnoringSafeArea(.all)
+         
+        }
+
+    
   }
   
 }

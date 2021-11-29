@@ -11,6 +11,8 @@ struct MapPinsView: View {
   @EnvironmentObject var userPins: UserPins
   @ObservedObject var uvm: UserViewModel
   
+  @State private var search: String=""
+  
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
@@ -21,14 +23,17 @@ struct MapPinsView: View {
   
   var body: some View {
     NavigationView {
-      ZStack {
+      ZStack(alignment: .top) {
         MapView(uvm: uvm)
-         PinCountWidget()
-         .offset(y: -275)
+         //PinCountWidget()
+         //.offset(y: -275)
         NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
           Text("Create")
         }
-        .offset(y: 275)
+        .offset(y: 655)
+        
+        TextField("Search", text: $search, onEditingChanged:{_ in})
+          {}.textFieldStyle(RoundedBorderTextFieldStyle()).padding().offset(y:44)
 
       }
       .navigationBarTitle("")
