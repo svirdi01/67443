@@ -25,8 +25,9 @@ struct MapView: View {
   @StateObject var managerDelegate = LocationDelegate()
   @ObservedObject var uvm: UserViewModel
   
+  
   //for search shit
-//  @State private var search: String=""
+  @State private var search: String=""
   
   init(uvm: UserViewModel)
   {
@@ -42,8 +43,8 @@ struct MapView: View {
   
   var body: some View {
 
-        NavigationView {
-          
+        
+    ZStack(alignment: .top){
           Map(coordinateRegion: $coordinateRegion,
               interactionModes: MapInteractionModes.all,
               showsUserLocation: true,
@@ -77,8 +78,17 @@ struct MapView: View {
             manager.delegate = managerDelegate
           }
           .edgesIgnoringSafeArea(.all)
+      
+      NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
+        Text("Create")
+      }
+      .offset(y: 655)
+      
+      TextField("Search", text: $search, onEditingChanged:{_ in})
+        {}.textFieldStyle(RoundedBorderTextFieldStyle()).padding().offset(y:44)
+    }
          
-        }
+        
 
     
   }

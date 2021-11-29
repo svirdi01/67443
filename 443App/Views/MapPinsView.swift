@@ -27,13 +27,7 @@ struct MapPinsView: View {
         MapView(uvm: uvm)
          //PinCountWidget()
          //.offset(y: -275)
-        NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
-          Text("Create")
-        }
-        .offset(y: 655)
         
-        TextField("Search", text: $search, onEditingChanged:{_ in})
-          {}.textFieldStyle(RoundedBorderTextFieldStyle()).padding().offset(y:44)
 
       }
       .navigationBarTitle("")
