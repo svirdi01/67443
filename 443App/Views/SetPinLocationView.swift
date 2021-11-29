@@ -35,17 +35,36 @@ struct SetPinLocationView: View {
     span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
 
   var body: some View {
-    NavigationView {
-      Map(coordinateRegion: $coordinateRegion,
-          interactionModes: MapInteractionModes.all,
-          showsUserLocation: true,
-          userTrackingMode: $trackingMode)
+    ZStack{
+      NavigationView {
+        Map(coordinateRegion: $coordinateRegion,
+            interactionModes: MapInteractionModes.all,
+            showsUserLocation: true,
+            userTrackingMode: $trackingMode)
 
-      .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.all)
 
-    }.onTapGesture {
-      print("TAPPING ON PIN DROP MAP")
-    }
+      }.onTapGesture {
+        print("LATITUDE")
+        print(coordinateRegion.center.latitude)
+        print("LONGITUDE")
+        print(coordinateRegion.center.longitude)
+      }
+      /// OVERLAYED PIN
+      VStack(spacing: 0) {
+        Image(systemName: "mappin.circle.fill")
+          .font(.title)
+          .foregroundColor(.red)
+
+        Image(systemName: "arrowtriangle.down.fill")
+          .font(.caption)
+          .foregroundColor(.red)
+          .offset(x: 0, y: -5)
+        Text("NEW PIN").font(.caption)
+      }
+        ///OVERLAYED PIN
+    
+  }
   }
 
 }
