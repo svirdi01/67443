@@ -47,7 +47,7 @@ struct Journal: View {
       }
       .navigationBarTitle("My Memories")
       .navigationBarItems(trailing:
-        NavigationLink(destination: AddPin(uvm: uvm)) {
+        NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
             Image(systemName: "plus")
         }
       )
@@ -65,7 +65,7 @@ struct Journal: View {
           }
           .navigationBarTitle("My Memories")
           .navigationBarItems(trailing:
-            NavigationLink(destination: AddPin(uvm: uvm)) {
+            NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
                 Image(systemName: "plus")
             }
           )
