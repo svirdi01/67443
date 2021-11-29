@@ -6,8 +6,10 @@
 	<dict>
 		<key>Struct (Playground) 1.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>23</integer>
+			<integer>27</integer>
 		</dict>
 		<key>Struct (Playground) 10.xcscheme</key>
 		<dict>
@@ -67,8 +69,10 @@
 		</dict>
 		<key>Struct (Playground) 2.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>24</integer>
+			<integer>28</integer>
 		</dict>
 		<key>Struct (Playground) 20.xcscheme</key>
 		<dict>
@@ -103,8 +107,10 @@
 		</dict>
 		<key>Struct (Playground) 3.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>25</integer>
+			<integer>29</integer>
 		</dict>
 		<key>Struct (Playground) 4.xcscheme</key>
 		<dict>
@@ -141,7 +147,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>26</integer>
 		</dict>
 	</dict>
 </dict>
