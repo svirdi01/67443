@@ -21,7 +21,7 @@ struct BottomBar: View {
     
     uvm = userviewmodel
     print("IN  BOTTOM BARR")
-    print(userviewmodel.user.name) 
+    print(userviewmodel.user.name)
     print(userviewmodel.memoryPins)
     self.userPins = UserPins(forUser: userviewmodel.user, allPins: userviewmodel.memoryPins)
     self.userTags = UserTags( forUser:userviewmodel.user, allTags: userviewmodel.allTags )
@@ -31,8 +31,8 @@ struct BottomBar: View {
   var body: some View
   {
     
+    NavigationView {
       
-    
       TabView {
 
         Journal(uvm: uvm)
@@ -55,6 +55,15 @@ struct BottomBar: View {
       }
     .environmentObject(userPins)
     .environmentObject(userTags)
+    .navigationBarTitle("")
+    .navigationBarHidden(true)
+
+  
+    }
+    .navigationBarTitle("")
+    .navigationBarHidden(true)
+    .navigationBarBackButtonHidden(true)
     
   }
+ 
 }

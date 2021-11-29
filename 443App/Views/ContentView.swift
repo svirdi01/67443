@@ -25,10 +25,7 @@ struct ContentView: View {
   {
     // BottomBar(viewModel: viewModel, viewController: viewController)
  
-    if(userviewmodel.bool == true)
-    {
-      BottomBar(userviewmodel : userviewmodel)
-    }
+   LogIn(userviewmodel: userviewmodel)
       
     
    
