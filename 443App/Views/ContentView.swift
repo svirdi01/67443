@@ -6,6 +6,68 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
+class AppViewModel: ObservableObject {
+  @Published var signedIn : Bool = false
+  
+  let auth = Auth.auth()
+  var isSignedIn: Bool
+  {
+    
+    return auth.currentUser != nil
+  }
+  func signIn(email: String, password: String)
+  {
+    auth.signIn(withEmail: email, password: password)
+    { [self] result, error in
+      guard result != nil, error == nil else
+      {
+        return
+      }
+      
+      DispatchQueue.main.async
+      {
+        print("SIGNED IN")
+        self.signedIn = true
+        print(self.signedIn)
+        
+      }
+      
+      
+     
+    }
+  }
+  
+  func signUp(email: String, password: String)
+  {
+    auth.createUser(withEmail: email, password: password)
+    { result, error in
+        guard result != nil, error == nil else
+        {
+          return
+        }
+      
+      
+      
+      
+      DispatchQueue.main.async
+      {
+        print("SIGNED IN")
+        self.signedIn = true
+        print(self.signedIn)
+        
+      }
+      
+      
+      
+    }
+  }
+  
+  
+}
+
+
 
 struct ContentView: View {
   
@@ -14,22 +76,29 @@ struct ContentView: View {
   
   @State private var showingAlert = false
   @ObservedObject var userviewmodel = UserViewModel()
+  @ObservedObject var signinviewModel = AppViewModel()
 
   init()
   {
     userviewmodel.fetchUser()
+    
   
   }
   
   var body: some View
   {
-    // BottomBar(viewModel: viewModel, viewController: viewController)
- 
-    if(userviewmodel.bool == true)
-    {
-      BottomBar(userviewmodel : userviewmodel)
+    NavigationView {
+      if signinviewModel.signedIn{
+        BottomBar(userviewmodel: userviewmodel)
+        
+      }
+      else
+      {
+        LogIn(userviewmodel: userviewmodel, signinviewmodel: signinviewModel)
+      }
     }
-      
+    // BottomBar(viewModel: viewModel, viewController: viewController)
+
     
    
   }
@@ -40,5 +109,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
 
 
