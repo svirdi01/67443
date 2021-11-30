@@ -58,7 +58,8 @@ struct MapView: View {
              MapAnnotation(coordinate: place.location.coordinates) {
               NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
               HStack {
-                VStack(spacing: 0) {
+                VStack(spacing: 0)
+                {
                     let color = place.tags[0].color
                     Image(systemName: "mappin.circle.fill")
                       .font(.title)

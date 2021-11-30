@@ -19,6 +19,7 @@ class MemoryPin: Identifiable {
   var date: Date
   var id: UUID
   var docId: String
+  var picture: Image?
 
   init(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, docId: String)
   {

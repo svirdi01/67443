@@ -48,7 +48,17 @@ struct AddPin: View {
   var tags: [Tag] = UserViewModel().allTags;
   var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
   @State var c = "red";
+  
+  @State var showImagePicker: Bool = false
+  @State var image: UIImage? = nil
 
+  var displayImage: Image? {
+    if let picture = image {
+      return Image(uiImage: picture)
+    } else {
+      return nil
+    }
+  }
   
   var body: some View {
 //    NavigationLink(
@@ -177,7 +187,20 @@ struct AddPin: View {
                 displayedComponents: [.date]
             )
       }.padding()
-    }.navigationBarTitle("New Pin")
+      
+      displayImage?.resizable().scaledToFit().padding()
+      Button(action: {
+        self.showImagePicker = true
+      }) {
+        Text("Add Picture")
+      }.padding()
+      Spacer()
+      
+    }
+    .sheet(isPresented: $showImagePicker) {
+      PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
+    }
+    .navigationBarTitle("New Pin")
     .navigationBarItems(trailing:
       Button(action:{
         let loc = Location(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.0)
@@ -196,7 +219,9 @@ struct AddPin: View {
             
           }
         }
-        self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
+        self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d, picture: self.image)
+      
+      
         
         tagArr = []
         Journal(uvm:uvm).displayPins()

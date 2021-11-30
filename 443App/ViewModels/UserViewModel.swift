@@ -22,6 +22,7 @@ class UserViewModel: ObservableObject
   @Published var bool = false
   @Published var searchText: String = ""
   @Published var filteredmemoryPins = [MemoryPin]()
+  @Published var allPics = [Photo]()
   
   var errorMessage = ""
   
@@ -166,7 +167,7 @@ class UserViewModel: ObservableObject
   }
   
 
-  func savePin(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date) {
+  func savePin(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, picture: UIImage?) {
     
     //let newPin = MemoryPin(title: title, description: description, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, location: location, tags: tags , date: date)
     
@@ -212,6 +213,19 @@ class UserViewModel: ObservableObject
     
     filteredmemoryPins = self.memoryPins
      print("Pin count now \(self.memoryPins.count)")
+    
+    let p: Photo = Photo(pinId: "")
+    if let pictureTemp = picture
+    {
+      p.picture = Image(uiImage: pictureTemp)
+      p.pinId = ref.documentID
+    }
+    
+    print("SAVING PHOTO")
+    print(p.pinId)
+    allPics.append(p)
+    
+    
   }
   
   func updatePins()
@@ -249,7 +263,12 @@ class UserViewModel: ObservableObject
             print("Document successfully removed!")
         }
     }
+    
   }
+  
+  
+  
+  
   
   
   

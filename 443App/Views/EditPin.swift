@@ -8,6 +8,8 @@ import Foundation
 import SwiftUI
 
 struct EditPin: View {
+
+  
   
   @EnvironmentObject var userPins: UserPins
   @ObservedObject var uvm: UserViewModel
@@ -27,15 +29,31 @@ struct EditPin: View {
   @State var t = "";
   @State var d = Date();
 
+  @State var showImagePicker: Bool = false
+  @State var image: UIImage? = nil
+  
+
+
+  var displayImage: Image? {
+    if let picture = image {
+      return Image(uiImage: picture)
+    } else {
+      return nil
+    }
+  }
+  
+    
+
+  
 
     var body: some View {
       VStack {
+        
+        
         HStack {
           Text("title:")
             .fontWeight(.bold)
             .padding(.leading)
-//          TextField("title of pin", text: $title)
-//            .padding(.trailing)
           TextField("title of pin", text: $title).onAppear() {
             self.title = self.pin.title}.padding(.trailing)
         }.padding()
@@ -71,17 +89,11 @@ struct EditPin: View {
             self.zip = self.pin.addressZip}.padding(.trailing)
         }.padding()
         HStack {
-          Text("longitude:")
-            .fontWeight(.bold)
-            .padding(.leading)
           TextField("longitude", text: $longitude).onAppear() {
             let longVal = String(self.pin.location.longitude)
             self.longitude = longVal}.padding(.trailing)
         }.padding()
         HStack {
-          Text("latitude:")
-            .fontWeight(.bold)
-            .padding(.leading)
           TextField("latitude", text: $latitude).onAppear() {
             let latVal = String(self.pin.location.latitude)
             self.latitude = latVal}.padding(.trailing)
@@ -95,7 +107,9 @@ struct EditPin: View {
             if (self.pin.tags.count > 0){
               let tagVal = self.pin.tags[0]
             }
-            self.t = tagVal}.padding(.trailing)
+            self.t = tagVal
+          }
+          .padding(.trailing)
         }.padding()
         HStack {
           Text("date:")
@@ -109,7 +123,20 @@ struct EditPin: View {
           .onAppear() {
             self.d = self.pin.date}.padding(.trailing)
         }.padding()
-      }.navigationBarTitle("Editing Pin")
+        displayImage?.resizable().scaledToFit().padding()
+        Button(action: {
+          self.showImagePicker = true
+        }) {
+          Text("Add Picture")
+        }.padding()
+  
+        
+      }
+      .sheet(isPresented: $showImagePicker)
+      {
+        PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
+      }
+      .navigationBarTitle("Editing Pin")
       .navigationBarItems(trailing:
         Button(action:{
         
@@ -126,7 +153,7 @@ struct EditPin: View {
         
         
           self.uvm.editPin(docId: pin.docId)
-          self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
+          self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d, picture: self.image)
           
           self.presentationMode.wrappedValue.dismiss()
           Journal(uvm:uvm).displayPins()

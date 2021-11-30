@@ -38,7 +38,9 @@ struct Journal: View {
         if (searchField == ""){
       List {
         ForEach(uvm.memoryPins)
-        { pin in
+        {
+          pin in
+          
           NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
           {
             PinRow(pin: pin)
