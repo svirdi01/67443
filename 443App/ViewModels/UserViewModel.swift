@@ -59,6 +59,7 @@ class UserViewModel: ObservableObject
             
       
     }
+      m.setDefaultTags(tags: self.allTags);
       m.setTags(tags: tagForMem)
       self.memoryPins.append(m)
       //self.setPins(m: self.memoryPins)

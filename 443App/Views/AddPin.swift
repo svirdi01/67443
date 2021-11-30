@@ -42,7 +42,11 @@ struct AddPin: View {
   ///
   @State var t = "Happy";
   @State var d = Date()
-
+  
+  var tags: [Tag] = UserViewModel().allTags;
+  var colors: [String] = ["blue", "black", "cyan", "gray", "green", "indigo", "orange", "pink", "purple", "red", "teal", "yellow"];
+  @State var c = "red";
+  
   var body: some View {
 //    NavigationLink(
 //      destination: MapPinsView(uvm:uvm),
@@ -109,11 +113,60 @@ struct AddPin: View {
 //      }.padding()
       // COMMENTED OUT LONG AND LAT THINGS
       HStack {
-        Text("tag:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        TextField("tag", text: $t)
-          .padding(.trailing)
+//        Text("tag:")
+//          .fontWeight(.bold)
+//          .padding(.leading)
+//        TextField("tag", text: $t)
+//          .padding(.trailing)
+        
+//        Picker(
+//          selection: $t,
+//          label: Text("tag:")) {
+//            ForEach(tags){ tag in
+//              Text("\(tag.name)")
+//                .font(.headline)
+//                .foregroundColor(.red)
+//            }
+//          Text("Custom")
+//          }
+        Picker(
+          selection: $t,
+          label: Text("\(t)"),
+          content: {
+            ForEach(tags){ tag in
+              Text(tag.name)
+                .tag(tag.name)
+            }
+            Text("Custom")
+          }
+        ).pickerStyle(MenuPickerStyle())
+        
+        if (t == "Custom"){
+          TextField("Create Tag", text: $t)
+            .padding(.trailing)
+          
+//          Picker(
+//            selection: $c,
+//            label: Text("Color:")) {
+//              ForEach(colors, id: \.self){ colorName in
+//                Text(colorName)
+//                  .font(.headline)
+//              }
+//            }
+          Picker(
+            selection: $t,
+            label: Text("Color"),
+            content: {
+              ForEach(colors, id: \.self){ colorName in
+                Text(colorName)
+                  .tag(colorName)
+              }
+            }
+          ).pickerStyle(MenuPickerStyle())
+          
+        }
+          
+        
       }.padding()
       HStack {
         Text("date:")
@@ -130,6 +183,8 @@ struct AddPin: View {
       Button(action:{
         let loc = Location(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.0)
         var tagArr: [Tag] = []
+        print("TAGGGGGG",t)
+        tagArr.append(Tag(name: t, color: c));
         for ctag in uvm.allTags
         {
           if(ctag.name == t)
