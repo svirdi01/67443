@@ -1,0 +1,6 @@
+framework module Pods_443AppTests {
+  umbrella header "Pods-443AppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
