@@ -59,17 +59,17 @@ struct MapView: View {
               NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
               HStack {
                 VStack(spacing: 0) {
-                  Image(systemName: "mappin.circle.fill")
-                    .font(.title)
-                    .foregroundColor(.red)
+                    let color = place.tags[0].color
+                    Image(systemName: "mappin.circle.fill")
+                      .font(.title)
+                      .foregroundColor(Color(color))
 
-                  Image(systemName: "arrowtriangle.down.fill")
-                    .font(.caption)
-                    .foregroundColor(.red)
-                    .offset(x: 0, y: -5)
-                  Text(place.title).font(.caption)
+                    Image(systemName: "arrowtriangle.down.fill")
+                      .font(.caption)
+                      .foregroundColor(Color(color))
+                      .offset(x: 0, y: -5)
+                    Text(place.title).font(.caption)
                 }
-                
               }}
              }
 
