@@ -39,25 +39,33 @@ struct BottomBar: View {
               Image(systemName: "book.circle")
               Text("Journal")
             }
+          .navigationBarTitle("")
+          .navigationBarHidden(true)
+          .navigationBarBackButtonHidden(true)
       
         MapPinsView(uvm: uvm)
           .tabItem {
             Image(systemName: "map.fill")
             Text("Map")
           }
+          .navigationBarTitle("")
+          .navigationBarHidden(true)
+          .navigationBarBackButtonHidden(true)
       
         Profile(uvm: uvm)
           .tabItem {
             Image(systemName: "person.fill")
             Text("Profile")
           }
+          .navigationBarTitle("")
+          .navigationBarHidden(true)
+          .navigationBarBackButtonHidden(true)
       }
-    .environmentObject(userPins)
-    .environmentObject(userTags)
-    .navigationBarTitle("")
-    .navigationBarHidden(true)
-
-  
+      .environmentObject(userPins)
+      .environmentObject(userTags)
+      .navigationBarTitle("")
+      .navigationBarHidden(true)
+      .navigationBarBackButtonHidden(true)
     }
     .navigationBarTitle("")
     .navigationBarHidden(true)

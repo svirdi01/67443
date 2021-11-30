@@ -73,6 +73,10 @@ struct Journal: View {
         
       }
     }.onAppear(perform: displayPins)
+      .navigationBarTitle("")
+      .navigationBarHidden(true)
+      .navigationBarBackButtonHidden(true)
+
 
    
     
@@ -88,7 +92,6 @@ struct Journal: View {
       }
     }
     
-
   
   
 }

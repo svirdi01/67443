@@ -97,6 +97,9 @@ struct ContentView: View {
         LogIn(userviewmodel: userviewmodel, signinviewmodel: signinviewModel)
       }
     }
+    .navigationBarTitle("")
+    .navigationBarHidden(true)
+    .navigationBarBackButtonHidden(true)
     // BottomBar(viewModel: viewModel, viewController: viewController)
 
     
