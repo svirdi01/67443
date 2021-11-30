@@ -46,16 +46,18 @@ struct Profile: View {
         maxTag = tagName
       }
     }
+    print("MAX COUNT:")
     print(maxCount)
-    print(uvm.allTags.count)
-    print(Double(maxCount)/Double(uvm.allTags.count))
-    let denom = uvm.allTags.count;
+    print(uvm.userPinTags.count)
+    let denom = uvm.userPinTags.count;
     var percent = Double(0);
-    if (uvm.allTags.count == 0){
+    if (uvm.userPinTags.count == 0){
       percent = Double(0);
     }
     else{
        percent = (Double(maxCount)/Double(denom)) * 100 }
+    print("PERCENT")
+    print(percent)
     let p = Int(percent)
     return [maxTag, String(p)]
   }
@@ -219,7 +221,7 @@ struct Profile: View {
                       )
 
                   } else{
-                    Text("\(mostUsedTag(allTags: uvm.allTags)[1])% \(mostUsedTag(allTags: uvm.allTags)[0]) Pins" as String)
+                    Text("\(mostUsedTag(allTags: uvm.userPinTags)[1])% \(mostUsedTag(allTags: uvm.userPinTags)[0]) Pins" as String)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()

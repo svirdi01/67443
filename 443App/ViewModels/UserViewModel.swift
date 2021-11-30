@@ -18,6 +18,7 @@ class UserViewModel: ObservableObject
   @Published var memoryPins = [MemoryPin]()
   @Published var allTags = [Tag(name: "College", color: "Orange"),Tag(name: "School", color: "Red"),Tag(name: "Birthday", color: "Blue"), Tag(name: "Relationship", color: "Magenta"),Tag(name: "Sports", color: "Green"),
        Tag(name: "Events", color: "Black"), Tag(name: "Food", color: "Yellow"), Tag(name: "Travel", color: "Purple")]
+  @Published var userPinTags = [Tag]()
   @Published var bool = false
   @Published var searchText: String = ""
   @Published var filteredmemoryPins = [MemoryPin]()
@@ -58,8 +59,12 @@ class UserViewModel: ObservableObject
             print(t.name)
             tagForMem.append(t)
             print(tagForMem)
+          if !self.allTags.contains(t)
+          {
             self.allTags.append(t)
-            
+          }
+           
+            self.userPinTags.append(t)            
       
     }
       self.bool = true;
