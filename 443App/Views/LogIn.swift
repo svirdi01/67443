@@ -48,7 +48,7 @@ struct LogIn: View {
         }.padding()
         
         HStack {
-          TextField("Password", text: $passField)
+          SecureField("Password", text: $passField)
             .disableAutocorrection(true)
             .autocapitalization(.none)
             .padding(.trailing)

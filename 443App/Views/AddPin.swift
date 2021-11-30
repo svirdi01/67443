@@ -14,6 +14,8 @@ struct AddPin: View {
   @EnvironmentObject var userPins: UserPins
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @State private var showingSheet = true
+  @State var isChecked:Bool = false
+
   
   @ObservedObject var uvm: UserViewModel
   //NEHAS EDITS
@@ -43,7 +45,11 @@ struct AddPin: View {
   ///
   @State var t = "College";
   @State var d = Date()
+  var tags: [Tag] = UserViewModel().allTags;
+  var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
+  @State var c = "red";
 
+  
   var body: some View {
 //    NavigationLink(
 //      destination: MapPinsView(uvm:uvm),
@@ -109,13 +115,58 @@ struct AddPin: View {
 //          .padding(.trailing)
 //      }.padding()
       // COMMENTED OUT LONG AND LAT THINGS
-      HStack {
-        Text("tag:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        TextField("tag", text: $t)
-          .padding(.trailing)
+      Form{
+    
+        HStack{
+          Picker(
+            selection: $t,
+            label: Text("select tag:")
+              .fontWeight(.bold)
+          ) {
+              ForEach(tags){ tag in
+                let tagColor = tag.color
+                Text("\(tag.name)")
+                  .font(.headline)
+                  .foregroundColor(Color(tagColor))
+                  .tag("\(tag.name)")
+              }
+            }
       }.padding()
+        
+        HStack {
+          Button(action: toggle){
+               HStack{
+                   Image(systemName: isChecked ? "checkmark.square": "square")
+                   Text("Using custom tag?")
+               }
+
+           }
+        }
+        HStack{
+          Text("name:")
+            .fontWeight(.bold)
+//            .padding(.leading)
+          TextField("tag", text: $t)
+//            .padding(.trailing)
+          
+          Picker(
+            selection: $c,
+            label: Text("color:")
+              .fontWeight(.bold)
+//              .padding(.leading)
+            ,
+            content: {
+              ForEach(colors, id: \.self){ colorName in
+                Text(colorName)
+                  .foregroundColor(Color(colorName))
+                  .tag(colorName)
+              }
+            }
+          )
+        }.padding()
+        
+      } //form end
+        
       HStack {
         Text("date:")
           .fontWeight(.bold)
@@ -131,9 +182,15 @@ struct AddPin: View {
       Button(action:{
         let loc = Location(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.0)
         var tagArr: [Tag] = []
+        var customTag = Tag(name: t, color: c);
+        if (isChecked && !(tagArr.contains(customTag))){
+          tagArr.append(customTag);
+        }
         for ctag in uvm.allTags
         {
-          if(ctag.name == t)
+          print("CTAG",ctag.name)
+          print("T NAMEEE",t)
+          if(!(isChecked) && (ctag.name != t && ctag.color != c))
           {
             tagArr.append(ctag)
             
@@ -156,5 +213,6 @@ struct AddPin: View {
   }
 
   // MARK: View Helper Functions
- 
+  func toggle(){isChecked = !isChecked}
+
 }
