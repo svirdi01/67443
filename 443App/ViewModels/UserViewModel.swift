@@ -16,7 +16,8 @@ class UserViewModel: ObservableObject
   let db =  Firestore.firestore()
   @Published var user: User = User(name: "", email: "", userID: "0")
   @Published var memoryPins = [MemoryPin]()
-  @Published var allTags = [Tag]()
+  @Published var allTags = [Tag(name: "College", color: "Orange"),Tag(name: "School", color: "Red"),Tag(name: "Birthday", color: "Blue"), Tag(name: "Relationship", color: "Magenta"),Tag(name: "Sports", color: "Green"),
+       Tag(name: "Events", color: "Black"), Tag(name: "Food", color: "Yellow"), Tag(name: "Travel", color: "Purple")]
   @Published var bool = false
   @Published var searchText: String = ""
   @Published var filteredmemoryPins = [MemoryPin]()
