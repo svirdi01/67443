@@ -114,9 +114,17 @@ struct EditPin: View {
         Button(action:{
         
           let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
-          let tag = Tag(name: "happy", color: "Yellow")
-          let tagArr: [Tag] = [tag]
-          
+          var tagArr: [Tag] = []
+          for ctag in uvm.allTags
+          {
+            if(ctag.name == t)
+            {
+              tagArr.append(ctag)
+            
+            }
+          }
+        
+        
           self.uvm.editPin(docId: pin.docId)
           self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
           

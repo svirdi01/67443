@@ -13,6 +13,7 @@ struct AddPin: View {
 
   @EnvironmentObject var userPins: UserPins
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  @State private var showingSheet = true
   
   @ObservedObject var uvm: UserViewModel
   //NEHAS EDITS
@@ -40,7 +41,7 @@ struct AddPin: View {
 //  //@State var longitude: String = long ;
 //  //@State var latitude: String = lat ;
   ///
-  @State var t = "Happy";
+  @State var t = "College";
   @State var d = Date()
 
   var body: some View {
@@ -142,13 +143,13 @@ struct AddPin: View {
         
         tagArr = []
         Journal(uvm:uvm).displayPins()
-        self.presentationMode.wrappedValue.dismiss()
+       //self.presentationMode.wrappedValue.dismiss()
         //self.showNewView = true
         
       })
       {
         Text("Add Pin")
-      }
+    }
     )
 
 
