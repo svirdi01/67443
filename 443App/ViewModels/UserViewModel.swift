@@ -14,7 +14,7 @@ class UserViewModel: ObservableObject
 {
 
   let db =  Firestore.firestore()
-  @Published var user: User = User(name: "", email: "")
+  @Published var user: User = User(name: "", email: "", userID: "0")
   @Published var memoryPins = [MemoryPin]()
   @Published var allTags = [Tag]()
   @Published var bool = false
@@ -40,13 +40,15 @@ class UserViewModel: ObservableObject
   
     var tagForMem = [Tag]()
     //getting tags
-    let tagRef = self.db.collection("Users").document("1").collection("MemoryPins").document(documentID).collection("Tags").getDocuments() {
+    let tagRef = self.db.collection("Users").document(user.userID).collection("MemoryPins").document(documentID).collection("Tags").getDocuments() {
       (querySnapshot, err) in   if let err = err
       {
       print("Error getting documents: \(err)")
         }
     else
     {
+      
+      
 
         for tag in querySnapshot!.documents
         {
@@ -59,14 +61,12 @@ class UserViewModel: ObservableObject
             
       
     }
+      self.bool = true;
       m.setTags(tags: tagForMem)
       self.memoryPins.append(m)
-      //self.setPins(m: self.memoryPins)
-      //Printing pins in here
       print("ALL THE PINS")
       print(self.memoryPins.count)
       print(self.memoryPins[0])
-      self.bool = true;
       print("YOOOOOOO")
       print(self.bool)
   }
@@ -77,9 +77,9 @@ class UserViewModel: ObservableObject
 
   }
   
-  func fetchUser()
+  func fetchUser(userID: String)
   {
-    let docRef = db.collection("Users").document("1")
+    let docRef = db.collection("Users").document(userID)
 
     docRef.getDocument
     {
@@ -94,12 +94,13 @@ class UserViewModel: ObservableObject
      
             self.user.name = document.get("name") as! String
             self.user.email = document.get("email") as! String
+            self.user.userID = document.documentID
             
             print(self.user.name)
             print(self.user.email)
 
             let memoryPinsRef =
-              self.db.collection("Users").document("1").collection("MemoryPins").getDocuments() { [self] (querySnapshot, err) in
+              self.db.collection("Users").document(userID).collection("MemoryPins").getDocuments() { [self] (querySnapshot, err) in
                       if let err = err {
                           print("Error getting documents: \(err)")
                       } else {
@@ -168,8 +169,9 @@ class UserViewModel: ObservableObject
     let timestamp = format.string(from: date)
     
     
+    print(user.userID)
     
-    var ref = self.db.collection("Users").document("1").collection("MemoryPins").addDocument( data: [
+    var ref = self.db.collection("Users").document(user.userID).collection("MemoryPins").addDocument( data: [
       "title": title,
       "description": description,
       "addressStreet": addressStreet,
@@ -189,7 +191,7 @@ class UserViewModel: ObservableObject
       if(!tempArr.contains(tag))
       {
         tempArr.append(tag)
-        self.db.collection("Users").document("1").collection("MemoryPins").document(ref.documentID).collection("Tags").addDocument(data: [
+        self.db.collection("Users").document(user.userID).collection("MemoryPins").document(ref.documentID).collection("Tags").addDocument(data: [
             "name": tag.name,
             "color": tag.color
           
@@ -210,13 +212,13 @@ class UserViewModel: ObservableObject
   {
     self.memoryPins = [MemoryPin]()
     self.allTags = [Tag]()
-    fetchUser()
+    fetchUser(userID: user.userID)
   }
   
   func deletePin(docId: String)
   {
 
-    self.db.collection("Users").document("1").collection("MemoryPins").document(docId).delete()
+    self.db.collection("Users").document(user.userID).collection("MemoryPins").document(docId).delete()
     {
       err in
         if let err = err {
@@ -232,7 +234,7 @@ class UserViewModel: ObservableObject
 
   func editPin(docId: String)
   {
-    self.db.collection("Users").document("1").collection("MemoryPins").document(docId).delete()
+    self.db.collection("Users").document(user.userID).collection("MemoryPins").document(docId).delete()
     {
       err in
         if let err = err {

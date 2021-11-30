@@ -12,6 +12,8 @@ import FirebaseFirestoreSwift
 
 class AppViewModel: ObservableObject {
   @Published var signedIn : Bool = false
+  @Published var userID: String = ""
+  @ObservedObject var userviewmodel = UserViewModel()
   
   let auth = Auth.auth()
   let db =  Firestore.firestore()
@@ -37,6 +39,7 @@ class AppViewModel: ObservableObject {
         
       }
       
+      self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
       
      
     }
@@ -61,10 +64,18 @@ class AppViewModel: ObservableObject {
         print(self.signedIn)
         
         self.db.collection("Users").document(Auth.auth().currentUser?.uid ?? "1").setData( [
-          "emaail": email,
+          "email": email,
           "name": name
         
         ])
+        
+        print(Auth.auth().currentUser?.uid)
+        
+        self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
+        
+        print("USER ID:")
+        print(self.userviewmodel.user.userID)
+        
         
       }
       
@@ -84,26 +95,23 @@ struct ContentView: View {
   
   
   @State private var showingAlert = false
-  @ObservedObject var userviewmodel = UserViewModel()
   @ObservedObject var signinviewModel = AppViewModel()
 
-  init()
-  {
-    userviewmodel.fetchUser()
-    
-  
-  }
   
   var body: some View
   {
     NavigationView {
       if signinviewModel.signedIn{
-        BottomBar(userviewmodel: userviewmodel)
+        
+        
+        BottomBar(userviewmodel: signinviewModel.userviewmodel)
+        
+       
         
       }
       else
       {
-        LogIn(userviewmodel: userviewmodel, signinviewmodel: signinviewModel)
+        LogIn(userviewmodel: signinviewModel.userviewmodel, signinviewmodel: signinviewModel)
       }
     }
     .navigationBarTitle("")
