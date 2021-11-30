@@ -17,6 +17,11 @@ pod 'Firebase/Firestore'
 pod 'FirebaseFirestoreSwift'
 # for Analytics without IDFA collection capability
 
+ pod 'Firebase/Core'
+ pod 'Firebase/Database'
+ pod 'Firebase/Storage'
+ pod 'Firebase/Auth'
+
 # add pods for any other desired Firebase products
 # https://firebase.google.com/docs/ios/setup#available-pods
 
