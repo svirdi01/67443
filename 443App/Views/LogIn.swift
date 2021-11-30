@@ -95,6 +95,7 @@ struct SignUpView: View {
   @State var isNavigationBarHidden: Bool = true
   @State var emailField: String = ""
   @State var passField: String = ""
+  @State var name: String = ""
   @ObservedObject var svm: AppViewModel
  
   @ObservedObject var uvm: UserViewModel
@@ -125,6 +126,16 @@ struct SignUpView: View {
         }.padding()
         
         HStack {
+          TextField("Name", text: $name)
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
+            .padding(.trailing)
+          
+        }.padding()
+        
+        
+        
+        HStack {
           TextField("Password", text: $passField)
             .disableAutocorrection(true)
             .autocapitalization(.none)
@@ -138,7 +149,7 @@ struct SignUpView: View {
           {
             return
           }
-          svm.signUp(email: emailField, password: passField)
+          svm.signUp(email: emailField, password: passField, name: name)
           
         }, label: {
           Text("Sign Up")

@@ -7,11 +7,14 @@
 
 import SwiftUI
 import FirebaseAuth
+import Firebase
+import FirebaseFirestoreSwift
 
 class AppViewModel: ObservableObject {
   @Published var signedIn : Bool = false
   
   let auth = Auth.auth()
+  let db =  Firestore.firestore()
   var isSignedIn: Bool
   {
     
@@ -39,7 +42,7 @@ class AppViewModel: ObservableObject {
     }
   }
   
-  func signUp(email: String, password: String)
+  func signUp(email: String, password: String, name: String)
   {
     auth.createUser(withEmail: email, password: password)
     { result, error in
@@ -56,6 +59,12 @@ class AppViewModel: ObservableObject {
         print("SIGNED IN")
         self.signedIn = true
         print(self.signedIn)
+        
+        self.db.collection("Users").document(Auth.auth().currentUser?.uid ?? "1").setData( [
+          "emaail": email,
+          "name": name
+        
+        ])
         
       }
       
