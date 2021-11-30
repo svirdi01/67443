@@ -7,11 +7,16 @@
 
 import SwiftUI
 import FirebaseAuth
+import Firebase
+import FirebaseFirestoreSwift
 
 class AppViewModel: ObservableObject {
   @Published var signedIn : Bool = false
+  @Published var userID: String = ""
+  @ObservedObject var userviewmodel = UserViewModel()
   
   let auth = Auth.auth()
+  let db =  Firestore.firestore()
   var isSignedIn: Bool
   {
     
@@ -34,12 +39,13 @@ class AppViewModel: ObservableObject {
         
       }
       
+      self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
       
      
     }
   }
   
-  func signUp(email: String, password: String)
+  func signUp(email: String, password: String, name: String)
   {
     auth.createUser(withEmail: email, password: password)
     { result, error in
@@ -56,6 +62,20 @@ class AppViewModel: ObservableObject {
         print("SIGNED IN")
         self.signedIn = true
         print(self.signedIn)
+        
+        self.db.collection("Users").document(Auth.auth().currentUser?.uid ?? "1").setData( [
+          "email": email,
+          "name": name
+        
+        ])
+        
+        print(Auth.auth().currentUser?.uid)
+        
+        self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
+        
+        print("USER ID:")
+        print(self.userviewmodel.user.userID)
+        
         
       }
       
@@ -75,26 +95,23 @@ struct ContentView: View {
   
   
   @State private var showingAlert = false
-  @ObservedObject var userviewmodel = UserViewModel()
   @ObservedObject var signinviewModel = AppViewModel()
 
-  init()
-  {
-    userviewmodel.fetchUser()
-    
-  
-  }
   
   var body: some View
   {
     NavigationView {
       if signinviewModel.signedIn{
-        BottomBar(userviewmodel: userviewmodel)
+        
+        
+        BottomBar(userviewmodel: signinviewModel.userviewmodel)
+        
+       
         
       }
       else
       {
-        LogIn(userviewmodel: userviewmodel, signinviewmodel: signinviewModel)
+        LogIn(userviewmodel: signinviewModel.userviewmodel, signinviewmodel: signinviewModel)
       }
     }
     .navigationBarTitle("")
