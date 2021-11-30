@@ -43,19 +43,4 @@ class MemoryPin: Identifiable {
     self.tags = tags
   }
   
-    func setDefaultTags(tags: [Tag]){
-      ForEach(tags){ tag in
-          if (tag.name.lowercased() != "happy"){
-            self.tags.append(Tag(name: "Happy", color: "yellow"));
-
-          }
-          if (tag.name.lowercased() != "sad"){
-            self.tags.append(Tag(name: "Sad", color: "blue"));
-          }
-          if (tag.name.lowercased() != "relationship"){
-            self.tags.append(Tag(name: "Relationship", color: "pink"));
-
-        }
-      }
-    }
 }

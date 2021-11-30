@@ -59,7 +59,8 @@ class UserViewModel: ObservableObject
             
       
     }
-      m.setDefaultTags(tags: self.allTags);
+//      self.setDefaultTags();
+      print(self.allTags.count, "TAFSDFJSDJFSDKFNLSKDHFSD");
       m.setTags(tags: tagForMem)
       self.memoryPins.append(m)
       //self.setPins(m: self.memoryPins)
@@ -159,6 +160,24 @@ class UserViewModel: ObservableObject
     self.memoryPins = m
   }
   
+  func setDefaultTags(){
+    for tag in self.allTags
+    {
+      
+      if (tag.name.lowercased() != "happy"){
+        self.allTags.append(Tag(name: "Happy", color: "yellow"));
+
+      }
+      if (tag.name.lowercased() != "sad"){
+        self.allTags.append(Tag(name: "Sad", color: "blue"));
+      }
+      if (tag.name.lowercased() != "relationship"){
+        self.allTags.append(Tag(name: "Relationship", color: "pink"));
+
+    }
+      
+    }
+}
 
   func savePin(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date) {
     

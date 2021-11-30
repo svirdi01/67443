@@ -59,15 +59,44 @@ struct MapView: View {
               NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
               HStack {
                 VStack(spacing: 0) {
-                  Image(systemName: "mappin.circle.fill")
-                    .font(.title)
-                    .foregroundColor(.red)
+                  
+                  if (place.tags[0].color == "cyan"){
+                    Image(systemName: "mappin.circle.fill")
+                      .font(.title)
+                      .foregroundColor(.blue)
 
-                  Image(systemName: "arrowtriangle.down.fill")
-                    .font(.caption)
-                    .foregroundColor(.red)
-                    .offset(x: 0, y: -5)
-                  Text(place.title).font(.caption)
+                    Image(systemName: "arrowtriangle.down.fill")
+                      .font(.caption)
+                      .foregroundColor(.blue)
+                      .offset(x: 0, y: -5)
+                    Text(place.title).font(.caption)
+                  }
+                  
+                  else if (place.tags[0].color == "red"){
+                    Image(systemName: "mappin.circle.fill")
+                      .font(.title)
+                      .foregroundColor(.red)
+
+                    Image(systemName: "arrowtriangle.down.fill")
+                      .font(.caption)
+                      .foregroundColor(.red)
+                      .offset(x: 0, y: -5)
+                    Text(place.title).font(.caption)
+                  }
+                  
+                  else {
+                    Image(systemName: "mappin.circle.fill")
+                      .font(.title)
+                      .foregroundColor(.pink)
+
+                    Image(systemName: "arrowtriangle.down.fill")
+                      .font(.caption)
+                      .foregroundColor(.pink)
+                      .offset(x: 0, y: -5)
+                    Text(place.title).font(.caption)
+                  }
+                  
+                  
                 }
                 
               }}

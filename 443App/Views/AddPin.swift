@@ -40,7 +40,7 @@ struct AddPin: View {
 //  //@State var longitude: String = long ;
 //  //@State var latitude: String = lat ;
   ///
-  @State var t = "Happy";
+  @State var t = "Custom";
   @State var d = Date()
   
   var tags: [Tag] = UserViewModel().allTags;
@@ -112,10 +112,11 @@ struct AddPin: View {
 //          .padding(.trailing)
 //      }.padding()
       // COMMENTED OUT LONG AND LAT THINGS
+      Form{
       HStack {
-//        Text("tag:")
-//          .fontWeight(.bold)
-//          .padding(.leading)
+        Text("select tag:")
+          .fontWeight(.bold)
+          .padding(.leading)
 //        TextField("tag", text: $t)
 //          .padding(.trailing)
         
@@ -139,10 +140,13 @@ struct AddPin: View {
             }
             Text("Custom")
           }
-        ).pickerStyle(MenuPickerStyle())
-        
-        if (t == "Custom"){
-          TextField("Create Tag", text: $t)
+        )
+      }
+      HStack  {
+        Text("create tag:")
+          .fontWeight(.bold)
+          .padding(.leading)
+          TextField("tag name", text: $t)
             .padding(.trailing)
           
 //          Picker(
@@ -154,20 +158,20 @@ struct AddPin: View {
 //              }
 //            }
           Picker(
-            selection: $t,
-            label: Text("Color"),
+            selection: $c,
+            label: Text("color"),
             content: {
               ForEach(colors, id: \.self){ colorName in
                 Text(colorName)
                   .tag(colorName)
               }
             }
-          ).pickerStyle(MenuPickerStyle())
+          )
           
-        }
           
         
       }.padding()
+      }
       HStack {
         Text("date:")
           .fontWeight(.bold)
