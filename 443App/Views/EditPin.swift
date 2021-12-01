@@ -30,8 +30,20 @@ struct EditPin: View {
   var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
   @State var c = "";
   @State var isChecked:Bool = false
+  
+  
+  
+  @State var showImagePicker: Bool = false
+  @State var image: UIImage? = nil
 
-
+    var displayImage: Image? {
+      if let picture = image {
+        return Image(uiImage: picture)
+      } else {
+        return nil
+      }
+    }
+    
 
     var body: some View {
       VStack {
@@ -154,6 +166,19 @@ struct EditPin: View {
               )
             }.padding()
             }
+          
+          displayImage?.resizable().scaledToFit().padding()
+                Button(action: {
+                  self.showImagePicker = true
+                }) {
+                  Text("Add Picture")
+                }.padding()
+                
+        }.sheet(isPresented: $showImagePicker)
+        {
+              PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
+              
+
         }
       }.navigationBarTitle("Editing Pin")
       .navigationBarItems(trailing:
@@ -174,7 +199,7 @@ struct EditPin: View {
             }
           }
           self.uvm.editPin(docId: pin.docId)
-          self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
+        self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d, picture: self.image)
           
           self.presentationMode.wrappedValue.dismiss()
           Journal(uvm:uvm).displayPins()
