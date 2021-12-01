@@ -10,13 +10,51 @@ import SwiftUI
 
 struct PinDetail: View {
 
-  @EnvironmentObject var userPins: UserPins
   @ObservedObject var uvm: UserViewModel
-  var pin: MemoryPin
-  let width = UIScreen.main.bounds.width * 0.75
+    var pin: MemoryPin
+    var photo: Photo = Photo(pinId: "")
+    var width: Double
+    
+   
+    init(uvm: UserViewModel, pin: MemoryPin)
+    {
+      self.uvm = uvm
+      self.pin = pin
+      
+      for pic in uvm.allPics
+      {
+        print(pic.pinId)
+        if (pic.pinId == pin.docId )
+        {
+          
+          self.photo = pic
+        }
+        print("IN PIN DETAIL")
+        
+        print(self.photo.pinId)
+
+      }
+      
+      self.width = UIScreen.main.bounds.width * 0.75
+      
+      
+    }
 
   var body: some View {
     VStack {
+      
+      photo.picture?
+              .resizable()
+              .scaledToFit()
+              .clipShape(Circle())
+              .overlay(
+                Circle()
+                  .stroke(Color.white, lineWidth: 4)
+                  .shadow(radius: 10)
+            )
+              .frame(width: width, height: width, alignment: .center)
+              .padding()
+      
       HStack {
         Text("description:")
           .fontWeight(.bold)
@@ -25,14 +63,7 @@ struct PinDetail: View {
         Text(pin.description)
           .padding(.trailing)
       }.padding()
-      HStack {
-        Text("street:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        Spacer()
-        Text(pin.addressStreet)
-          .padding(.trailing)
-      }.padding()
+   
       Spacer()
       HStack {
         Text("city:")
@@ -43,14 +74,7 @@ struct PinDetail: View {
           .padding(.trailing)
       }.padding()
       Spacer()
-      HStack {
-        Text("state:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        Spacer()
-        Text(pin.addressState)
-          .padding(.trailing)
-      }.padding()
+   
       Spacer()
       HStack {
         Text("zip:")
@@ -81,6 +105,6 @@ struct PinDetail: View {
     .navigationBarItems(trailing:
                           NavigationLink(destination: EditPin(uvm: uvm, pin: pin)) {
           Image(systemName: "square.and.pencil")
-      })    .environmentObject(userPins)
+      })    //.environmentObject(userPins)
   }
 }

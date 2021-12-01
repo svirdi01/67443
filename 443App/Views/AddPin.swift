@@ -49,6 +49,18 @@ struct AddPin: View {
   @State var c = "red";
 
   
+  @State var showImagePicker: Bool = false
+  @State var image: UIImage? = nil
+
+    var displayImage: Image? {
+      if let picture = image {
+        return Image(uiImage: picture)
+      } else {
+        return nil
+      }
+    }
+    
+  
   var body: some View {
 //    NavigationLink(
 //      destination: MapPinsView(uvm:uvm),
@@ -172,9 +184,22 @@ struct AddPin: View {
               )
             }.padding()
             }
+        
+        
+        displayImage?.resizable().scaledToFit().padding()
+              Button(action: {
+                self.showImagePicker = true
+              }) {
+                Text("Add Picture")
+              }.padding()
+              
+      }.sheet(isPresented: $showImagePicker)
+      {
+            PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
+            
 
         
-      } //form end
+      }//form end
     }.navigationBarTitle("New Pin")
     .navigationBarItems(trailing:
       Button(action:{
@@ -192,7 +217,7 @@ struct AddPin: View {
             tagArr.append(customTag);
           }
         }
-        self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
+      self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d, picture: self.image)
         print("TAGARR",tagArr)
         tagArr = []
         Journal(uvm:uvm).displayPins()
