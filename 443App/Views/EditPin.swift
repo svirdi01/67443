@@ -17,10 +17,7 @@ struct EditPin: View {
   
   @State var title: String = ""
   @State var description: String = ""
-  @State var street: String = ""
-  @State var city: String = ""
-  @State var state: String = "F"
-  @State var zip: String = "F"
+  @State var locdescription: String = ""
   @State var location = Location(latitude: 40.442609, longitude: -79.945651)
   @State var longitude: String = "" ;
   @State var latitude: String = "" ;
@@ -31,6 +28,7 @@ struct EditPin: View {
   @State var c = "";
   @State var isChecked:Bool = false
   
+
   
   
   @State var showImagePicker: Bool = false
@@ -66,36 +64,22 @@ struct EditPin: View {
             .fontWeight(.bold)
             .padding(.leading)
           TextField("description", text: $description).onAppear() {
-            self.description = self.pin.description}.padding(.trailing)
+            self.description = self.pin.description
+            self.longitude = String(self.pin.location.longitude)
+            self.latitude = String(self.pin.location.latitude)
+          }.padding(.trailing)
         }.padding()
         HStack {
-          Text("street:")
+          Text("location:")
             .fontWeight(.bold)
             .padding(.leading)
-          TextField("street", text: $street).onAppear() {
-            self.street = self.pin.addressStreet}.padding(.trailing)
-          Text("city:")
-            .fontWeight(.bold)
-            .padding(.leading)
-          TextField("city", text: $city).onAppear() {
-            self.city = self.pin.addressCity}.padding(.trailing)
-        }.padding()
-        HStack {
-          Text("state:")
-            .fontWeight(.bold)
-            .padding(.leading)
-          TextField("state", text: $state).onAppear() {
-            self.state = self.pin.addressState}.padding(.trailing)
-          Text("zip:")
-            .fontWeight(.bold)
-            .padding(.leading)
-          TextField("zip", text: $zip).onAppear() {
-            self.zip = self.pin.addressZip}.padding(.trailing)
+          TextField("location", text: $locdescription).onAppear() {
+            self.locdescription = self.pin.locdescription}.padding(.trailing)
         }.padding()
 //        HStack {
 //          Text("longitude:")
 //            .fontWeight(.bold)
-//            .padding(.leading)
+//           .padding(.leading)
 //          TextField("longitude", text: $longitude).onAppear() {
 //            let longVal = String(self.pin.location.longitude)
 //            self.longitude = longVal}.padding(.trailing)
@@ -106,7 +90,7 @@ struct EditPin: View {
 //            .padding(.leading)
 //          TextField("latitude", text: $latitude).onAppear() {
 //            let latVal = String(self.pin.location.latitude)
-//            self.latitude = latVal}.padding(.trailing)
+//           self.latitude = latVal}.padding(.trailing)
 //        }.padding()
         HStack {
           Text("date:")
@@ -120,7 +104,6 @@ struct EditPin: View {
           .onAppear() {
             self.d = self.pin.date}.padding(.trailing)
         }.padding()
-        
         HStack{
           Picker(
             selection: $t,
@@ -199,7 +182,7 @@ struct EditPin: View {
             }
           }
           self.uvm.editPin(docId: pin.docId)
-        self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d, picture: self.image)
+        self.uvm.savePin(title: title, description: description, locdescription: locdescription, location: loc, tags: tagArr, date: d, picture: self.image)
           
           self.presentationMode.wrappedValue.dismiss()
           Journal(uvm:uvm).displayPins()

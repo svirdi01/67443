@@ -31,10 +31,8 @@ struct AddPin: View {
  
   @State var title: String = "F"
   @State var description: String = "F"
-  @State var street: String = "F"
-  @State var city: String = "F"
-  @State var state: String = "F"
-  @State var zip: String = "F"
+  @State var locdescription: String = "F"
+
   
   //@State var showNewView = false
   ///
@@ -88,29 +86,12 @@ struct AddPin: View {
           .padding(.trailing)
       }.padding()
       HStack {
-        Text("street:")
+        Text("Location:")
           .fontWeight(.bold)
           .padding(.leading)
-        TextField("street", text: $street)
+        TextField("location", text: $locdescription)
           .padding(.trailing)
-        Text("city:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        TextField("city", text: $city)
-          .padding(.trailing)
-      }.padding()
-      HStack {
-        Text("state:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        TextField("state", text: $state)
-          .padding(.trailing)
-        Text("zip:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        TextField("zip", text: $zip)
-          .padding(.trailing)
-      }.padding()
+      }
         
         HStack {
           Text("date:")
@@ -217,7 +198,7 @@ struct AddPin: View {
             tagArr.append(customTag);
           }
         }
-      self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d, picture: self.image)
+      self.uvm.savePin(title: title, description: description, locdescription: locdescription, location: loc, tags: tagArr, date: d, picture: self.image)
         print("TAGARR",tagArr)
         tagArr = []
         Journal(uvm:uvm).displayPins()

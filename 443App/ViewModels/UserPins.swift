@@ -17,9 +17,9 @@ class UserPins: ObservableObject {
     self.allPins = allPins
   }
   
-  func savePin(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, docId: String) {
+  func savePin(title: String , description: String, locdescription: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, docId: String) {
     
-    let newPin = MemoryPin(title: title, description: description, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, location: location, tags: [], date: date, docId: docId)
+    let newPin = MemoryPin(title: title, description: description, locdescription: locdescription, location: location, tags: [], date: date, docId: docId)
     
     self.allPins.append(newPin)
      print("Pin count now \(self.allPins.count)")

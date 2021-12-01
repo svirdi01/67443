@@ -9,10 +9,7 @@ class MemoryPin: Identifiable {
 
   var title: String
   var description: String
-  var addressStreet: String
-  var addressCity: String
-  var addressState: String
-  var addressZip: String
+  var locdescription: String
   var location: Location
   var tags = [Tag]()
   var memoryImage: Image?
@@ -20,14 +17,11 @@ class MemoryPin: Identifiable {
   var id: UUID
   var docId: String
 
-  init(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, docId: String)
+  init(title: String , description: String, locdescription: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, docId: String)
   {
     self.title = title
     self.description = description
-    self.addressStreet = addressStreet
-    self.addressCity = addressCity
-    self.addressState = addressState
-    self.addressZip = addressZip
+    self.locdescription = locdescription
     self.location = location
     self.tags = tags
     self.date = date
