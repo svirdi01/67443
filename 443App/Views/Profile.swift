@@ -139,6 +139,7 @@ struct Profile: View {
                 .padding(.top, 60)
               
               Text(uvm.user.name).bold()
+                .foregroundColor(.black)
 //              font(Font.custom("AlteHaasGroteskRegular", size: 18))
             }
             Spacer()
@@ -149,27 +150,38 @@ struct Profile: View {
                 HStack {
                   VStack{
                     Text("First Pin Dropped")
+                      .foregroundColor(.black)
+
                     if (uvm.memoryPins.count == 0)
                     {
                       Text("N/A")
+                        .foregroundColor(.black)
+
                       
                     }
                     else
                     {
                       Text(stringFromDate(date: uvm.memoryPins[0].date) as String)
+                        .foregroundColor(.black)
                     }
                   }
                   Text("")
                   VStack{
                     Text("Latest Pin Dropped")
+                      .foregroundColor(.black)
+
                     if (uvm.memoryPins.count == 0)
                     {
                       Text("N/A")
+                        .foregroundColor(.black)
+
                       
                     }
                     else
                     {
                       Text(stringFromDate(date: uvm.memoryPins[uvm.memoryPins.count-1].date) as String)
+                        .foregroundColor(.black)
+
                     }
                   }
                 }.font(.system(size: 14))
@@ -187,6 +199,7 @@ struct Profile: View {
                       .padding()
                       .frame(width: 130, height: 115)
                       .background(boxColor)
+                      .foregroundColor(.black)
                       .cornerRadius(30)
                       .overlay(
                           RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
@@ -199,6 +212,7 @@ struct Profile: View {
                       .padding()
                       .frame(width: 130, height: 115)
                     .background(boxColor)
+                    .foregroundColor(.black)
                     .cornerRadius(30)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
@@ -215,6 +229,7 @@ struct Profile: View {
                       .padding()
                       .frame(width: 130, height: 115)
                       .background(boxColor)
+                      .foregroundColor(.black)
                       .cornerRadius(30)
                       .overlay(
                           RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
@@ -227,6 +242,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 130, height: 115)
                       .background(boxColor)
+                      .foregroundColor(.black)
                       .cornerRadius(30)
                       .overlay(
                           RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
@@ -245,6 +261,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 130, height: 115)
                       .background(boxColor)
+                      .foregroundColor(.black)
                       .cornerRadius(30)
                       .overlay(
                           RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
@@ -260,6 +277,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 130, height: 115)
                       .background(boxColor)
+                      .foregroundColor(.black)
                       .cornerRadius(30)
                       .overlay(
                           RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
@@ -275,6 +293,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 130, height: 115)
                       .background(boxColor)
+                      .foregroundColor(.black)
                       .cornerRadius(30)
                       .overlay(
                           RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
@@ -289,6 +308,7 @@ struct Profile: View {
                         .padding()
                         .frame(width: 130, height: 115)
                       .background(boxColor)
+                      .foregroundColor(.black)
                       .cornerRadius(30)
                       .overlay(
                           RoundedRectangle(cornerRadius: 25).stroke(border, lineWidth: 4)
