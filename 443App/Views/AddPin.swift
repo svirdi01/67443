@@ -45,7 +45,7 @@ struct AddPin: View {
   ///
   @State var t = "College";
   @State var d = Date()
-  var tags: [Tag] = UserViewModel().allTags;
+  @State var tags: [Tag] = UserViewModel().allTags;
   var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
   @State var c = "red";
 
@@ -60,11 +60,13 @@ struct AddPin: View {
     VStack {
 //      Text("VM Pin Count: \(userPins.allPins.count)")
 //      Text("VM User Name: \(userPins.forUser.name)")
+      Form{
       HStack {
         Text("title:")
           .fontWeight(.bold)
           .padding(.leading)
-        TextField("title of pin", text: $title)
+        TextField("title of pin", text: $title).onAppear() {
+          self.tags = uvm.allTags; }
           .padding(.trailing)
       }.padding()
       HStack {
@@ -98,7 +100,17 @@ struct AddPin: View {
         TextField("zip", text: $zip)
           .padding(.trailing)
       }.padding()
-      
+        
+        HStack {
+          Text("date:")
+            .fontWeight(.bold)
+            .padding(.leading)
+          DatePicker(
+                  "",
+                  selection: $d,
+                  displayedComponents: [.date]
+              )
+        }.padding()
       //COMMENTED OUT LONG AND LAT THINGS
 //      HStack {
 //        Text("longitude:")
@@ -115,7 +127,6 @@ struct AddPin: View {
 //          .padding(.trailing)
 //      }.padding()
       // COMMENTED OUT LONG AND LAT THINGS
-      Form{
     
         HStack{
           Picker(
@@ -137,46 +148,34 @@ struct AddPin: View {
           Button(action: toggle){
                HStack{
                    Image(systemName: isChecked ? "checkmark.square": "square")
-                   Text("Using custom tag?")
+                   Text("Want to create a custom tag?")
                }
-
-           }
+          }
         }
-        HStack{
-          Text("name:")
-            .fontWeight(.bold)
-//            .padding(.leading)
-          TextField("tag", text: $t)
-//            .padding(.trailing)
-          
-          Picker(
-            selection: $c,
-            label: Text("color:")
-              .fontWeight(.bold)
-//              .padding(.leading)
-            ,
-            content: {
-              ForEach(colors, id: \.self){ colorName in
-                Text(colorName)
-                  .foregroundColor(Color(colorName))
-                  .tag(colorName)
-              }
+            if(isChecked){
+            HStack{
+              Text("name:")
+                .fontWeight(.bold)
+              TextField("tag", text: $t)
+              
+              Picker(
+                selection: $c,
+                label: Text("color:")
+                  .fontWeight(.bold)
+                ,
+                content: {
+                  ForEach(colors, id: \.self){ colorName in
+                    Text(colorName)
+                      .foregroundColor(Color(colorName))
+                      .tag(colorName)
+                  }
+                }
+              )
+            }.padding()
             }
-          )
-        }.padding()
+
         
       } //form end
-        
-      HStack {
-        Text("date:")
-          .fontWeight(.bold)
-          .padding(.leading)
-        DatePicker(
-                "",
-                selection: $d,
-                displayedComponents: [.date]
-            )
-      }.padding()
     }.navigationBarTitle("New Pin")
     .navigationBarItems(trailing:
       Button(action:{
@@ -186,16 +185,16 @@ struct AddPin: View {
         if (isChecked && !(tagArr.contains(customTag))){
           tagArr.append(customTag);
         }
-        for ctag in uvm.allTags
-        {
-          print("CTAG",ctag.name)
-          print("T NAMEEE",t)
-          if(!(isChecked) && (ctag.name != t && ctag.color != c))
-          {
-            tagArr.append(ctag)
-            
-          }
-        }
+//        for ctag in uvm.allTags
+//        {
+//          print("CTAG",ctag.name)
+//          print("T NAMEEE",t)
+//          if(!(isChecked) && (ctag.name != t && ctag.color != c))
+//          {
+//            tagArr.append(ctag)
+//
+//          }
+//        }
         self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
         
         tagArr = []
