@@ -27,6 +27,7 @@ struct AddPin: View {
     //NEHAS EDITS
     self.long=long
     self.lat=lat
+
   }
  
   @State var title: String = "F"
@@ -42,7 +43,7 @@ struct AddPin: View {
 //  //@State var longitude: String = long ;
 //  //@State var latitude: String = lat ;
   ///
-  @State var t = "College";
+  @State var t = "";
   @State var d = Date()
   @State var tags = UserViewModel().allTags;
   var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
@@ -64,8 +65,7 @@ struct AddPin: View {
         Text("title:")
           .fontWeight(.bold)
           .padding(.leading)
-        TextField("title of pin", text: $title).onAppear() {
-          self.tags = uvm.allTags; }
+        TextField("title of pin", text: $title)
           .padding(.trailing)
       }.padding()
       HStack {
@@ -128,10 +128,11 @@ struct AddPin: View {
       // COMMENTED OUT LONG AND LAT THINGS
     
         HStack{
-          Picker(
-            selection: $t,
-            label: Text("select tag:")
-              .fontWeight(.bold)
+          Text("select tag:")
+            .fontWeight(.bold)
+            .padding(.leading)
+          Picker("select tag:",
+            selection: $t
           ) {
               ForEach(tags){ tag in
                 let tagColor = tag.color
@@ -140,8 +141,20 @@ struct AddPin: View {
                   .foregroundColor(Color(tagColor))
                   .tag("\(tag.name)")
               }
-            }
-      }.padding()
+          }.pickerStyle(WheelPickerStyle())
+          .frame(height: 50)
+          .frame(width: 100)
+          .clipped()
+          .onAppear(){
+//            uvm.memoryPins = [MemoryPin]()
+//            uvm.allTags = [Tag]()
+//            uvm.userPinTags = [Tag]()
+//            uvm.fetchUser(userID: uvm.user.userID);
+//            uvm.updatePins()
+            self.tags = uvm.allTags;
+            print("HEHEHEHHE COUNT",self.tags.count);
+          }
+        }.padding()
         
         HStack {
           Button(action: toggle){
@@ -156,20 +169,21 @@ struct AddPin: View {
               Text("name:")
                 .fontWeight(.bold)
               TextField("tag", text: $t)
-              
-              Picker(
-                selection: $c,
-                label: Text("color:")
-                  .fontWeight(.bold)
-                ,
-                content: {
-                  ForEach(colors, id: \.self){ colorName in
-                    Text(colorName)
-                      .foregroundColor(Color(colorName))
-                      .tag(colorName)
-                  }
+              Text("color:")
+                .fontWeight(.bold)
+              Picker("color:",
+                selection: $c
+              ) {
+                ForEach(colors, id: \.self){ colorName in
+                  Text(colorName)
+                    .foregroundColor(Color(colorName))
+                    .tag(colorName)
                 }
-              )
+                
+              }.pickerStyle(WheelPickerStyle())
+              .frame(height: 50)
+              .frame(width: 100)
+              .clipped()
             }.padding()
             }
 
@@ -177,32 +191,36 @@ struct AddPin: View {
       } //form end
     }.navigationBarTitle("New Pin")
     .navigationBarItems(trailing:
+                          Section{
       Button(action:{
         let loc = Location(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.0)
         var tagArr: [Tag] = []
         var customTag = Tag(name: t, color: c);
+        if(isChecked){
+          tagArr.append(customTag);
+        }else{
         for ctag in uvm.allTags
         {
-          if((ctag.name == t) && !isChecked)
+          if((ctag.name == t))
           {
             tagArr.append(ctag)
 
           }
-          if(isChecked && ctag.name != t){
-            tagArr.append(customTag);
-          }
-        }
+        }}
         self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
         print("TAGARR",tagArr)
         tagArr = []
         Journal(uvm:uvm).displayPins()
-       //self.presentationMode.wrappedValue.dismiss()
+        
+       self.presentationMode.wrappedValue.dismiss()
+       self.presentationMode.wrappedValue.dismiss()
+
         //self.showNewView = true
         
       })
       {
         Text("Add Pin")
-    }
+      }}.disabled(t.isEmpty || title.isEmpty)
     )
 
 

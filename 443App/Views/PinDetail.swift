@@ -69,6 +69,7 @@ struct PinDetail: View {
         if(pin.tags.count > 0){
           Text(String(pin.tags[0].name))
             .padding(.trailing)
+            .foregroundColor(Color(pin.tags[0].color))
         }
         else
         {

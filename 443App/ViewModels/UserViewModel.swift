@@ -67,6 +67,12 @@ class UserViewModel: ObservableObject
             self.userPinTags.append(t)            
       
     }
+      for tag in self.allTags{
+        print("SELF>ALLTAGS", tag.name)
+      }
+      for othertag in self.allTags{
+        print("SELF>USRLTAGS", othertag.name)
+      }
       self.bool = true;
       m.setTags(tags: tagForMem)
       self.memoryPins.append(m)
@@ -194,8 +200,8 @@ class UserViewModel: ObservableObject
     for tag in tags
     {
       
-      if(!tempArr.contains(tag))
-      {
+//      if(!tempArr.contains(tag))
+//      {
         tempArr.append(tag)
         self.db.collection("Users").document(user.userID).collection("MemoryPins").document(ref.documentID).collection("Tags").addDocument(data: [
             "name": tag.name,
@@ -203,7 +209,7 @@ class UserViewModel: ObservableObject
           
         ])
         
-      }
+//      }
       
     }
     
@@ -211,6 +217,7 @@ class UserViewModel: ObservableObject
     updatePins()
     
     filteredmemoryPins = self.memoryPins
+    print("ALLTAGSSSS \(self.allTags.count)", self.userPinTags.count)
      print("Pin count now \(self.memoryPins.count)")
   }
   
@@ -218,6 +225,9 @@ class UserViewModel: ObservableObject
   {
     self.memoryPins = [MemoryPin]()
     self.allTags = [Tag]()
+    self.allTags = [Tag(name: "College", color: "orange"),Tag(name: "School", color: "red"),Tag(name: "Birthday", color: "blue"), Tag(name: "Relationship", color: "magenta"),Tag(name: "Sports", color: "green"),
+         Tag(name: "Events", color: "black"), Tag(name: "Food", color: "yellow"), Tag(name: "Travel", color: "purple")]
+    self.userPinTags = [Tag]()
     fetchUser(userID: user.userID)
   }
   
@@ -248,6 +258,12 @@ class UserViewModel: ObservableObject
         } else {
             print("Document successfully removed!")
         }
+    }
+  }
+  
+  func updateTags(){
+    for pin in self.memoryPins{
+      self.allTags.append(pin.tags[0])
     }
   }
   
