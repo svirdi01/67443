@@ -192,8 +192,6 @@ class UserViewModel: ObservableObject
     for tag in tags
     {
       
-      if(!tempArr.contains(tag))
-      {
         tempArr.append(tag)
         self.db.collection("Users").document(user.userID).collection("MemoryPins").document(ref.documentID).collection("Tags").addDocument(data: [
             "name": tag.name,
@@ -201,7 +199,6 @@ class UserViewModel: ObservableObject
           
         ])
         
-      }
       
     }
     
@@ -228,6 +225,9 @@ class UserViewModel: ObservableObject
   {
     self.memoryPins = [MemoryPin]()
     self.allTags = [Tag]()
+    self.allTags = [Tag(name: "College", color: "orange"),Tag(name: "School", color: "red"),Tag(name: "Birthday", color: "blue"), Tag(name: "Relationship", color: "magenta"),Tag(name: "Sports", color: "green"),
+         Tag(name: "Events", color: "black"), Tag(name: "Food", color: "yellow"), Tag(name: "Travel", color: "purple")]
+    self.userPinTags = [Tag]()
     fetchUser(userID: user.userID)
   }
   

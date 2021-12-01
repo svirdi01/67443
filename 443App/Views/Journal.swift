@@ -17,6 +17,7 @@ struct Journal: View {
   {
     self.uvm = uvm
     displayedPins = self.uvm.memoryPins
+    MapPinsView(uvm: uvm)
   }
   
   var body: some View {

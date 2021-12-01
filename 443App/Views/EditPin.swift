@@ -53,10 +53,7 @@ struct EditPin: View {
 //          TextField("title of pin", text: $title)
 //            .padding(.trailing)
           TextField("title of pin", text: $title).onAppear() {
-            self.title = self.pin.title
-            self.tags = uvm.allTags;
-            self.t = String(self.pin.tags[0].name);
-            self.c = String(self.pin.tags[0].color);
+            self.title = self.pin.title;
           }.padding(.trailing)
         }.padding()
         HStack {
@@ -104,21 +101,29 @@ struct EditPin: View {
           .onAppear() {
             self.d = self.pin.date}.padding(.trailing)
         }.padding()
-        HStack{
-          Picker(
-            selection: $t,
-            label: Text("select tag:")
-              .fontWeight(.bold)
-          ) {
-              ForEach(tags){ tag in
-                let tagColor = tag.color
-                Text("\(tag.name)")
-                  .font(.headline)
-                  .foregroundColor(Color(tagColor))
-                  .tag("\(tag.name)")
-              }
-            }
-      }.padding()
+          HStack{
+                Text("select tag:")
+                  .fontWeight(.bold)
+                  .padding(.leading)
+                Picker("select tag:",
+                  selection: $t
+                ) {
+                    ForEach(tags){ tag in
+                      let tagColor = tag.color
+                      Text("\(tag.name)")
+                        .font(.headline)
+                        .foregroundColor(Color(tagColor))
+                        .tag("\(tag.name)")
+                    }
+                }.pickerStyle(WheelPickerStyle())
+                .frame(height: 50)
+                .frame(width: 100)
+                .clipped()
+                .onAppear(){
+                  self.tags = uvm.allTags;
+                  print("HEHEHEHHE COUNT",self.tags.count);
+                }
+              }.padding()
         
         HStack {
           Button(action: toggle){
@@ -128,27 +133,28 @@ struct EditPin: View {
                }
           }
         }
-            if(isChecked){
-            HStack{
-              Text("name:")
-                .fontWeight(.bold)
-              TextField("tag", text: $t)
+          if(isChecked){
+          HStack{
+            Text("name:")
+              .fontWeight(.bold)
+            TextField("tag", text: $t)
+            Text("color:")
+              .fontWeight(.bold)
+            Picker("color:",
+              selection: $c
+            ) {
+              ForEach(colors, id: \.self){ colorName in
+                Text(colorName)
+                  .foregroundColor(Color(colorName))
+                  .tag(colorName)
+              }
               
-              Picker(
-                selection: $c,
-                label: Text("color:")
-                  .fontWeight(.bold)
-                ,
-                content: {
-                  ForEach(colors, id: \.self){ colorName in
-                    Text(colorName)
-                      .foregroundColor(Color(colorName))
-                      .tag(colorName)
-                  }
-                }
-              )
-            }.padding()
-            }
+            }.pickerStyle(WheelPickerStyle())
+            .frame(height: 50)
+            .frame(width: 100)
+            .clipped()
+          }.padding()
+          }
           
           displayImage?.resizable().scaledToFit().padding()
                 Button(action: {
@@ -165,25 +171,27 @@ struct EditPin: View {
         }
       }.navigationBarTitle("Editing Pin")
       .navigationBarItems(trailing:
+Section{
         Button(action:{
         
           let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
           var tagArr: [Tag] = []
           var customTag = Tag(name: t, color: c);
+          if(isChecked){
+            tagArr.append(customTag);
+          }else{
           for ctag in uvm.allTags
           {
-            if((ctag.name == t) && !isChecked)
+            if((ctag.name == t))
             {
               tagArr.append(ctag)
 
             }
-            if(isChecked && ctag.name != t){
-              tagArr.append(customTag);
-            }
-          }
+          }}
+          print("TAGS ARRAY",tagArr)
+          self.uvm.savePin(title: title, description: description, locdescription: locdescription, location: loc, tags: tagArr, date: d, picture: self.image)
           self.uvm.editPin(docId: pin.docId)
-        self.uvm.savePin(title: title, description: description, locdescription: locdescription, location: loc, tags: tagArr, date: d, picture: self.image)
-          
+
           self.presentationMode.wrappedValue.dismiss()
           Journal(uvm:uvm).displayPins()
           
@@ -191,6 +199,7 @@ struct EditPin: View {
         {
           Text("Done")
         }
+        }.disabled(t.isEmpty || title.isEmpty)
       )
       
       Button(action: {
