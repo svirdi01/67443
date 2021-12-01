@@ -27,7 +27,7 @@ struct MapView: View {
   
   
   //for search shit
-  @State private var search: String=""
+  @EnvironmentObject var mapData: MapViewModel
   
   init(uvm: UserViewModel)
   {
@@ -84,9 +84,55 @@ struct MapView: View {
       }
       .offset(y: 655)
       
-      TextField("Search", text: $search, onEditingChanged:{_ in})
-        {}.textFieldStyle(RoundedBorderTextFieldStyle()).padding().offset(y:44)
+      
+      
+      //SEARCH BAR
+      VStack(spacing:0){
+        HStack{
+          Image(systemName: "magnifyingglass").foregroundColor(.gray)
+          TextField("Search", text: $mapData.searchTxt).colorScheme(.light)
+          
+        }.padding(.vertical, 10).padding(.horizontal).background(Color.white)
+        //DISPLAYING RESULTS
+        if !mapData.places.isEmpty && mapData.searchTxt != ""{
+          ScrollView{
+            VStack(spacing: 15){
+              ForEach(mapData.places){place in
+                Text(place.place.name ?? "").foregroundColor(.black).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+                  .onTapGesture{
+                    
+                  }
+                Divider()
+                
+              }
+            }.padding(.top)
+          }.background(Color.white)
+        }
+        
+          
+          
+      }.padding()
+      Spacer()
+        .onChange(of: mapData.searchTxt, perform: { value in
+          
+          let delay=0.3
+          
+          DispatchQueue.main.asyncAfter(deadline: .now()+delay ){
+            if value == mapData.searchTxt{
+              self.mapData.searchQuery()
+            }
+          }
+          
+        })
+      
+      
+      
+      
+      
+      
     }
+    
+    
          
         
 

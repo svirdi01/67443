@@ -14,6 +14,10 @@ struct BottomBar: View {
   var userTags: UserTags
   @ObservedObject var uvm: UserViewModel
   
+  // NEHAS CODE
+  @StateObject var MapData = MapViewModel()
+  //NEHAS CODE
+  
   
   init(userviewmodel: UserViewModel)
   {
@@ -43,7 +47,7 @@ struct BottomBar: View {
           .navigationBarHidden(true)
           .navigationBarBackButtonHidden(true)
       
-        MapPinsView(uvm: uvm)
+        MapPinsView(uvm: uvm).environmentObject(MapData)
           .tabItem {
             Image(systemName: "map.fill")
             Text("Map")

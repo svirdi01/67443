@@ -4,12 +4,63 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Struct (Playground) 1.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Struct (Playground) 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Struct (Playground) 3.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Struct (Playground) 4.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>30</integer>
+		</dict>
+		<key>Struct (Playground) 5.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>31</integer>
+		</dict>
+		<key>Struct (Playground) 6.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>32</integer>
+		</dict>
+		<key>Struct (Playground) 7.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>33</integer>
+		</dict>
+		<key>Struct (Playground) 8.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>34</integer>
+		</dict>
+		<key>Struct (Playground) 9.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>35</integer>
+		</dict>
 		<key>Struct (Playground).xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 </dict>

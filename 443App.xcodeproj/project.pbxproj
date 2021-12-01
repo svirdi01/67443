@@ -15,6 +15,8 @@
 		4BBCBF472C3064FC0D8D854E /* Pods_443App_443AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA78FA31B915E33DCDA5947 /* Pods_443App_443AppUITests.framework */; };
 		61BA2A3C42C3532765AACE1C /* Pods_443App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7E420366358844679B6EF4 /* Pods_443App.framework */; };
 		A9688072272C767300F0C51A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9688071272C767300F0C51A /* User.swift */; };
+		A97190702756C567002B5B37 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A971906F2756C567002B5B37 /* MapViewModel.swift */; };
+		A97190722756CFC0002B5B37 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97190712756CFC0002B5B37 /* Place.swift */; };
 		A994B61F2734CD3B00F293FD /* ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A994B61E2734CD3B00F293FD /* ViewTests.swift */; };
 		A9D41DED27419FEA001944F4 /* SetPinLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D41DEC27419FEA001944F4 /* SetPinLocationView.swift */; };
 		CE808D2B402CB61F660EAECD /* Pods_443AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B94E06ED5CEBFB10048B6F /* Pods_443AppTests.framework */; };
@@ -91,6 +93,8 @@
 		9EB9D6F4556EA1A114E91F7A /* Pods-443AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443AppTests.debug.xcconfig"; path = "Target Support Files/Pods-443AppTests/Pods-443AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A198CFFD98AC49AA48FC836A /* Pods-443App-443AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443App-443AppUITests.debug.xcconfig"; path = "Target Support Files/Pods-443App-443AppUITests/Pods-443App-443AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A9688071272C767300F0C51A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A971906F2756C567002B5B37 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		A97190712756CFC0002B5B37 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A994B61E2734CD3B00F293FD /* ViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTests.swift; sourceTree = "<group>"; };
 		A9D41DEC27419FEA001944F4 /* SetPinLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPinLocationView.swift; sourceTree = "<group>"; };
 		DFA78FA31B915E33DCDA5947 /* Pods_443App_443AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_443App_443AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +191,7 @@
 				E5191D3C273DA3920097D246 /* UserTags.swift */,
 				E5191D32273DA38D0097D246 /* UserPins.swift */,
 				E5191E0427415BEF0097D246 /* UserViewModel.swift */,
+				A971906F2756C567002B5B37 /* MapViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				A9688071272C767300F0C51A /* User.swift */,
 				E5CB3CBE272C568B001936AE /* Tag.swift */,
 				E5191D64273DA53C0097D246 /* LocationDelegate.swift */,
+				A97190712756CFC0002B5B37 /* Place.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -551,12 +557,14 @@
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
 				E5BCC04B2755C1FA00E5D98D /* LogIn.swift in Sources */,
 				E5FDC64C2732C1BC00460D27 /* PinRow.swift in Sources */,
+				A97190702756C567002B5B37 /* MapViewModel.swift in Sources */,
 				E5CB3CDA2730D6EF001936AE /* AddPin.swift in Sources */,
 				A9688072272C767300F0C51A /* User.swift in Sources */,
 				E5191D3D273DA3930097D246 /* UserTags.swift in Sources */,
 				E5AA6464271F4EFC00D3C4A8 /* _43App.xcdatamodeld in Sources */,
 				A9D41DED27419FEA001944F4 /* SetPinLocationView.swift in Sources */,
 				E5191D33273DA38D0097D246 /* UserPins.swift in Sources */,
+				A97190722756CFC0002B5B37 /* Place.swift in Sources */,
 				E5AA6461271F4EFC00D3C4A8 /* ContentView.swift in Sources */,
 				E5191E0527415BEF0097D246 /* UserViewModel.swift in Sources */,
 			);
