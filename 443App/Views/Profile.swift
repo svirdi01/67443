@@ -91,7 +91,7 @@ struct Profile: View {
   {
     var counts = [String: Int]()
     for pin in allPins {
-      let city = pin.addressCity
+      let city = pin.locdescription
       if (counts.keys.contains(city)){
         counts[city]! += 1
       }else{

@@ -128,7 +128,7 @@ class UserViewModel: ObservableObject
                             let d = formatter.date(from:stamp)!
                             
                             
-                            let m = MemoryPin(title: document.get("title") as! String, description: document.get("description") as! String, addressStreet: document.get("addressStreet") as! String, addressCity: document.get("addressCity") as! String, addressState: document.get("addressState") as! String, addressZip: document.get("addressZip") as! String, location: loc, tags: [Tag](), date: d, docId: document.documentID)
+                            let m = MemoryPin(title: document.get("title") as! String, description: document.get("description") as! String, locdescription:  document.get("locdescription") as! String, location: loc, tags: [Tag](), date: d, docId: document.documentID)
                             
                             
                             self.fetchTagsForAMemory(documentID: document.documentID, m: m)
@@ -167,7 +167,7 @@ class UserViewModel: ObservableObject
   }
   
 
-  func savePin(title: String , description: String, addressStreet: String, addressCity: String, addressState: String, addressZip: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, picture: UIImage?) {
+  func savePin(title: String , description: String, locdescription: String, location: Location, tags: Array<Tag>, imagePath: String? = nil, date: Date, picture: UIImage?) {
     
     //let newPin = MemoryPin(title: title, description: description, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip, location: location, tags: tags , date: date)
     
@@ -181,10 +181,7 @@ class UserViewModel: ObservableObject
     var ref = self.db.collection("Users").document(user.userID).collection("MemoryPins").addDocument( data: [
       "title": title,
       "description": description,
-      "addressStreet": addressStreet,
-      "addressCity": addressCity,
-      "addressState": addressState,
-      "addressZip" : addressZip,
+      "locdescription": locdescription,
       "latitude" : String(location.latitude),
       "longitude" : String(location.longitude),
       "date": timestamp
