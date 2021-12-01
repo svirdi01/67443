@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 
+
 class User: ObservableObject, Identifiable, Decodable
 {
   var name: String
