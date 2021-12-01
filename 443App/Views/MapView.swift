@@ -28,6 +28,7 @@ struct MapView: View {
   
   //for search shit
   @State private var search: String=""
+  @State var color="red";
   
   init(uvm: UserViewModel)
   {
@@ -50,16 +51,19 @@ struct MapView: View {
               showsUserLocation: true,
               userTrackingMode: $trackingMode,
               annotationItems: uvm.memoryPins) { place in
+              
             // • If you want larger ballons:
             //MapMarker(coordinate: place.location.coordinates, tint: .blue)
             // • If you want the traditional pin:
             //MapPin(coordinate: place.location.coordinates)
             // • If you want a circle to focus on the location:
              MapAnnotation(coordinate: place.location.coordinates) {
+
               NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
+                
               HStack {
                 VStack(spacing: 0) {
-                    let color = place.tags[0].color
+                    let color = place.tags[0].color;
                     Image(systemName: "mappin.circle.fill")
                       .font(.title)
                       .foregroundColor(Color(color))
