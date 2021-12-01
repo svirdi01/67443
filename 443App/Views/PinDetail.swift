@@ -43,15 +43,24 @@ struct PinDetail: View {
   var body: some View {
     VStack {
       
+      if photo.pinId == ""{
+        Image("default")
+          .resizable()
+          .scaledToFit()
+          .overlay(
+              RoundedRectangle(cornerRadius: 0)
+                  .stroke(Color.white, lineWidth: 4)
+          )
+          .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
+          .padding()
+      }
       photo.picture?
               .resizable()
               .scaledToFit()
-              .clipShape(Circle())
               .overlay(
-                Circle()
-                  .stroke(Color.white, lineWidth: 4)
-                  .shadow(radius: 10)
-            )
+                  RoundedRectangle(cornerRadius: 0)
+                      .stroke(Color.white, lineWidth: 4)
+              )
               .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
               .padding()
       
@@ -73,10 +82,10 @@ struct PinDetail: View {
         Text("tag:")
           .fontWeight(.bold)
           .padding(.leading)
-          .foregroundColor(Color(pin.tags[0].color))
         if(pin.tags.count > 0){
           Text(String(pin.tags[0].name))
             .padding(.trailing)
+            .foregroundColor(Color(pin.tags[0].color))
         }
         else
         {
