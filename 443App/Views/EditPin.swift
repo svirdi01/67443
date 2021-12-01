@@ -54,6 +54,7 @@ struct EditPin: View {
 //            .padding(.trailing)
           TextField("title of pin", text: $title).onAppear() {
             self.title = self.pin.title;
+            self.t = self.pin.tags[0].name;
           }.padding(.trailing)
         }.padding()
         HStack {
@@ -166,7 +167,7 @@ struct EditPin: View {
         }.sheet(isPresented: $showImagePicker)
         {
               PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
-              
+//        }
 
         }
       }.navigationBarTitle("Editing Pin")

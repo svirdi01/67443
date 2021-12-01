@@ -35,7 +35,7 @@ struct PinDetail: View {
 
       }
       
-      self.width = UIScreen.main.bounds.width * 0.75
+      self.width = Double(CGFloat(UIScreen.main.bounds.width * 0.75))
       
       
     }
@@ -52,7 +52,7 @@ struct PinDetail: View {
                   .stroke(Color.white, lineWidth: 4)
                   .shadow(radius: 10)
             )
-              .frame(width: width, height: width, alignment: .center)
+              .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
               .padding()
       
       HStack {
