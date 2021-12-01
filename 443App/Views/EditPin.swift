@@ -26,10 +26,16 @@ struct EditPin: View {
   @State var latitude: String = "" ;
   @State var t = "";
   @State var d = Date();
+  @State var tags = [Tag]();
+  var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
+  @State var c = "";
+  @State var isChecked:Bool = false
+
 
 
     var body: some View {
       VStack {
+        Form{
         HStack {
           Text("title:")
             .fontWeight(.bold)
@@ -37,7 +43,11 @@ struct EditPin: View {
 //          TextField("title of pin", text: $title)
 //            .padding(.trailing)
           TextField("title of pin", text: $title).onAppear() {
-            self.title = self.pin.title}.padding(.trailing)
+            self.title = self.pin.title
+            self.tags = uvm.allTags;
+            self.t = String(self.pin.tags[0].name);
+            self.c = String(self.pin.tags[0].color);
+          }.padding(.trailing)
         }.padding()
         HStack {
           Text("description:")
@@ -70,33 +80,22 @@ struct EditPin: View {
           TextField("zip", text: $zip).onAppear() {
             self.zip = self.pin.addressZip}.padding(.trailing)
         }.padding()
-        HStack {
-          Text("longitude:")
-            .fontWeight(.bold)
-            .padding(.leading)
-          TextField("longitude", text: $longitude).onAppear() {
-            let longVal = String(self.pin.location.longitude)
-            self.longitude = longVal}.padding(.trailing)
-        }.padding()
-        HStack {
-          Text("latitude:")
-            .fontWeight(.bold)
-            .padding(.leading)
-          TextField("latitude", text: $latitude).onAppear() {
-            let latVal = String(self.pin.location.latitude)
-            self.latitude = latVal}.padding(.trailing)
-        }.padding()
-        HStack {
-          Text("tag:")
-            .fontWeight(.bold)
-            .padding(.leading)
-          TextField("tag", text: $t).onAppear() {
-            let tagVal = ""
-            if (self.pin.tags.count > 0){
-              let tagVal = self.pin.tags[0]
-            }
-            self.t = tagVal}.padding(.trailing)
-        }.padding()
+//        HStack {
+//          Text("longitude:")
+//            .fontWeight(.bold)
+//            .padding(.leading)
+//          TextField("longitude", text: $longitude).onAppear() {
+//            let longVal = String(self.pin.location.longitude)
+//            self.longitude = longVal}.padding(.trailing)
+//        }.padding()
+//        HStack {
+//          Text("latitude:")
+//            .fontWeight(.bold)
+//            .padding(.leading)
+//          TextField("latitude", text: $latitude).onAppear() {
+//            let latVal = String(self.pin.location.latitude)
+//            self.latitude = latVal}.padding(.trailing)
+//        }.padding()
         HStack {
           Text("date:")
             .fontWeight(.bold)
@@ -109,20 +108,71 @@ struct EditPin: View {
           .onAppear() {
             self.d = self.pin.date}.padding(.trailing)
         }.padding()
+        
+        HStack{
+          Picker(
+            selection: $t,
+            label: Text("select tag:")
+              .fontWeight(.bold)
+          ) {
+              ForEach(tags){ tag in
+                let tagColor = tag.color
+                Text("\(tag.name)")
+                  .font(.headline)
+                  .foregroundColor(Color(tagColor))
+                  .tag("\(tag.name)")
+              }
+            }
+      }.padding()
+        
+        HStack {
+          Button(action: toggle){
+               HStack{
+                   Image(systemName: isChecked ? "checkmark.square": "square")
+                   Text("Want to create a custom tag?")
+               }
+          }
+        }
+            if(isChecked){
+            HStack{
+              Text("name:")
+                .fontWeight(.bold)
+              TextField("tag", text: $t)
+              
+              Picker(
+                selection: $c,
+                label: Text("color:")
+                  .fontWeight(.bold)
+                ,
+                content: {
+                  ForEach(colors, id: \.self){ colorName in
+                    Text(colorName)
+                      .foregroundColor(Color(colorName))
+                      .tag(colorName)
+                  }
+                }
+              )
+            }.padding()
+            }
+        }
       }.navigationBarTitle("Editing Pin")
       .navigationBarItems(trailing:
         Button(action:{
         
           let loc = Location(latitude: Double(latitude) ?? 0.0, longitude: Double(longitude) ?? 0.0)
           var tagArr: [Tag] = []
-          for ctag in uvm.allTags
-          {
-            if(ctag.name == t)
-            {
-              tagArr.append(ctag)
-            
-            }
+          var customTag = Tag(name: t, color: c);
+          if (isChecked && !(tagArr.contains(customTag))){
+            tagArr.append(customTag);
           }
+//          for ctag in uvm.allTags
+//          {
+//            if(!(isChecked) && (ctag.name != t && ctag.color != c))
+//            {
+//              tagArr.append(ctag)
+//
+//            }
+//          }
         
         
           self.uvm.editPin(docId: pin.docId)
@@ -153,4 +203,6 @@ struct EditPin: View {
       
     
   }
+  func toggle(){isChecked = !isChecked}
+
 }
