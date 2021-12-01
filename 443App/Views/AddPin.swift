@@ -4,7 +4,6 @@
 //
 //  Created by Simran Virdi on 11/1/21.
 //
-
 import Foundation
 import SwiftUI
 import UIKit
@@ -45,7 +44,7 @@ struct AddPin: View {
   ///
   @State var t = "College";
   @State var d = Date()
-  @State var tags: [Tag] = UserViewModel().allTags;
+  @State var tags = UserViewModel().allTags;
   var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
   @State var c = "red";
 
@@ -182,21 +181,19 @@ struct AddPin: View {
         let loc = Location(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.0)
         var tagArr: [Tag] = []
         var customTag = Tag(name: t, color: c);
-        if (isChecked && !(tagArr.contains(customTag))){
-          tagArr.append(customTag);
+        for ctag in uvm.allTags
+        {
+          if((ctag.name == t) && !isChecked)
+          {
+            tagArr.append(ctag)
+
+          }
+          if(isChecked && ctag.name != t){
+            tagArr.append(customTag);
+          }
         }
-//        for ctag in uvm.allTags
-//        {
-//          print("CTAG",ctag.name)
-//          print("T NAMEEE",t)
-//          if(!(isChecked) && (ctag.name != t && ctag.color != c))
-//          {
-//            tagArr.append(ctag)
-//
-//          }
-//        }
         self.uvm.savePin(title: title, description: description, addressStreet: street, addressCity: city, addressState: state, addressZip: zip, location: loc, tags: tagArr, date: d)
-        
+        print("TAGARR",tagArr)
         tagArr = []
         Journal(uvm:uvm).displayPins()
        //self.presentationMode.wrappedValue.dismiss()
