@@ -69,7 +69,7 @@
 		<key>Struct (Playground) 19.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>45</integer>
+			<integer>20</integer>
 		</dict>
 		<key>Struct (Playground) 2.xcscheme</key>
 		<dict>
@@ -79,38 +79,74 @@
 		<key>Struct (Playground) 20.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>21</integer>
 		</dict>
 		<key>Struct (Playground) 21.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>22</integer>
 		</dict>
 		<key>Struct (Playground) 22.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>23</integer>
 		</dict>
 		<key>Struct (Playground) 23.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>49</integer>
+			<integer>24</integer>
 		</dict>
 		<key>Struct (Playground) 24.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>50</integer>
+			<integer>25</integer>
+		</dict>
+		<key>Struct (Playground) 25.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>51</integer>
+		</dict>
+		<key>Struct (Playground) 26.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>52</integer>
+		</dict>
+		<key>Struct (Playground) 27.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>53</integer>
+		</dict>
+		<key>Struct (Playground) 28.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>54</integer>
+		</dict>
+		<key>Struct (Playground) 29.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>55</integer>
 		</dict>
 		<key>Struct (Playground) 3.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
+		</dict>
+		<key>Struct (Playground) 30.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>56</integer>
 		</dict>
 		<key>Struct (Playground) 4.xcscheme</key>
 		<dict>

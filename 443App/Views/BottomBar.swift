@@ -51,7 +51,7 @@ struct BottomBar: View {
           .navigationBarHidden(true)
           .navigationBarBackButtonHidden(true)
       
-        MapPinsView(uvm: uvm)
+        MapPinsView(uvm: uvm).environmentObject(MapData)
           .tabItem {
             Image(systemName: "map.fill")
             Text("Map")
