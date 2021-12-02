@@ -33,20 +33,18 @@ struct MapView: View {
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
-    
-    
   }
   
   
-  @State var coordinateRegion = MKCoordinateRegion(
-    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
-    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+//  @State var coordinateRegion = MKCoordinateRegion(
+//    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
+//    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
   
   var body: some View {
 
         
     ZStack(alignment: .top){
-          Map(coordinateRegion: $coordinateRegion,
+      Map(coordinateRegion: $mapData.coordinateRegion,
               interactionModes: MapInteractionModes.all,
               showsUserLocation: true,
               userTrackingMode: $trackingMode,
@@ -114,9 +112,6 @@ struct MapView: View {
             }.padding(.top)
           }.background(Color.white)
         }
-        
-          
-          
       }.padding()
       Spacer()
         .onChange(of: mapData.searchTxt, perform: { value in
@@ -128,8 +123,21 @@ struct MapView: View {
               self.mapData.searchQuery()
             }
           }
-          
         })
+      //SEARCH BAR
+      
+      
+      // GO TO USER LOCATION BUTTON
+      VStack{
+        Spacer()
+        VStack{
+          Button(action: {mapData.focusLocation()}, label: {
+            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
+          })
+        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
+      }
+      // GO TO USER LOCATION BUTTON
+      
       
       
       

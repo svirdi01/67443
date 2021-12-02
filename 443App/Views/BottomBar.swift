@@ -6,7 +6,7 @@
 //
 import Foundation
 import SwiftUI
-
+import MapKit
 
 struct BottomBar: View {
   @State var isNavigationBarHidden: Bool = true
@@ -16,6 +16,9 @@ struct BottomBar: View {
   
   // NEHAS CODE
   @StateObject var MapData = MapViewModel()
+//  @StateObject var coordinateRegion = MKCoordinateRegion(
+//    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
+//    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
   //NEHAS CODE
   
   

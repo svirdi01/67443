@@ -11,8 +11,22 @@ import MapKit
 
 class MapViewModel: ObservableObject{
   
+  //really trying something here
+  @State var trackingMode: MapUserTrackingMode = .follow
+  @Published var coordinateRegion = MKCoordinateRegion(
+    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
+    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+  
+ // @Published var mapView
+  
+  
+  
+  //@Published var mapView = self.mapView
+  
   //OTHER SHIT
-  @Published var region : MKCoordinateRegion!
+//  @Published var region : MKCoordinateRegion! = MKCoordinateRegion(
+//    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
+//    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
   
   
   
@@ -50,5 +64,14 @@ class MapViewModel: ObservableObject{
     //MapView.addAnnotation(pointAnnotation)
     
     
+  }
+  //focus location
+  func focusLocation(){
+    //guard let _ = region else{return}
+    coordinateRegion = MKCoordinateRegion(
+      center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
+      span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+    //MapView.setRegion(region, animated: true)
+    //MapView.setVisibleMapRect
   }
 }
