@@ -14,6 +14,8 @@
 		4A9218E0273E1637007BB343 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9218DF273E1637007BB343 /* Journal.swift */; };
 		4ADCF6D127357CF3001F7F5D /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCF6D027357CF3001F7F5D /* ProfileTests.swift */; };
 		75149FF0445884A6550656CE /* Pods_443App_443AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85144503F53E983F31D95747 /* Pods_443App_443AppUITests.framework */; };
+		A96700DE27599285008DB734 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96700DD27599285008DB734 /* MapViewModel.swift */; };
+		A96700E02759929B008DB734 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96700DF2759929B008DB734 /* Place.swift */; };
 		A9688072272C767300F0C51A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9688071272C767300F0C51A /* User.swift */; };
 		A994B61F2734CD3B00F293FD /* ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A994B61E2734CD3B00F293FD /* ViewTests.swift */; };
 		A9D41DED27419FEA001944F4 /* SetPinLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D41DEC27419FEA001944F4 /* SetPinLocationView.swift */; };
@@ -99,6 +101,8 @@
 		7D9B98B24C3C5BE048A73CA0 /* Pods-443AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443AppTests.debug.xcconfig"; path = "Target Support Files/Pods-443AppTests/Pods-443AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		85144503F53E983F31D95747 /* Pods_443App_443AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_443App_443AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		969E73D401F06F58F8A29A51 /* Pods-443AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-443AppTests.release.xcconfig"; path = "Target Support Files/Pods-443AppTests/Pods-443AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		A96700DD27599285008DB734 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		A96700DF2759929B008DB734 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A9688071272C767300F0C51A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A994B61E2734CD3B00F293FD /* ViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTests.swift; sourceTree = "<group>"; };
 		A9D41DEC27419FEA001944F4 /* SetPinLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPinLocationView.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				E5191E0427415BEF0097D246 /* UserViewModel.swift */,
 				E5C7895C27570BAA00002919 /* ImagePicker.swift */,
 				E5C7896027570BB200002919 /* ImagePickerCoordinator.swift */,
+				A96700DD27599285008DB734 /* MapViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				A9688071272C767300F0C51A /* User.swift */,
 				E5CB3CBE272C568B001936AE /* Tag.swift */,
 				E5191D64273DA53C0097D246 /* LocationDelegate.swift */,
+				A96700DF2759929B008DB734 /* Place.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 				4A9218E0273E1637007BB343 /* Journal.swift in Sources */,
 				E5191D57273DA4D30097D246 /* PinCountWidget.swift in Sources */,
 				E5C7896127570BB300002919 /* ImagePickerCoordinator.swift in Sources */,
+				A96700E02759929B008DB734 /* Place.swift in Sources */,
 				4A4512AE272B252E0092899D /* BottomBar.swift in Sources */,
 				E5191D65273DA53C0097D246 /* LocationDelegate.swift in Sources */,
 				E5AA64B62720E0AB00D3C4A8 /* MapView.swift in Sources */,
@@ -566,6 +573,7 @@
 				E5CB3CBF272C568B001936AE /* Tag.swift in Sources */,
 				E5AA64B12720E08200D3C4A8 /* Location.swift in Sources */,
 				E5C7895927570B8800002919 /* PhotoCaptureView.swift in Sources */,
+				A96700DE27599285008DB734 /* MapViewModel.swift in Sources */,
 				E5C7895D27570BAA00002919 /* ImagePicker.swift in Sources */,
 				E5BCC04B2755C1FA00E5D98D /* LogIn.swift in Sources */,
 				E5FDC64C2732C1BC00460D27 /* PinRow.swift in Sources */,
