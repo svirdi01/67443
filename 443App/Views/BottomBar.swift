@@ -14,6 +14,12 @@ struct BottomBar: View {
   var userTags: UserTags
   @ObservedObject var uvm: UserViewModel
   @State private var selection = 2
+  // NEHAS CODE
+  @StateObject var MapData = MapViewModel()
+//  @StateObject var coordinateRegion = MKCoordinateRegion(
+//    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
+//    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+  //NEHAS CODE
   
   
   init(userviewmodel: UserViewModel)
