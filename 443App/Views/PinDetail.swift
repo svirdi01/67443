@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 struct PinDetail: View {
 
@@ -14,6 +15,7 @@ struct PinDetail: View {
     var pin: MemoryPin
     var photo: Photo = Photo(pinId: "")
     var width: Double
+    @State private var imageURL = URL(string: "")
     
    
     init(uvm: UserViewModel, pin: MemoryPin)
@@ -37,6 +39,21 @@ struct PinDetail: View {
       
       
     }
+  
+  
+  func loadImageFromFirebase()
+  {
+    let storageRef = Storage.storage().reference(withPath: pin.docId)
+        storageRef.downloadURL { (url, error) in
+               if error != nil {
+                   print((error?.localizedDescription)!)
+                   return
+        }
+              self.imageURL = url!
+  }
+    
+}
+
 
   var body: some View {
     VStack {

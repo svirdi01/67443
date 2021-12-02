@@ -185,9 +185,7 @@ class UserViewModel: ObservableObject
       "locdescription": locdescription,
       "latitude" : String(location.latitude),
       "longitude" : String(location.longitude),
-      "date": timestamp
-    
-    ])
+      "date": timestamp])
     
     var tempArr : [Tag] = []
     for tag in tags
@@ -216,10 +214,45 @@ class UserViewModel: ObservableObject
           p.picture = Image(uiImage: pictureTemp)
           p.pinId = ref.documentID
         }
-        
-        print("SAVING PHOTO")
+      
         print(p.pinId)
         allPics.append(p)
+    
+    
+    
+    let picref =  Storage.storage().reference(withPath: ref.documentID)
+       guard let imageData = picture?.jpegData(compressionQuality: 0.5) else
+       {
+       
+         return
+       }
+       picref.putData(imageData, metadata: nil) {
+         metadata, err in
+         if let err = err
+         {
+           print( "Failed to push image to storage: \(err)")
+           return
+         }
+         
+         picref.downloadURL{url,
+           err in
+           if let err = err
+           {
+            print( "Failed to retrieve download url: \(err)")
+             return
+           }
+          
+//           ref.setData([
+//                        "title": title,
+//                        "description": description,
+//                        "locdescription": locdescription,
+//                        "latitude" : String(location.latitude),
+//                        "longitude" : String(location.longitude),
+//                        "date": timestamp,
+//                        "imageURL": url?.absoluteString])
+         }
+       }
+       
   }
   
   func updatePins()
