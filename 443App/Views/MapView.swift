@@ -14,6 +14,7 @@
 import MapKit
 import SwiftUI
 import Combine
+import Contacts
 
 struct MapView: View {
 
@@ -98,11 +99,16 @@ struct MapView: View {
           ScrollView{
             VStack(spacing: 15){
               ForEach(mapData.places){place in
+                VStack{
                 Text(place.place.name ?? "").foregroundColor(.black).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+                
+                Text((place.place.postalAddress?.city ?? "")+", "+(place.place.postalAddress?.state ?? "")).font(Font.system(size: 12, design: .default)).foregroundColor(.black).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
                   .onTapGesture{
+                    print(place.place.postalAddress ?? "no address")
                     
                   }
                 Divider()
+                }
                 
               }
             }.padding(.top)

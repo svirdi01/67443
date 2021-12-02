@@ -11,6 +11,13 @@ import MapKit
 
 class MapViewModel: ObservableObject{
   
+  //OTHER SHIT
+  @Published var region : MKCoordinateRegion!
+  
+  
+  
+  
+  
   // SEARCH SHIT
   @Published var searchTxt = ""
   
