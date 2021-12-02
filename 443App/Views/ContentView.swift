@@ -101,7 +101,7 @@ struct ContentView: View {
   var body: some View
   {
     NavigationView {
-      if (signinviewModel.signedIn || signinviewModel.userviewmodel.pinbool  == true)
+      if (signinviewModel.signedIn)
       {
         BottomBar(userviewmodel: signinviewModel.userviewmodel)
       }

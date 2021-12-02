@@ -4,16 +4,18 @@
 //
 //  Created by Simran Virdi on 11/3/21.
 //
-
 import Foundation
 import SwiftUI
+import Firebase
+import SDWebImageSwiftUI
 
 struct PinDetail: View {
 
   @ObservedObject var uvm: UserViewModel
     var pin: MemoryPin
-    var photo: Photo = Photo(pinId: "")
     var width: Double
+    @State private var imageURL = URL(string: "")
+    @State var picExist: Bool = true
     
    
     init(uvm: UserViewModel, pin: MemoryPin)
@@ -21,46 +23,66 @@ struct PinDetail: View {
       self.uvm = uvm
       self.pin = pin
       
-      for pic in uvm.allPics
-      {
-        print(pic.pinId)
-        if (pic.pinId == pin.docId )
-        {
-          
-          self.photo = pic
-        }
-        
 
-      }
       
       self.width = Double(CGFloat(UIScreen.main.bounds.width * 0.75))
       
       
     }
+  
+  
+  func loadImageFromFirebase()
+  {
+    let storageRef = Storage.storage().reference(withPath: pin.docId)
+        storageRef.downloadURL { (url, error) in
+               if error != nil
+               {
+                  self.picExist = false
+                  self.imageURL = URL(string: "")
+                  print((error?.localizedDescription)!)
+                
+
+                  return
+        }
+              self.imageURL = url!
+          
+          print("IMAGE URL")
+          print(imageURL?.absoluteString)
+            
+  }
+    
+}
+
 
   var body: some View {
     VStack {
       
-      if photo.pinId == ""{
+      if self.picExist == true
+      {
+        WebImage(url: URL(string: imageURL?.absoluteString ?? ""))
+              .resizable()
+              .scaledToFit()
+                  .overlay(
+                      RoundedRectangle(cornerRadius: 0)
+                          .stroke(Color.white, lineWidth: 4)
+                  )
+                  .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
+                  .padding()
+              .aspectRatio(contentMode: .fit)
+        }
+      else if self.picExist == false
+      {
         Image("default")
           .resizable()
           .scaledToFit()
-          .overlay(
-              RoundedRectangle(cornerRadius: 0)
-                  .stroke(Color.white, lineWidth: 4)
-          )
-          .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
-          .padding()
+         .overlay(
+             RoundedRectangle(cornerRadius: 0)
+                 .stroke(Color.white, lineWidth: 4)
+         )
+         .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
+         .padding()
       }
-      photo.picture?
-              .resizable()
-              .scaledToFit()
-              .overlay(
-                  RoundedRectangle(cornerRadius: 0)
-                      .stroke(Color.white, lineWidth: 4)
-              )
-              .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
-              .padding()
+    
       
       HStack {
         Text("description:")
@@ -92,7 +114,9 @@ struct PinDetail: View {
        
           
       }.padding()
-    }.navigationBarTitle(pin.title)
+    }
+    .onAppear(perform: loadImageFromFirebase)
+    .navigationBarTitle(pin.title)
     .navigationBarItems(trailing:
                           NavigationLink(destination: EditPin(uvm: uvm, pin: pin)) {
           Image(systemName: "square.and.pencil")
