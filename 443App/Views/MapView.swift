@@ -14,7 +14,7 @@
 import MapKit
 import SwiftUI
 import Combine
-
+import Contacts
 struct MapView: View {
 
   // Data for user pins
@@ -24,6 +24,9 @@ struct MapView: View {
   @State var manager = CLLocationManager()
   @StateObject var managerDelegate = LocationDelegate()
   @ObservedObject var uvm: UserViewModel
+  
+  //NEHA
+  @EnvironmentObject var mapData: MapViewModel
   
   
   //for search shit
