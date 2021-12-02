@@ -38,14 +38,7 @@ class MapViewModel: ObservableObject{
     
   }
   
-  func selectPlace(place: Place){
-    searchTxt = ""
-    guard let coordinate = place.place.location?.coordinate else{return}
-    
-
-    
-    
-  }
+  
   //focus location
   func focusLocation(location:CLLocation = CLLocation(latitude: 40.444176, longitude: -79.945551)){
     searchTxt = ""
