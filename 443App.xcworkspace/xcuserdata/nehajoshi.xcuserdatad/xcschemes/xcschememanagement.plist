@@ -14,21 +14,57 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>38</integer>
+			<integer>11</integer>
 		</dict>
 		<key>Struct (Playground) 11.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>39</integer>
+			<integer>12</integer>
 		</dict>
 		<key>Struct (Playground) 12.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>Struct (Playground) 13.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>39</integer>
+		</dict>
+		<key>Struct (Playground) 14.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>40</integer>
+		</dict>
+		<key>Struct (Playground) 15.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>41</integer>
+		</dict>
+		<key>Struct (Playground) 16.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>42</integer>
+		</dict>
+		<key>Struct (Playground) 17.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>43</integer>
+		</dict>
+		<key>Struct (Playground) 18.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>44</integer>
 		</dict>
 		<key>Struct (Playground) 2.xcscheme</key>
 		<dict>
