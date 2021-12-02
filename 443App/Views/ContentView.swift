@@ -41,11 +41,13 @@ class AppViewModel: ObservableObject {
       
       self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
       
+      
+      
      
     }
   }
   
-  func signUp(email: String, password: String, name: String)
+  func signUp(email: String, password: String, name: String,  picture: UIImage?)
   {
     auth.createUser(withEmail: email, password: password)
     { result, error in
@@ -54,27 +56,44 @@ class AppViewModel: ObservableObject {
           return
         }
       
-      
-      
-      
       DispatchQueue.main.async
       {
-        print("SIGNED IN")
-        self.signedIn = true
-        print(self.signedIn)
         
-        self.db.collection("Users").document(Auth.auth().currentUser?.uid ?? "1").setData( [
+       var ref =  self.db.collection("Users").document(Auth.auth().currentUser?.uid ?? "1").setData( [
           "email": email,
           "name": name
         
         ])
         
-        print(Auth.auth().currentUser?.uid)
         
-        self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
+        let picref =  Storage.storage().reference(withPath: Auth.auth().currentUser?.uid ?? "1")
+           guard let imageData = picture?.jpegData(compressionQuality: 0.5) else
+           {
+           
+             return
+           }
+           picref.putData(imageData, metadata: nil)
+           {
+             metadata, err in
+             if let err = err
+             {
+               print( "Failed to push image to storage: \(err)")
+               return
+             }
+             
+             picref.downloadURL{url,
+               err in
+               if let err = err
+               {
+                print( "Failed to retrieve download url: \(err)")
+                 return
+               }
+             }
+            self.signedIn = true
+            
+           }
         
-        print("USER ID:")
-        print(self.userviewmodel.user.userID)
+        
         
         
       }
@@ -82,6 +101,10 @@ class AppViewModel: ObservableObject {
       
       
     }
+
+    
+    
+    
   }
   
   
