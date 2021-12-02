@@ -13,6 +13,7 @@ struct BottomBar: View {
   var userPins: UserPins
   var userTags: UserTags
   @ObservedObject var uvm: UserViewModel
+  @State private var selection = 2
   
   
   init(userviewmodel: UserViewModel)
@@ -32,13 +33,14 @@ struct BottomBar: View {
     
     NavigationView {
       
-      TabView {
+      TabView(selection: $selection) {
 
         Journal(uvm: uvm)
           .tabItem {
               Image(systemName: "book.circle")
               Text("Journal")
             }
+          .tag(1)
           .navigationBarTitle("")
           .navigationBarHidden(true)
           .navigationBarBackButtonHidden(true)
@@ -48,6 +50,7 @@ struct BottomBar: View {
             Image(systemName: "map.fill")
             Text("Map")
           }
+          .tag(2)
           .navigationBarTitle("")
           .navigationBarHidden(true)
           .navigationBarBackButtonHidden(true)
@@ -57,6 +60,7 @@ struct BottomBar: View {
             Image(systemName: "person.fill")
             Text("Profile")
           }
+          .tag(3)
           .navigationBarTitle("")
           .navigationBarHidden(true)
           .navigationBarBackButtonHidden(true)

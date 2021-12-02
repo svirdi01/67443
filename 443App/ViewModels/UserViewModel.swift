@@ -23,6 +23,7 @@ class UserViewModel: ObservableObject
   @Published var searchText: String = ""
   @Published var filteredmemoryPins = [MemoryPin]()
   @Published var allPics = [Photo]()
+  @Published var pinbool = false
   
   var errorMessage = ""
   

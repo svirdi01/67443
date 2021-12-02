@@ -195,6 +195,7 @@ Section{
 
           self.presentationMode.wrappedValue.dismiss()
           Journal(uvm:uvm).displayPins()
+          gotoBB()
           
         })
         {
@@ -205,9 +206,9 @@ Section{
       
       Button(action: {
         self.uvm.deletePin(docId: pin.docId)
-        self.presentationMode.wrappedValue.dismiss()
         Journal(uvm:uvm).displayPins()
-
+        
+        gotoBB()
 
                  }) {
                      Text("Delete Pin")
@@ -216,9 +217,19 @@ Section{
                  .padding()
                  .background(Color.blue)
       
+     
+      
       
     
   }
   func toggle(){isChecked = !isChecked}
+  
+  func gotoBB() {
+      if let window = UIApplication.shared.windows.first {
+        window.rootViewController = UIHostingController(rootView: BottomBar(userviewmodel: self.uvm))
+          window.makeKeyAndVisible()
+      }
+  }
+  
 
 }
