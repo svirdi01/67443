@@ -29,9 +29,7 @@ struct PinDetail: View {
           
           self.photo = pic
         }
-        print("IN PIN DETAIL")
         
-        print(self.photo.pinId)
 
       }
       
