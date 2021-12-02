@@ -34,12 +34,7 @@ struct MapView: View {
   {
     self.uvm = uvm
   }
-  
-  
-//  @State var coordinateRegion = MKCoordinateRegion(
-//    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
-//    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-  
+
   var body: some View {
     ZStack(alignment: .top){
       Map(coordinateRegion: $mapData.coordinateRegion,
@@ -126,27 +121,14 @@ struct MapView: View {
       VStack{
         Spacer()
         VStack{
-         
           Button(action: {}, label: {
-          //Button(action: {print(type(of: MKUserLocation().location))}, label: {
             Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
           })
         }.frame(maxWidth: .infinity, alignment: .trailing).padding()
       }
       // GO TO USER LOCATION BUTTON
-      
-      
-      
-      
-      
-      
-      
-    }
-    
-    
-         
-        
 
+    }
     
   }
   
