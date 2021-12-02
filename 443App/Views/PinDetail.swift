@@ -92,7 +92,7 @@ struct PinDetail: View {
           .padding(.trailing)
       }.padding()
       HStack {
-        Text("Location:")
+        Text("location:")
           .fontWeight(.bold)
           .padding(.leading)
         Text(pin.locdescription)
