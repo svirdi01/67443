@@ -16,22 +16,7 @@ class MapViewModel: ObservableObject{
   @Published var coordinateRegion = MKCoordinateRegion(
     center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
     span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-  
- // @Published var mapView
-  
-  
-  
-  //@Published var mapView = self.mapView
-  
-  //OTHER SHIT
-//  @Published var region : MKCoordinateRegion! = MKCoordinateRegion(
-//    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
-//    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-  
-  
-  
-  
-  
+
   // SEARCH SHIT
   @Published var searchTxt = ""
   
@@ -56,22 +41,22 @@ class MapViewModel: ObservableObject{
   func selectPlace(place: Place){
     searchTxt = ""
     guard let coordinate = place.place.location?.coordinate else{return}
-    let pointAnnotation = MKPointAnnotation()
-    pointAnnotation.coordinate = coordinate
-    pointAnnotation.title=place.place.name ?? "No Name"
     
-    //MapView.removeAnnotations(mapView.annotations)
-    //MapView.addAnnotation(pointAnnotation)
+
     
     
   }
   //focus location
-  func focusLocation(){
-    //guard let _ = region else{return}
+  func focusLocation(location:CLLocation = CLLocation(latitude: 40.444176, longitude: -79.945551)){
+    searchTxt = ""
+
+    let lat = location.coordinate.latitude
+    let long = location.coordinate.longitude
+
     coordinateRegion = MKCoordinateRegion(
-      center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
-      span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-    //MapView.setRegion(region, animated: true)
-    //MapView.setVisibleMapRect
+      center: CLLocationCoordinate2D(latitude: lat, longitude: long),
+      span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
   }
+  
+  
 }

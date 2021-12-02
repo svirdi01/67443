@@ -41,19 +41,12 @@ struct MapView: View {
 //    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
   
   var body: some View {
-
-        
     ZStack(alignment: .top){
       Map(coordinateRegion: $mapData.coordinateRegion,
               interactionModes: MapInteractionModes.all,
               showsUserLocation: true,
               userTrackingMode: $trackingMode,
               annotationItems: uvm.memoryPins) { place in
-            // • If you want larger ballons:
-            //MapMarker(coordinate: place.location.coordinates, tint: .blue)
-            // • If you want the traditional pin:
-            //MapPin(coordinate: place.location.coordinates)
-            // • If you want a circle to focus on the location:
              MapAnnotation(coordinate: place.location.coordinates) {
               NavigationLink(destination: PinDetail(uvm: uvm, pin: place)){
               HStack {
@@ -61,7 +54,6 @@ struct MapView: View {
                   Image(systemName: "mappin.circle.fill")
                     .font(.title)
                     .foregroundColor(.red)
-
                   Image(systemName: "arrowtriangle.down.fill")
                     .font(.caption)
                     .foregroundColor(.red)
@@ -98,13 +90,17 @@ struct MapView: View {
             VStack(spacing: 15){
               ForEach(mapData.places){place in
                 VStack{
-                Text(place.place.name ?? "").foregroundColor(.black).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+                  let res = place.place
+                  let resLoc = res.location
+                  let city = res.postalAddress?.city
+                  let state = res.postalAddress?.state
+                Text(res.name ?? "")
+                  .foregroundColor(.black)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .padding(.leading).onTapGesture{mapData.focusLocation(location: resLoc!)}
+                  //.onTapGesture{print(type(of: resLoc))}
                 
-                Text((place.place.postalAddress?.city ?? "")+", "+(place.place.postalAddress?.state ?? "")).font(Font.system(size: 12, design: .default)).foregroundColor(.black).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
-                  .onTapGesture{
-                    print(place.place.postalAddress ?? "no address")
-                    
-                  }
+                Text((city ?? "")+", "+(state ?? "")).font(Font.system(size: 12, design: .default)).foregroundColor(.black).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
                 Divider()
                 }
                 
@@ -115,9 +111,8 @@ struct MapView: View {
       }.padding()
       Spacer()
         .onChange(of: mapData.searchTxt, perform: { value in
-          
+          //CHANGE THIS TO ALTER SEARCH SUGGESTION SPEED
           let delay=0.3
-          
           DispatchQueue.main.asyncAfter(deadline: .now()+delay ){
             if value == mapData.searchTxt{
               self.mapData.searchQuery()
@@ -131,7 +126,9 @@ struct MapView: View {
       VStack{
         Spacer()
         VStack{
-          Button(action: {mapData.focusLocation()}, label: {
+         
+          Button(action: {}, label: {
+          //Button(action: {print(type(of: MKUserLocation().location))}, label: {
             Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
           })
         }.frame(maxWidth: .infinity, alignment: .trailing).padding()
