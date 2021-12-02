@@ -22,8 +22,6 @@ class UserViewModel: ObservableObject
   @Published var bool = false
   @Published var searchText: String = ""
   @Published var filteredmemoryPins = [MemoryPin]()
-  @Published var allPics = [Photo]()
-  @Published var pinbool = false
   
   var errorMessage = ""
   
@@ -66,7 +64,7 @@ class UserViewModel: ObservableObject
             self.allTags.append(t)
           }
            
-            self.userPinTags.append(t)            
+            self.userPinTags.append(t)
       
     }
       self.bool = true;
@@ -185,9 +183,7 @@ class UserViewModel: ObservableObject
       "locdescription": locdescription,
       "latitude" : String(location.latitude),
       "longitude" : String(location.longitude),
-      "date": timestamp
-    
-    ])
+      "date": timestamp])
     
     var tempArr : [Tag] = []
     for tag in tags
@@ -210,16 +206,40 @@ class UserViewModel: ObservableObject
      print("Pin count now \(self.memoryPins.count)")
     
     
-    let p: Photo = Photo(pinId: "")
-        if let pictureTemp = picture
-        {
-          p.picture = Image(uiImage: pictureTemp)
-          p.pinId = ref.documentID
-        }
-        
-        print("SAVING PHOTO")
-        print(p.pinId)
-        allPics.append(p)
+    
+    let picref =  Storage.storage().reference(withPath: ref.documentID)
+       guard let imageData = picture?.jpegData(compressionQuality: 0.5) else
+       {
+       
+         return
+       }
+       picref.putData(imageData, metadata: nil) {
+         metadata, err in
+         if let err = err
+         {
+           print( "Failed to push image to storage: \(err)")
+           return
+         }
+         
+         picref.downloadURL{url,
+           err in
+           if let err = err
+           {
+            print( "Failed to retrieve download url: \(err)")
+             return
+           }
+          
+//           ref.setData([
+//                        "title": title,
+//                        "description": description,
+//                        "locdescription": locdescription,
+//                        "latitude" : String(location.latitude),
+//                        "longitude" : String(location.longitude),
+//                        "date": timestamp,
+//                        "imageURL": url?.absoluteString])
+         }
+       }
+       
   }
   
   func updatePins()
@@ -269,4 +289,3 @@ class UserViewModel: ObservableObject
   }
 
   
-

@@ -209,7 +209,6 @@ Section{
       self.uvm.savePin(title: title, description: description, locdescription: locdescription, location: loc, tags: tagArr, date: d, picture: self.image)
         print("TAGARR",tagArr)
         tagArr = []
-        self.uvm.pinbool = true
         Journal(uvm:uvm).displayPins()
        //self.presentationMode.wrappedValue.dismiss()
         //self.showNewView = true
