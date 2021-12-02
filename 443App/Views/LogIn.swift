@@ -22,6 +22,8 @@ struct LogIn: View {
   @ObservedObject var svm: AppViewModel
   @ObservedObject var uvm: UserViewModel
   
+
+  
   
   init(userviewmodel: UserViewModel, signinviewmodel: AppViewModel)
   {
@@ -96,9 +98,21 @@ struct SignUpView: View {
   @State var emailField: String = ""
   @State var passField: String = ""
   @State var name: String = ""
+  @State private var showingAlert = false
   @ObservedObject var svm: AppViewModel
  
   @ObservedObject var uvm: UserViewModel
+  
+  @State var showImagePicker: Bool = false
+  @State var image: UIImage? = nil
+
+    var displayImage: Image? {
+      if let picture = image {
+        return Image(uiImage: picture)
+      } else {
+        return nil
+      }
+    }
   
   
   init(userviewmodel: UserViewModel, signinviewmodel: AppViewModel)
@@ -133,7 +147,7 @@ struct SignUpView: View {
           
         }.padding()
         
-        
+    
         
         HStack {
           TextField("Password", text: $passField)
@@ -142,6 +156,15 @@ struct SignUpView: View {
             .padding(.trailing)
         }.padding()
         
+        displayImage?.resizable().scaledToFit().padding()
+              Button(action: {
+                self.showImagePicker = true
+              }) {
+                Text("Add Profile Picture")
+              }.padding()
+              
+      
+        
         
         Button(action: {
           
@@ -149,11 +172,14 @@ struct SignUpView: View {
           {
             return
           }
-          svm.signUp(email: emailField, password: passField, name: name)
+          showingAlert = true
+          svm.signUp(email: emailField, password: passField, name: name,  picture: self.image)
           
-        }, label: {
+        },
+        label: {
           Text("Sign Up")
-        })
+        }
+        )
         
        
        // NavigationLink(destination: BottomBar(userviewmodel: uvm))
@@ -166,6 +192,13 @@ struct SignUpView: View {
         //})
  
     }
+      .alert(isPresented: $showingAlert) {
+                  Alert(title: Text("Logging In!"), message: Text("It will take a second!"), dismissButton: .default(Text("Got it!")))
+              }
+      .sheet(isPresented: $showImagePicker)
+        {
+              PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
+        }
 
 }
  

@@ -7,12 +7,17 @@
  
 import Foundation
 import SwiftUI
+import Firebase
+import SDWebImageSwiftUI
  
 struct Profile: View {
   
   //@EnvironmentObject var userPins: UserPins
   //@EnvironmentObject var userTags: UserTags
   @ObservedObject var uvm: UserViewModel
+  @State private var imageURL = URL(string: "")
+  @State var picExist: Bool = true
+  
   
   init(uvm: UserViewModel)
   {
@@ -20,6 +25,30 @@ struct Profile: View {
     
     
   }
+  
+  func loadImageFromFirebase()
+  {
+    let storageRef = Storage.storage().reference(withPath: Auth.auth().currentUser?.uid as! String ?? "1")
+    print("ID IN  PROFILE")
+    print(Auth.auth().currentUser?.uid)
+        storageRef.downloadURL { (url, error) in
+               if error != nil
+               {
+                  self.picExist = false
+                  self.imageURL = URL(string: "")
+                  print((error?.localizedDescription)!)
+                
+
+                  return
+        }
+              self.imageURL = url!
+          
+          print("IMAGE URL")
+          print(imageURL?.absoluteString)
+            
+  }
+    
+}
   
   // This is from here https://stackoverflow.com/questions/576265/convert-nsdate-to-nsstring
   func stringFromDate(date: Date) -> String {
@@ -128,20 +157,56 @@ struct Profile: View {
       Spacer()
           HStack{
             Spacer()
-            
             VStack{
-              Image("lheimann")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 200, height: 200)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(border, lineWidth: 5))
-                .padding(.top, 60)
+              if self.picExist == true
+              {
+                WebImage(url: URL(string: imageURL?.absoluteString ?? ""))
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: 200, height: 200)
+                  .clipShape(Circle())
+                  .overlay(Circle().stroke(border, lineWidth: 5))
+                  .padding(.top, 60)
+                
+                Text(uvm.user.name).bold()
+                  .foregroundColor(.black)
+  //              font(Font.custom("AlteHaasGroteskRegular", size: 18))
+                }
               
-              Text(uvm.user.name).bold()
-                .foregroundColor(.black)
-//              font(Font.custom("AlteHaasGroteskRegular", size: 18))
+              else if self.picExist == false
+              {
+                Image("default")
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: 200, height: 200)
+                  .clipShape(Circle())
+                  .overlay(Circle().stroke(border, lineWidth: 5))
+                  .padding(.top, 60)
+                
+                
+                Text(uvm.user.name).bold()
+                  .foregroundColor(.black)
+  //              font(Font.custom("AlteHaasGroteskRegular", size: 18))
+              }
+              
             }
+          
+          
+            
+//
+//            VStack{
+//              Image("lheimann")
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                .frame(width: 200, height: 200)
+//                .clipShape(Circle())
+//                .overlay(Circle().stroke(border, lineWidth: 5))
+//                .padding(.top, 60)
+//
+//              Text(uvm.user.name).bold()
+//                .foregroundColor(.black)
+////              font(Font.custom("AlteHaasGroteskRegular", size: 18))
+//            }
             Spacer()
           }
 
@@ -322,10 +387,13 @@ struct Profile: View {
       Spacer()
       Spacer()
 
-        }.background(LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom))
+        }
+    .onAppear(perform: loadImageFromFirebase)
+    .background(LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom))
     .edgesIgnoringSafeArea(.all)
           
         }
   }
+ 
   }
 

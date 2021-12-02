@@ -228,15 +228,6 @@ class UserViewModel: ObservableObject
             print( "Failed to retrieve download url: \(err)")
              return
            }
-          
-//           ref.setData([
-//                        "title": title,
-//                        "description": description,
-//                        "locdescription": locdescription,
-//                        "latitude" : String(location.latitude),
-//                        "longitude" : String(location.longitude),
-//                        "date": timestamp,
-//                        "imageURL": url?.absoluteString])
          }
        }
        
