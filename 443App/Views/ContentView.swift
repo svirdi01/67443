@@ -98,6 +98,8 @@ class AppViewModel: ObservableObject {
         
       }
       
+      self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
+      
       
       
     }
