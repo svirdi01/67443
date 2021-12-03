@@ -266,7 +266,7 @@
 		<key>Struct (Playground) 49.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>75</integer>
+			<integer>50</integer>
 		</dict>
 		<key>Struct (Playground) 5.xcscheme</key>
 		<dict>
@@ -278,33 +278,62 @@
 		<key>Struct (Playground) 50.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>76</integer>
+			<integer>51</integer>
 		</dict>
 		<key>Struct (Playground) 51.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>77</integer>
+			<integer>52</integer>
 		</dict>
 		<key>Struct (Playground) 52.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>78</integer>
+			<integer>53</integer>
 		</dict>
 		<key>Struct (Playground) 53.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>79</integer>
+			<integer>54</integer>
 		</dict>
 		<key>Struct (Playground) 54.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>80</integer>
+			<integer>55</integer>
+		</dict>
+		<key>Struct (Playground) 55.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>81</integer>
+		</dict>
+		<key>Struct (Playground) 56.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>82</integer>
+		</dict>
+		<key>Struct (Playground) 57.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>83</integer>
+		</dict>
+		<key>Struct (Playground) 58.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>84</integer>
+		</dict>
+		<key>Struct (Playground) 59.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>85</integer>
 		</dict>
 		<key>Struct (Playground) 6.xcscheme</key>
 		<dict>
@@ -312,6 +341,13 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>7</integer>
+		</dict>
+		<key>Struct (Playground) 60.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>86</integer>
 		</dict>
 		<key>Struct (Playground) 7.xcscheme</key>
 		<dict>

@@ -85,6 +85,62 @@ struct MapView: View {
         Text("Create")
       }
       .offset(y: 655)
+      
+      //SEARCH BAR
+      VStack(spacing:0){
+        HStack{
+          Image(systemName: "magnifyingglass").foregroundColor(.gray)
+          TextField("Search", text: $mapData.searchTxt).colorScheme(.light)
+          
+        }.padding(.vertical, 10).padding(.horizontal).background(Color.white)
+        //DISPLAYING RESULTS
+        if !mapData.places.isEmpty && mapData.searchTxt != ""{
+          ScrollView{
+            VStack(spacing: 15){
+              ForEach(mapData.places){place in
+                VStack{
+                  let res = place.place
+                  let resLoc = res.location
+                  let city = res.postalAddress?.city
+                  let state = res.postalAddress?.state
+                Text(res.name ?? "")
+                  .foregroundColor(.black)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .padding(.leading).onTapGesture{mapData.focusLocation(location: resLoc!)}
+                  //.onTapGesture{print(type(of: resLoc))}
+                
+                Text((city ?? "")+", "+(state ?? "")).font(Font.system(size: 12, design: .default)).foregroundColor(.black).frame(maxWidth: .infinity, alignment: .leading).padding(.leading)
+                Divider()
+                }
+                
+              }
+            }.padding(.top)
+          }.background(Color.white)
+        }
+      }.padding()
+      Spacer()
+        .onChange(of: mapData.searchTxt, perform: { value in
+          //CHANGE THIS TO ALTER SEARCH SUGGESTION SPEED
+          let delay=0.3
+          DispatchQueue.main.asyncAfter(deadline: .now()+delay ){
+            if value == mapData.searchTxt{
+              self.mapData.searchQuery()
+            }
+          }
+        })
+      //SEARCH BAR
+      
+      
+      // GO TO USER LOCATION BUTTON
+      VStack{
+        Spacer()
+        VStack{
+          Button(action: {}, label: {
+            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
+          })
+        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
+      }
+      // GO TO USER LOCATION BUTTON
         
       
       
