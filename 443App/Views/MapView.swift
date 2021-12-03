@@ -29,27 +29,22 @@ struct MapView: View {
   @EnvironmentObject var mapData: MapViewModel
   
   
-  //for search shit
-  @State private var search: String=""
+  
   @State var color="red";
   
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
     
-    
   }
   
-  
-  @State var coordinateRegion = MKCoordinateRegion(
-    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
-    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+
   
   var body: some View {
 
         
     ZStack(alignment: .top){
-          Map(coordinateRegion: $coordinateRegion,
+      Map(coordinateRegion: $mapData.coordinateRegion,
               interactionModes: MapInteractionModes.all,
               showsUserLocation: true,
               userTrackingMode: $trackingMode,
@@ -91,8 +86,7 @@ struct MapView: View {
       }
       .offset(y: 655)
       
-      TextField("Search", text: $search, onEditingChanged:{_ in})
-        {}.textFieldStyle(RoundedBorderTextFieldStyle()).padding().offset(y:44)
+      
     }
          
         
