@@ -72,7 +72,9 @@ struct MapView: View {
                       .offset(x: 0, y: -5)
                     Text(place.title).font(.caption)
                 }
-              }}
+              }
+                
+              }
              }
 
           }
@@ -132,14 +134,14 @@ struct MapView: View {
       
       
       // GO TO USER LOCATION BUTTON
-      VStack{
-        Spacer()
-        VStack{
-          Button(action: {}, label: {
-            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
-          })
-        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
-      }
+//      VStack{
+//        Spacer()
+//        VStack{
+//          Button(action: {}, label: {
+//            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
+//          })
+//        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
+//      }
       // GO TO USER LOCATION BUTTON
         
       
