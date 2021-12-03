@@ -230,38 +230,43 @@
 		<key>Struct (Playground) 43.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>69</integer>
+			<integer>44</integer>
 		</dict>
 		<key>Struct (Playground) 44.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>70</integer>
+			<integer>45</integer>
 		</dict>
 		<key>Struct (Playground) 45.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>71</integer>
+			<integer>46</integer>
 		</dict>
 		<key>Struct (Playground) 46.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>72</integer>
+			<integer>47</integer>
 		</dict>
 		<key>Struct (Playground) 47.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>73</integer>
+			<integer>48</integer>
 		</dict>
 		<key>Struct (Playground) 48.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>74</integer>
+			<integer>49</integer>
+		</dict>
+		<key>Struct (Playground) 49.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>75</integer>
 		</dict>
 		<key>Struct (Playground) 5.xcscheme</key>
 		<dict>
@@ -269,6 +274,37 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
+		</dict>
+		<key>Struct (Playground) 50.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>76</integer>
+		</dict>
+		<key>Struct (Playground) 51.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>77</integer>
+		</dict>
+		<key>Struct (Playground) 52.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>78</integer>
+		</dict>
+		<key>Struct (Playground) 53.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>79</integer>
+		</dict>
+		<key>Struct (Playground) 54.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>80</integer>
 		</dict>
 		<key>Struct (Playground) 6.xcscheme</key>
 		<dict>
