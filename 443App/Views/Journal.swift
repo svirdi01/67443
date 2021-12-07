@@ -12,6 +12,7 @@ struct Journal: View {
   @ObservedObject var uvm: UserViewModel
   @State var searchField: String = ""
   @State var displayedPins = [MemoryPin]()
+  @State var option: Int = 1
   
   init(uvm: UserViewModel)
   {
@@ -38,7 +39,7 @@ struct Journal: View {
 
         if (searchField == ""){
       List {
-        ForEach(uvm.memoryPins)
+        ForEach(uvm.memoryPins.sorted(by: {$0.title < $1.title}))
         { pin in
           NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
           {
@@ -52,6 +53,8 @@ struct Journal: View {
             Image(systemName: "plus")
         }
       )
+    
+          
           
         }
         else{
@@ -70,13 +73,16 @@ struct Journal: View {
                 Image(systemName: "plus")
             }
           )
+        
         }
         
       }
+    
     }.onAppear(perform: displayPins)
       .navigationBarTitle("")
       .navigationBarHidden(true)
       .navigationBarBackButtonHidden(true)
+ 
 
 
    
@@ -87,11 +93,13 @@ struct Journal: View {
     func displayPins() {
       displayedPins = uvm.memoryPins
       if searchField == "" {
-        displayedPins = uvm.memoryPins
+        displayedPins = uvm.memoryPins.sorted(by: {$0.title < $1.title})
       } else {
-        displayedPins = uvm.filteredmemoryPins
+        displayedPins = uvm.filteredmemoryPins.sorted(by: {$0.title < $1.title})
       }
     }
+  
+  
     
   
   
