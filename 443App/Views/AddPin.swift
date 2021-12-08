@@ -29,9 +29,9 @@ struct AddPin: View {
     self.lat=lat
   }
  
-  @State var title: String = "F"
-  @State var description: String = "F"
-  @State var locdescription: String = "F"
+  @State var title: String = ""
+  @State var description: String = ""
+  @State var locdescription: String = ""
 
   
   //@State var showNewView = false

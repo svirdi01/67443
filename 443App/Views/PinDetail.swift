@@ -92,6 +92,13 @@ struct PinDetail: View {
           .padding(.trailing)
       }.padding()
       HStack {
+        Text("date:")
+          .fontWeight(.bold)
+          .padding(.leading)
+        Text(pin.getDate())
+          .padding(.trailing)
+      }.padding()
+      HStack {
         Text("location:")
           .fontWeight(.bold)
           .padding(.leading)

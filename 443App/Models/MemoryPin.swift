@@ -36,4 +36,11 @@ class MemoryPin: Identifiable {
   {
     self.tags = tags
   }
+  
+  func getDate() -> String
+  {
+    let formatter1 = DateFormatter()
+    formatter1.dateStyle = .short
+    return formatter1.string(from: self.date)
+  }
 }
