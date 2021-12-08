@@ -49,19 +49,11 @@ struct LogIn: View {
           .frame(width: 120, height: 120)
           .padding()
 
-
-        Text("Welcome to Mapd!")
-          .font(.largeTitle)
-          .fontWeight(.semibold)
-          .foregroundColor(Color.white)
-          .padding()
-        
 //        Spacer()
         
 
         }
         
-        Spacer().frame(height: 50)
         
         VStack{
         Text("Email Address")
