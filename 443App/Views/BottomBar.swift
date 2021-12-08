@@ -41,7 +41,7 @@ struct BottomBar: View {
       
       TabView(selection: $selection) {
 
-        Journal(uvm: uvm)
+        Journal(uvm: uvm).environmentObject(MapData)
           .tabItem {
               Image(systemName: "book.circle")
               Text("Journal")

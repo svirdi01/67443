@@ -14,6 +14,7 @@ struct Journal: View {
   @State var displayedPins = [MemoryPin]()
   @State var option: Int = 3
   
+  @EnvironmentObject var mapData: MapViewModel
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
@@ -119,7 +120,7 @@ struct Journal: View {
           }
           .navigationBarTitle("My Memories")
           .navigationBarItems(trailing:
-            NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
+                                NavigationLink(destination: SetPinLocationView(uvm: uvm).environmentObject(mapData)) {
                 Image(systemName: "plus")
             }
           )
