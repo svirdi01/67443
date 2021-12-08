@@ -31,8 +31,11 @@ class UserViewModel: ObservableObject
     
  // }
   
-  func search(searchText: String) {
-    self.filteredmemoryPins = self.memoryPins.filter { pin in
+  func search(searchText: String)
+  {
+    self.filteredmemoryPins = self.memoryPins.filter
+    {
+      pin in
       return (pin.title.lowercased().contains(searchText.lowercased())) || (pin.description.lowercased().contains(searchText.lowercased()))
     }
   }
