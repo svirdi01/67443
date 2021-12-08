@@ -144,7 +144,7 @@ struct MapView: View {
         VStack{
           Button(action: {
             print($mapData.coordinateRegion.center)
-            mapData.reFocus()
+            //mapData.reFocus()
             
           }, label: {
             Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())

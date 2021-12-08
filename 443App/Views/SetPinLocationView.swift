@@ -20,14 +20,13 @@ struct SetPinLocationView: View {
   @ObservedObject var uvm: UserViewModel
   
   //NEHA
-  @EnvironmentObject var mapData: MapViewModel
+  @StateObject var mapData = MapViewModel()
   //NEHAS EDITS
 
-  
   //NEHA
   
   
-  init(uvm: UserViewModel, mvm: MapViewModel)
+  init(uvm: UserViewModel)
   {
     self.uvm = uvm
     
@@ -41,10 +40,12 @@ struct SetPinLocationView: View {
     span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
 
   var body: some View {
+    
     ZStack(){
+      
       NavigationView {
         //mapData.reFocus()
-        Map(coordinateRegion: $coordinateRegion,
+        Map(coordinateRegion: $mapData.coordinateRegion,
             interactionModes: MapInteractionModes.all,
             showsUserLocation: true,
             userTrackingMode: $trackingMode)
@@ -52,6 +53,7 @@ struct SetPinLocationView: View {
         .edgesIgnoringSafeArea(.all)
 
       }
+      
       /// OVERLAYED PIN
       VStack(spacing: 0) {
         Image(systemName: "mappin.circle.fill")
@@ -69,11 +71,10 @@ struct SetPinLocationView: View {
       
       
       /// DROP PIN BUTTON
-      
-      NavigationLink(destination: AddPin(uvm: uvm, long: coordinateRegion.center.longitude.description, lat: coordinateRegion.center.latitude.description)) {
+      NavigationLink(destination: AddPin(uvm: uvm, long: mapData.getLong(), lat: mapData.getLat())) {
         Text("DROP PIN HERE")}.offset(y: 200)
-      
       ///DROP PIN BUTTON
+      
       
       //SEARCH BAR
       VStack(spacing:0){
@@ -106,7 +107,8 @@ struct SetPinLocationView: View {
             }.padding(.top)
           }.background(Color.white)
         }
-      }.padding().offset(y: -300)
+      }.padding()
+      Spacer()
         .onChange(of: mapData.searchTxt, perform: { value in
           //CHANGE THIS TO ALTER SEARCH SUGGESTION SPEED
           let delay=0.3
@@ -118,13 +120,16 @@ struct SetPinLocationView: View {
         })
       //SEARCH BAR
       
+      
+      
+      
       // GO TO USER LOCATION BUTTON
       VStack{
         Spacer()
         VStack{
           Button(action: {
             print($mapData.coordinateRegion.center)
-            mapData.reFocus()
+            //mapData.reFocus()
             
           }, label: {
             Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())

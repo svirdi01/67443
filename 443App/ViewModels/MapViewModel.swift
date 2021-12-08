@@ -51,5 +51,12 @@ class MapViewModel: ObservableObject{
       span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
   }
   
+  func getLong() -> String{
+    return String(coordinateRegion.center.longitude)
+  }
+  func getLat() -> String{
+    return String(coordinateRegion.center.latitude)
+  }
+  
   
 }

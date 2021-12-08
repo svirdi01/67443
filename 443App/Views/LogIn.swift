@@ -17,8 +17,8 @@ struct LogIn: View {
   
   
   @State var isNavigationBarHidden: Bool = true
-  @State var emailField: String = ""
-  @State var passField: String = ""
+  @State var emailField: String = "urmom@gmail.com"
+  @State var passField: String = "urmommy"
   @ObservedObject var svm: AppViewModel
   @ObservedObject var uvm: UserViewModel
   let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
@@ -38,6 +38,7 @@ struct LogIn: View {
   var body: some View
   {
     // BottomBar(viewModel: viewModel, viewController: viewController
+    
     ZStack{
       darkBlue
           .ignoresSafeArea()
