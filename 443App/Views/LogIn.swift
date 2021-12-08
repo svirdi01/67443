@@ -17,8 +17,8 @@ struct LogIn: View {
   
   
   @State var isNavigationBarHidden: Bool = true
-  @State var emailField: String = ""
-  @State var passField: String = ""
+  @State var emailField: String = "urmom@gmail.com"
+  @State var passField: String = "urmommy"
   @ObservedObject var svm: AppViewModel
   @ObservedObject var uvm: UserViewModel
   

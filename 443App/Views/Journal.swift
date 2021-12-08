@@ -78,11 +78,11 @@ struct Journal: View {
               }
               
               .navigationBarTitle("My Memories")
-              .navigationBarItems(trailing:
-                NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
-                    Image(systemName: "plus")
-                }
-              )
+//              .navigationBarItems(trailing:
+//                                    NavigationLink(destination: SetPinLocationView(uvm: uvm, mvm: )) {
+//                    Image(systemName: "plus")
+//                }
+//              )
       
             
           }
@@ -98,11 +98,11 @@ struct Journal: View {
                 }
               }
               .navigationBarTitle("My Memories")
-              .navigationBarItems(trailing:
-                NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
-                    Image(systemName: "plus")
-                }
-              )
+//              .navigationBarItems(trailing:
+//                                    NavigationLink(destination: SetPinLocationView(uvm: uvm, prevLat: 0.0, prevLong: 0.0)) {
+//                    Image(systemName: "plus")
+//                }
+//              )
           }
       
           
@@ -118,11 +118,11 @@ struct Journal: View {
             }
           }
           .navigationBarTitle("My Memories")
-          .navigationBarItems(trailing:
-            NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
-                Image(systemName: "plus")
-            }
-          )
+//          .navigationBarItems(trailing:
+//                                NavigationLink(destination: SetPinLocationView(uvm: uvm, prevLat: 0.0, prevLong: 0.0)) {
+//                Image(systemName: "plus")
+//            }
+//          )
         
         }
         

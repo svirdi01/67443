@@ -51,5 +51,19 @@ class MapViewModel: ObservableObject{
       span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
   }
   
+  func reFocus(){
+    let delta = 0.07
+    coordinateRegion.span.latitudeDelta=delta
+    coordinateRegion.span.longitudeDelta=delta
+  }
+  
+  func getLat()->Double{
+    return coordinateRegion.center.latitude
+  }
+  
+  func getLong()->Double{
+    return coordinateRegion.center.longitude
+  }
+  
   
 }

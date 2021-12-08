@@ -35,6 +35,7 @@ struct MapView: View {
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
+    //self.mapData=mapData
     
   }
   
@@ -44,6 +45,7 @@ struct MapView: View {
 
         
     ZStack(alignment: .top){
+      //MAP
       Map(coordinateRegion: $mapData.coordinateRegion,
               interactionModes: MapInteractionModes.all,
               showsUserLocation: true,
@@ -82,11 +84,14 @@ struct MapView: View {
             manager.delegate = managerDelegate
           }
           .edgesIgnoringSafeArea(.all)
+      //MAP
       
-      NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
+      //CREATE BUTTON
+      NavigationLink(destination: SetPinLocationView(uvm: uvm, mvm: mapData)) {
         Text("Create")
       }
       .offset(y: 655)
+      //CREATE BUTTON
       
       //SEARCH BAR
       VStack(spacing:0){
@@ -134,14 +139,18 @@ struct MapView: View {
       
       
       // GO TO USER LOCATION BUTTON
-//      VStack{
-//        Spacer()
-//        VStack{
-//          Button(action: {}, label: {
-//            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
-//          })
-//        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
-//      }
+      VStack{
+        Spacer()
+        VStack{
+          Button(action: {
+            print($mapData.coordinateRegion.center)
+            mapData.reFocus()
+            
+          }, label: {
+            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
+          })
+        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
+      }
       // GO TO USER LOCATION BUTTON
         
       
