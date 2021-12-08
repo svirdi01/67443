@@ -12,7 +12,7 @@ struct Journal: View {
   @ObservedObject var uvm: UserViewModel
   @State var searchField: String = ""
   @State var displayedPins = [MemoryPin]()
-  @State var option: Int = 1
+  @State var option: Int = 3
   
   init(uvm: UserViewModel)
   {
@@ -30,31 +30,81 @@ struct Journal: View {
       uvm.search(searchText: self.searchField)
       self.displayPins()
     })
-    
+
     NavigationView {
       
       
       VStack{
-        TextField(" Search My Journal:", text: binding).offset(x: 20)
 
-        if (searchField == ""){
-      List {
-        ForEach(uvm.memoryPins.sorted(by: {$0.title < $1.title}))
-        { pin in
-          NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
-          {
-            PinRow(pin: pin)
+        TextField(" Search My Journal:", text: binding).offset(x: 20)
+        
+        HStack{
+          Spacer()
+          Menu{
+            Picker(selection: $option, label: Text("Sort Pins"))
+            {
+              Text("Date Ascending").tag(1)
+              Text("Date Descending").tag(2)
+              Text("Alphabetical").tag(3)
+            }
+            .onChange(of: option)
+            {
+                newValue in
+                print("option changed to \(option)!")
+              displayPins()
+            }
           }
-        }
-      }
-      .navigationBarTitle("My Memories")
-      .navigationBarItems(trailing:
-        NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
-            Image(systemName: "plus")
-        }
-      )
-    
+          label: {
+            Label("Sort Pins", systemImage: "arrow.up.arrow.down")
+          }
+        
           
+        }
+          
+
+        if (searchField == "")
+        {
+          if(option == 3)
+          
+          {
+                  List {
+                ForEach(uvm.memoryPins.sorted(by: {$0.title < $1.title}))
+                { pin in
+                  NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
+                  {
+                    PinRow(pin: pin)
+                  }
+                }
+              }
+              
+              .navigationBarTitle("My Memories")
+              .navigationBarItems(trailing:
+                NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
+                    Image(systemName: "plus")
+                }
+              )
+      
+            
+          }
+          if(option != 3)
+          {
+              List {
+                ForEach(displayedPins)
+                { pin in
+                  NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
+                  {
+                    PinRow(pin: pin)
+                  }
+                }
+              }
+              .navigationBarTitle("My Memories")
+              .navigationBarItems(trailing:
+                NavigationLink(destination: SetPinLocationView(uvm: uvm)) {
+                    Image(systemName: "plus")
+                }
+              )
+          }
+      
           
         }
         else{
@@ -82,22 +132,48 @@ struct Journal: View {
       .navigationBarTitle("")
       .navigationBarHidden(true)
       .navigationBarBackButtonHidden(true)
- 
-
-
-   
-    
   }
   
   
-    func displayPins() {
-      displayedPins = uvm.memoryPins
-      if searchField == "" {
-        displayedPins = uvm.memoryPins.sorted(by: {$0.title < $1.title})
-      } else {
-        displayedPins = uvm.filteredmemoryPins.sorted(by: {$0.title < $1.title})
+  func displayPins() {
+    print("IN HERE")
+      
+    if searchField == "" {
+        
+        if(option == 1)
+        {
+          displayedPins = uvm.memoryPins.sorted(by: {$0.date < $1.date})
+        }
+        else if(option == 2)
+        {
+          displayedPins = uvm.memoryPins.sorted(by: {$0.date > $1.date})
+        }
+        else
+        {
+          displayedPins = uvm.memoryPins.sorted(by: {$0.title < $1.title})
+        }
+      }
+      else
+      {
+        if(option == 1)
+        {
+          displayedPins = uvm.filteredmemoryPins.sorted(by: {$0.date < $1.date})
+        }
+        else if(option == 2)
+        {
+          displayedPins = uvm.filteredmemoryPins.sorted(by: {$0.date > $1.date})
+        }
+        else
+        {
+          displayedPins = uvm.filteredmemoryPins.sorted(by: {$0.title < $1.title})
+        }
+        
       }
     }
+  
+  
+  
+
   
   
     
