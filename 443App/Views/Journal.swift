@@ -13,7 +13,7 @@ struct Journal: View {
   @State var searchField: String = ""
   @State var displayedPins = [MemoryPin]()
   @State var option: Int = 3
-  
+
   @EnvironmentObject var mapData: MapViewModel
   init(uvm: UserViewModel)
   {

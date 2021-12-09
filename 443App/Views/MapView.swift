@@ -28,7 +28,8 @@ struct MapView: View {
   //NEHA
   @EnvironmentObject var mapData: MapViewModel
   
-  
+  let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
+  let lightBlue = Color(red: 220/255.0, green: 249/255.0, blue: 243/255.0)
   
   @State var color="red";
   
@@ -89,8 +90,16 @@ struct MapView: View {
       //CREATE BUTTON
       NavigationLink(destination: SetPinLocationView(uvm: uvm).environmentObject(mapData)) {
         Text("Create")
+          .padding()
+          .foregroundColor(darkBlue)
+          .font(Font.headline.weight(.bold))
+          .background(lightBlue)
+          .overlay(
+              RoundedRectangle(cornerRadius: 5)
+                  .stroke(darkBlue, lineWidth: 4)
+          )
       }
-      .offset(y: 655)
+      .offset(y: 645)
       //CREATE BUTTON
       
       //SEARCH BAR

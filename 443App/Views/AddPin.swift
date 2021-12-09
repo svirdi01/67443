@@ -14,7 +14,7 @@ struct AddPin: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @State private var showingSheet = true
   @State var isChecked:Bool = false
-  let darkBlue = Color(red: 6/255.0, green: 31/255.0, blue: 74/255.0)
+  let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
 
   
   @ObservedObject var uvm: UserViewModel
@@ -46,6 +46,7 @@ struct AddPin: View {
   @State var tags = UserViewModel().allTags;
   var colors: [String] = ["blue", "black", "orange", "red", "magenta", "green", "yellow", "purple"];
   @State var c = "red";
+
 
   
   @State var showImagePicker: Bool = false
@@ -167,7 +168,8 @@ struct AddPin: View {
             
 
         
-      }//form end
+      }.background(darkBlue)
+//form end
     }.navigationBarTitle("New Pin")
     .navigationBarItems(trailing:
 Section{
@@ -200,12 +202,14 @@ Section{
         Text("Add Pin")
       }}.disabled(t.isEmpty || title.isEmpty)
     )
-    
 
   }
 
   // MARK: View Helper Functions
-  func toggle(){isChecked = !isChecked}
+  func toggle(){
+    isChecked = !isChecked
+    
+  }
   
   func gotoBB() {
       if let window = UIApplication.shared.windows.first {

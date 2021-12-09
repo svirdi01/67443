@@ -24,6 +24,8 @@ struct SetPinLocationView: View {
   //NEHAS EDITS
 
   //NEHA
+  let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
+  let lightBlue = Color(red: 220/255.0, green: 249/255.0, blue: 243/255.0)
   
   
   init(uvm: UserViewModel)
@@ -72,7 +74,17 @@ struct SetPinLocationView: View {
       
       /// DROP PIN BUTTON
       NavigationLink(destination: AddPin(uvm: uvm, long: mapData.getLong(), lat: mapData.getLat())) {
-        Text("DROP PIN HERE")}.offset(y: 200)
+        Text("DROP PIN HERE")
+          .padding()
+          .foregroundColor(darkBlue)
+          .font(Font.headline.weight(.bold))
+          .background(lightBlue)
+          .overlay(
+              RoundedRectangle(cornerRadius: 5)
+                  .stroke(darkBlue, lineWidth: 4)
+          )
+
+      }.offset(y: 200)
       ///DROP PIN BUTTON
       
       

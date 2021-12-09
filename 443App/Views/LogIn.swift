@@ -77,7 +77,7 @@ struct LogIn: View {
 //        .padding()
         
         Text("Password")
-          .foregroundColor(.primary)
+          .foregroundColor(Color.white)
         HStack {
           SecureField("Password", text: $passField)
             .foregroundColor(Color.black)
