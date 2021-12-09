@@ -76,11 +76,32 @@ struct SetPinLocationView: View {
       ///DROP PIN BUTTON
       
       
-      //SEARCH BAR
-      VStack(spacing:0){
+  
+      // GO TO USER LOCATION BUTTON
+      VStack{
+        Spacer()
+        VStack{
+          Button(action: {
+            print($mapData.coordinateRegion.center)
+            //mapData.reFocus()
+            
+          }, label: {
+            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
+          })
+        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
+      }
+      // GO TO USER LOCATION BUTTON
+    
+  }
+    
+    ZStack(alignment: .top)
+    {
+      //SEARCH BAR;
+      VStack(spacing:0)
+      {
         HStack{
           Image(systemName: "magnifyingglass").foregroundColor(.gray)
-          TextField("Search", text: $mapData.searchTxt).colorScheme(.light)
+          TextField("Search Location", text: $mapData.searchTxt).colorScheme(.light)
           
         }.padding(.vertical, 10).padding(.horizontal).background(Color.white)
         //DISPLAYING RESULTS
@@ -108,6 +129,7 @@ struct SetPinLocationView: View {
           }.background(Color.white)
         }
       }.padding()
+      .frame(alignment: .topLeading)
       Spacer()
         .onChange(of: mapData.searchTxt, perform: { value in
           //CHANGE THIS TO ALTER SEARCH SUGGESTION SPEED
@@ -118,27 +140,17 @@ struct SetPinLocationView: View {
             }
           }
         })
+      
       //SEARCH BAR
       
-      
-      
-      
-      // GO TO USER LOCATION BUTTON
-      VStack{
-        Spacer()
-        VStack{
-          Button(action: {
-            print($mapData.coordinateRegion.center)
-            //mapData.reFocus()
-            
-          }, label: {
-            Image(systemName: "location.fill").font(.title2).padding(10).background(Color.primary).clipShape(Circle())
-          })
-        }.frame(maxWidth: .infinity, alignment: .trailing).padding()
-      }
-      // GO TO USER LOCATION BUTTON
+    }
     
-  }
+    
+    
+    
+      
+    
+    
   }
 
 }
