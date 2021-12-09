@@ -236,6 +236,16 @@ class UserViewModel: ObservableObject
        
   }
   
+  func reset()
+  {
+    self.memoryPins = [MemoryPin]()
+    self.allTags = [Tag]()
+    self.allTags = [Tag(name: "College", color: "orange"),Tag(name: "School", color: "red"),Tag(name: "Birthday", color: "blue"), Tag(name: "Relationship", color: "magenta"),Tag(name: "Sports", color: "green"),
+         Tag(name: "Events", color: "black"), Tag(name: "Food", color: "yellow"), Tag(name: "Travel", color: "purple")]
+    self.userPinTags = [Tag]()
+  }
+  
+  
   func updatePins()
   {
     self.memoryPins = [MemoryPin]()

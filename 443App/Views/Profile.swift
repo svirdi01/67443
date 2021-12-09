@@ -388,7 +388,9 @@ struct Profile: View {
             }
             
             Button(action: {
+              self.uvm.reset()
               self.signinviewModel.signedIn = false
+              
             })
             {
               Text("LOG OUT")

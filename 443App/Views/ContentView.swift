@@ -126,6 +126,7 @@ struct ContentView: View {
       if (signinviewModel.signedIn)
       {
         BottomBar(userviewmodel: signinviewModel.userviewmodel).environmentObject(signinviewModel)
+        
       }
       else
       {
