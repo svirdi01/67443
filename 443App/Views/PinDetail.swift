@@ -82,45 +82,52 @@ struct PinDetail: View {
          .frame(width: CGFloat(width), height: CGFloat(width), alignment: .center)
          .padding()
       }
+    }
     
-      
-      HStack {
+      VStack(alignment: .leading) {
+//      VStack {
         Text("description:")
           .fontWeight(.bold)
           .padding(.leading)
+          .padding(.top)
+          .fixedSize(horizontal: true, vertical: false)
         Text(pin.description)
-          .padding(.trailing)
-      }.padding()
-      HStack {
+          .padding(.leading)
+//      }.padding()
+//      VStack {
         Text("date:")
           .fontWeight(.bold)
           .padding(.leading)
+          .padding(.top)
         Text(pin.getDate())
-          .padding(.trailing)
-      }.padding()
-      HStack {
+          .padding(.leading)
+//      }.padding()
+//      VStack {
         Text("location:")
           .fontWeight(.bold)
           .padding(.leading)
+          .padding(.top)
         Text(pin.locdescription)
-          .padding(.trailing)
-      }.padding()
-      HStack {
+          .padding(.leading)
+
+//      }.padding()
+//      VStack{
         Text("tag:")
           .fontWeight(.bold)
           .padding(.leading)
+          .padding(.top)
         if(pin.tags.count > 0){
           Text(String(pin.tags[0].name))
-            .padding(.trailing)
+            .padding(.leading)
             .foregroundColor(Color(pin.tags[0].color))
         }
         else
         {
-          Text("N/A").padding(.trailing)
+          Text("N/A").padding(.leading)
         }
        
           
-      }.padding()
+//      }.padding()
     }
     .onAppear(perform: loadImageFromFirebase)
     .navigationBarTitle(pin.title)
