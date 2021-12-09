@@ -14,6 +14,7 @@ struct AddPin: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @State private var showingSheet = true
   @State var isChecked:Bool = false
+  let darkBlue = Color(red: 6/255.0, green: 31/255.0, blue: 74/255.0)
 
   
   @ObservedObject var uvm: UserViewModel
@@ -60,15 +61,9 @@ struct AddPin: View {
     
   
   var body: some View {
-//    NavigationLink(
-//      destination: MapPinsView(uvm:uvm),
-//                isActive: $showNewView
-//            ) {
-//                EmptyView()
-//            }.isDetailLink(false)
+
     VStack {
-//      Text("VM Pin Count: \(userPins.allPins.count)")
-//      Text("VM User Name: \(userPins.forUser.name)")
+
       Form{
       HStack {
         Text("title:")
@@ -85,12 +80,13 @@ struct AddPin: View {
           .padding(.trailing)
       }.padding()
       HStack {
-        Text("Location:")
+        Text("location:")
           .fontWeight(.bold)
           .padding(.leading)
         TextField("location", text: $locdescription)
           .padding(.trailing)
       }
+      .padding()
         
         HStack {
           Text("date:")
@@ -102,22 +98,6 @@ struct AddPin: View {
                   displayedComponents: [.date]
               )
         }.padding()
-      //COMMENTED OUT LONG AND LAT THINGS
-//      HStack {
-//        Text("longitude:")
-//          .fontWeight(.bold)
-//          .padding(.leading)
-//        Text(long)
-//          .padding(.trailing)
-//      }.padding()
-//      HStack {
-//        Text("latitude:")
-//          .fontWeight(.bold)
-//          .padding(.leading)
-//        Text(lat)
-//          .padding(.trailing)
-//      }.padding()
-      // COMMENTED OUT LONG AND LAT THINGS
     
         HStack{
           Text("select tag:")
@@ -220,7 +200,7 @@ Section{
         Text("Add Pin")
       }}.disabled(t.isEmpty || title.isEmpty)
     )
-
+    
 
   }
 
