@@ -17,6 +17,7 @@ class AppViewModel: ObservableObject {
   
   let auth = Auth.auth()
   let db =  Firestore.firestore()
+  
   var isSignedIn: Bool
   {
     
@@ -39,6 +40,7 @@ class AppViewModel: ObservableObject {
         
       }
       
+      self.userviewmodel.reset()
       self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
       
       
@@ -94,7 +96,7 @@ class AppViewModel: ObservableObject {
            }
 
       }
-      
+      self.userviewmodel.reset()
       self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
       
       
