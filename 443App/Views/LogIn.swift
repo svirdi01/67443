@@ -103,7 +103,10 @@ struct LogIn: View {
           
         }, label: {
           Text("Log In")
-            .padding()
+            .padding(.leading, 55)
+            .padding(.trailing, 55)
+            .padding(.bottom, 7)
+            .padding(.top, 7)
             .foregroundColor(darkBlue)
             .font(Font.headline.weight(.bold))
             .background(lightBlue)
@@ -114,8 +117,8 @@ struct LogIn: View {
         })
         
         NavigationLink("Create Account", destination: SignUpView(userviewmodel: uvm, signinviewmodel: svm))
-          .padding(.bottom, 10)
-          .padding(.top, 10)
+          .padding(.bottom, 7)
+          .padding(.top, 7)
           .padding(.leading, 20)
           .padding(.trailing, 20)
 
@@ -261,32 +264,7 @@ struct SignUpView: View {
           }
         }
         
-//        HStack {
-//          TextField("Email Address", text: $emailField)
-//            .disableAutocorrection(true)
-//            .autocapitalization(.none)
-//            .padding(.trailing)
-//
-//
-//        }.padding()
-//
-//        HStack {
-//          TextField("Name", text: $name)
-//            .disableAutocorrection(true)
-//            .autocapitalization(.none)
-//            .padding(.trailing)
-//
-//        }.padding()
-//
-//
-//
-//        HStack {
-//          SecureField("Password", text: $passField)
-//            .disableAutocorrection(true)
-//            .autocapitalization(.none)
-//            .padding(.trailing)
-//        }.padding()
-        
+
         
         Button(action: {
           
@@ -300,7 +278,10 @@ struct SignUpView: View {
         },
         label: {
           Text("Sign Up")
-            .padding()
+            .padding(.bottom, 7)
+            .padding(.top, 7)
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
             .foregroundColor(darkBlue)
             .font(Font.headline.weight(.bold))
             .background(lightBlue)

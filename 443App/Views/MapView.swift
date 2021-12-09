@@ -89,8 +89,11 @@ struct MapView: View {
       
       //CREATE BUTTON
       NavigationLink(destination: SetPinLocationView(uvm: uvm).environmentObject(mapData)) {
-        Text("Create")
-          .padding()
+        Text("CREATE")
+          .padding(.bottom, 7)
+          .padding(.top, 7)
+          .padding(.leading, 20)
+          .padding(.trailing, 20)
           .foregroundColor(darkBlue)
           .font(Font.headline.weight(.bold))
           .background(lightBlue)
