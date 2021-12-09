@@ -92,10 +92,7 @@ class AppViewModel: ObservableObject {
             self.signedIn = true
             
            }
-        
-        
-        
-        
+
       }
       
       self.userviewmodel.fetchUser(userID: Auth.auth().currentUser?.uid ?? "1")
@@ -128,7 +125,7 @@ struct ContentView: View {
     NavigationView {
       if (signinviewModel.signedIn)
       {
-        BottomBar(userviewmodel: signinviewModel.userviewmodel)
+        BottomBar(userviewmodel: signinviewModel.userviewmodel).environmentObject(signinviewModel)
       }
       else
       {

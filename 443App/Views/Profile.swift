@@ -17,6 +17,8 @@ struct Profile: View {
   @ObservedObject var uvm: UserViewModel
   @State private var imageURL = URL(string: "")
   @State var picExist: Bool = true
+  @EnvironmentObject var signinviewModel: AppViewModel
+  let lightBlue = Color(red: 220/255.0, green: 249/255.0, blue: 243/255.0)
   
   
   init(uvm: UserViewModel)
@@ -381,13 +383,43 @@ struct Profile: View {
                   }
                   
                   Spacer()
+                  
+                 
             }
+            
+            Button(action: {
+              self.signinviewModel.signedIn = false
+            })
+            {
+              Text("LOG OUT")
+                .padding(.leading, 20)
+                .padding(.trailing, 20)
+                .padding(.top, 9)
+                .padding(.bottom, 9)
+            }
+            .foregroundColor(darkBlue)
+            .font(Font.headline.weight(.bold))
+            .background(lightBlue)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(darkBlue, lineWidth: 4)
+            )
+            .padding(.top)
+            
+            
+            
+         
           }
-
+      
+      
+     Spacer()
       Spacer()
-      Spacer()
+    
 
-        }
+    
+      
+
+    }
     .onAppear(perform: loadImageFromFirebase)
     .background(LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom))
     .edgesIgnoringSafeArea(.all)

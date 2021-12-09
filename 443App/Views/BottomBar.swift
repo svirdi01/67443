@@ -16,6 +16,7 @@ struct BottomBar: View {
   @State private var selection = 2
   // NEHAS CODE
   @StateObject var MapData = MapViewModel()
+  @EnvironmentObject var signinviewModel: AppViewModel
 //  @StateObject var coordinateRegion = MKCoordinateRegion(
 //    center: CLLocationCoordinate2D(latitude: 40.444176, longitude: -79.945551),
 //    span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
@@ -62,6 +63,7 @@ struct BottomBar: View {
           .navigationBarBackButtonHidden(true)
       
         Profile(uvm: uvm)
+          .environmentObject(signinviewModel)
           .tabItem {
             Image(systemName: "person.fill")
             Text("Profile")

@@ -75,8 +75,8 @@ struct SetPinLocationView: View {
       /// DROP PIN BUTTON
       NavigationLink(destination: AddPin(uvm: uvm, long: mapData.getLong(), lat: mapData.getLat())) {
         Text("DROP PIN HERE")
-          .padding(.bottom, 7)
-          .padding(.top, 7)
+          .padding(.bottom, 9)
+          .padding(.top, 9)
           .padding(.leading, 20)
           .padding(.trailing, 20)
           .foregroundColor(darkBlue)

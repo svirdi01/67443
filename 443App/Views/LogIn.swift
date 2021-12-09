@@ -105,8 +105,8 @@ struct LogIn: View {
           Text("Log In")
             .padding(.leading, 55)
             .padding(.trailing, 55)
-            .padding(.bottom, 7)
-            .padding(.top, 7)
+            .padding(.bottom, 9)
+            .padding(.top, 9)
             .foregroundColor(darkBlue)
             .font(Font.headline.weight(.bold))
             .background(lightBlue)
@@ -117,8 +117,8 @@ struct LogIn: View {
         })
         
         NavigationLink("Create Account", destination: SignUpView(userviewmodel: uvm, signinviewmodel: svm))
-          .padding(.bottom, 7)
-          .padding(.top, 7)
+          .padding(.bottom, 9)
+          .padding(.top, 9)
           .padding(.leading, 20)
           .padding(.trailing, 20)
 
@@ -278,8 +278,8 @@ struct SignUpView: View {
         },
         label: {
           Text("Sign Up")
-            .padding(.bottom, 7)
-            .padding(.top, 7)
+            .padding(.bottom, 9)
+            .padding(.top, 9)
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .foregroundColor(darkBlue)
