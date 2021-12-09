@@ -90,9 +90,10 @@ struct PinDetail: View {
           .fontWeight(.bold)
           .padding(.leading)
           .padding(.top)
-          .fixedSize(horizontal: true, vertical: false)
+         
         Text(pin.description)
           .padding(.leading)
+          .fixedSize(horizontal: false, vertical: true)
 //      }.padding()
 //      VStack {
         Text("date:")
@@ -129,6 +130,8 @@ struct PinDetail: View {
           
 //      }.padding()
     }
+    .frame(width: UIScreen.main.fixedCoordinateSpace.bounds.width, alignment: .leading)
+      
     .onAppear(perform: loadImageFromFirebase)
     .navigationBarTitle(pin.title)
     .navigationBarItems(trailing:
