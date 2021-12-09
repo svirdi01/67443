@@ -87,7 +87,7 @@ struct SetPinLocationView: View {
                   .stroke(darkBlue, lineWidth: 4)
           )
 
-      }.offset(y: 200)
+      }.offset(y: 150)
       ///DROP PIN BUTTON
       
       
