@@ -11,6 +11,7 @@ struct MapPinsView: View {
   @EnvironmentObject var userPins: UserPins
   @ObservedObject var uvm: UserViewModel
   
+  
   @State private var search: String=""
   
   init(uvm: UserViewModel)

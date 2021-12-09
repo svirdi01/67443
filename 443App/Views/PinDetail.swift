@@ -16,6 +16,8 @@ struct PinDetail: View {
     var width: Double
     @State private var imageURL = URL(string: "")
     @State var picExist: Bool = true
+  
+  @EnvironmentObject var signinviewModel: AppViewModel
     
    
     init(uvm: UserViewModel, pin: MemoryPin)
@@ -135,7 +137,9 @@ struct PinDetail: View {
     .onAppear(perform: loadImageFromFirebase)
     .navigationBarTitle(pin.title)
     .navigationBarItems(trailing:
-                          NavigationLink(destination: EditPin(uvm: uvm, pin: pin)) {
+                          NavigationLink(destination: EditPin(uvm: uvm, pin: pin).environmentObject(signinviewModel))
+                          {
+                            
           Image(systemName: "square.and.pencil")
       })    //.environmentObject(userPins)
   }

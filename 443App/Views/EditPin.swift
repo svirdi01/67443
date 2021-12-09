@@ -28,6 +28,8 @@ struct EditPin: View {
   @State var c = "";
   @State var isChecked:Bool = false
   
+  @EnvironmentObject var signinviewModel: AppViewModel
+  
 
   
   
@@ -226,7 +228,7 @@ Section{
   
   func gotoBB() {
       if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: BottomBar(userviewmodel: self.uvm))
+        window.rootViewController = UIHostingController(rootView: BottomBar(userviewmodel: self.uvm).environmentObject(signinviewModel))
           window.makeKeyAndVisible()
       }
   }

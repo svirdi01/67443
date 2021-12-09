@@ -43,6 +43,7 @@ struct BottomBar: View {
       TabView(selection: $selection) {
 
         Journal(uvm: uvm).environmentObject(MapData)
+          .environmentObject(signinviewModel)
           .tabItem {
               Image(systemName: "book.circle")
               Text("Journal")
@@ -53,6 +54,7 @@ struct BottomBar: View {
           .navigationBarBackButtonHidden(true)
       
         MapPinsView(uvm: uvm).environmentObject(MapData)
+          .environmentObject(signinviewModel)
           .tabItem {
             Image(systemName: "map.fill")
             Text("Map")

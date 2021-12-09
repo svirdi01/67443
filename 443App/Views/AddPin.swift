@@ -12,8 +12,12 @@ struct AddPin: View {
 
   @EnvironmentObject var userPins: UserPins
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
   @State private var showingSheet = true
   @State var isChecked:Bool = false
+  
+  
+  
   let darkBlue = Color(red: 7/255.0, green: 30/255.0, blue: 75/255.0)
 
   
@@ -21,6 +25,8 @@ struct AddPin: View {
   //NEHAS EDITS
   var long: String
   var lat: String
+  
+  @EnvironmentObject var signinviewModel: AppViewModel
   
   init(uvm: UserViewModel, long: String, lat: String)
   {
@@ -213,7 +219,7 @@ Section{
   
   func gotoBB() {
       if let window = UIApplication.shared.windows.first {
-        window.rootViewController = UIHostingController(rootView: BottomBar(userviewmodel: self.uvm))
+        window.rootViewController = UIHostingController(rootView: BottomBar(userviewmodel: self.uvm).environmentObject(signinviewModel))
           window.makeKeyAndVisible()
       }
   }

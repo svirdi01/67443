@@ -13,8 +13,10 @@ struct Journal: View {
   @State var searchField: String = ""
   @State var displayedPins = [MemoryPin]()
   @State var option: Int = 3
+  @EnvironmentObject var signinviewModel: AppViewModel
 
   @EnvironmentObject var mapData: MapViewModel
+  
   init(uvm: UserViewModel)
   {
     self.uvm = uvm
@@ -71,7 +73,7 @@ struct Journal: View {
                   List {
                 ForEach(uvm.memoryPins.sorted(by: {$0.title < $1.title}))
                 { pin in
-                  NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
+                  NavigationLink(destination: PinDetail(uvm: uvm, pin: pin).environmentObject(signinviewModel))
                   {
                     PinRow(pin: pin)
                   }
@@ -92,7 +94,7 @@ struct Journal: View {
               List {
                 ForEach(displayedPins)
                 { pin in
-                  NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
+                  NavigationLink(destination: PinDetail(uvm: uvm, pin: pin).environmentObject(signinviewModel))
                   {
                     PinRow(pin: pin)
                   }
@@ -112,7 +114,7 @@ struct Journal: View {
           List {
             ForEach(displayedPins)
             { pin in
-              NavigationLink(destination: PinDetail(uvm: uvm, pin: pin))
+              NavigationLink(destination: PinDetail(uvm: uvm, pin: pin).environmentObject(signinviewModel))
               {
                 PinRow(pin: pin)
               }
@@ -120,7 +122,7 @@ struct Journal: View {
           }
           .navigationBarTitle("My Memories")
           .navigationBarItems(trailing:
-                                NavigationLink(destination: SetPinLocationView(uvm: uvm).environmentObject(mapData)) {
+                                NavigationLink(destination: SetPinLocationView(uvm: uvm).environmentObject(mapData).environmentObject(signinviewModel)) {
                 Image(systemName: "plus")
             }
           )

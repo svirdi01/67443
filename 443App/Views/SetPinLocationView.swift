@@ -13,6 +13,7 @@ import Combine
 struct SetPinLocationView: View {
   // Data for user pins
   @EnvironmentObject var userPins: UserPins
+  @EnvironmentObject var signinviewModel: AppViewModel
   // Used for tracking current location
   @State var trackingMode: MapUserTrackingMode = .follow
   @State var manager = CLLocationManager()
@@ -73,7 +74,8 @@ struct SetPinLocationView: View {
       
       
       /// DROP PIN BUTTON
-      NavigationLink(destination: AddPin(uvm: uvm, long: mapData.getLong(), lat: mapData.getLat())) {
+      NavigationLink(destination: AddPin(uvm: uvm, long: mapData.getLong(), lat: mapData.getLat()).environmentObject(signinviewModel))
+      {
         Text("DROP PIN HERE")
           .padding(.bottom, 9)
           .padding(.top, 9)
